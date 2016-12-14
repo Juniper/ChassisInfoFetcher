@@ -1,0 +1,1493 @@
+root@r1> show version
+<replyMsgData>
+  <software-information xmlns:junos="http://xml.juniper.net/junos/14.2R6/junos">
+    <host-name>r1</host-name>
+    <product-model>mx240</product-model>
+    <product-name>mx240</product-name>
+    <package-information>
+      <name>junos-version</name>
+      <comment>Junos: 14.2R6.5</comment>
+    </package-information>
+    <package-information>
+      <name>jbase</name>
+      <comment>JUNOS Base OS Software Suite [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>junos</name>
+      <comment>JUNOS Base OS boot [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jcrypto</name>
+      <comment>JUNOS Crypto Software Suite [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jdocs</name>
+      <comment>JUNOS Online Documentation [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jplatform</name>
+      <comment>JUNOS platform Software Suite [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jkernel</name>
+      <comment>JUNOS Kernel Software Suite [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jroute</name>
+      <comment>JUNOS Routing Software Suite [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jruntime</name>
+      <comment>JUNOS Runtime Software Suite [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-aacl-pic</name>
+      <comment>JUNOS Services AACL PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-appid-xlr64</name>
+      <comment>JUNOS Services AppId PIC package (xlr64) [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-appid-pic</name>
+      <comment>JUNOS AppId Services PIC Package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-alg-xlr64</name>
+      <comment>JUNOS Services Application Level Gateway (xlr64) [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-alg-xlp64</name>
+      <comment>JUNOS Services Application Level Gateway (xlp64) [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-alg-pic</name>
+      <comment>JUNOS Services Application Level Gateway [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-hcm-xlr64</name>
+      <comment>JUNOS Services HTTP Content Management PIC package (xlr64) [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-hcm-pic</name>
+      <comment>JUNOS Services HTTP Content Management PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-cpcd-pic</name>
+      <comment>JUNOS Services Captive Portal and Content Delivery PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-bgf-pic</name>
+      <comment>JUNOS Border Gateway Function PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-llpdf-pic</name>
+      <comment>JUNOS Services LL-PDF PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-jflow-xlp64</name>
+      <comment>JUNOS Services JFLOW PIC package (xlp64) [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-jflow-pic</name>
+      <comment>JUNOS Services JFLOW PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-idp-pic</name>
+      <comment>JUNOS IDP Services PIC Package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-mss-xlr64</name>
+      <comment>JUNOS Services Mobile Subscriber Service PIC package (xlr64) [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-mss-xlr</name>
+      <comment>JUNOS Services Mobile Subscriber Service Container package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-mobile-xlr64</name>
+      <comment>JUNOS MobileNext PIC package (xlr64) [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-mobile-pic</name>
+      <comment>JUNOS MobileNext PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-rpm-pic</name>
+      <comment>JUNOS Services RPM PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-ptsp-pic</name>
+      <comment>JUNOS Services PTSP PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-nat-xlr64</name>
+      <comment>JUNOS Services NAT PIC package (xlr64) [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-nat-xlp64</name>
+      <comment>JUNOS Services NAT PIC package (xlp64) [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-nat-pic</name>
+      <comment>JUNOS Services NAT PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-sfw-xlr64</name>
+      <comment>JUNOS Services Stateful Firewall PIC package (xlr64) [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-sfw-xlp64</name>
+      <comment>JUNOS Services Stateful Firewall PIC package (xlp64) [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-sfw-pic</name>
+      <comment>JUNOS Services Stateful Firewall PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-rpm-xlp64</name>
+      <comment>JUNOS Services RPM PIC package (xlp64) [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-voice-bsg</name>
+      <comment>JUNOS BSG PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-crypto-base-xlp64</name>
+      <comment>JUNOS Services Crypto Base PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-crypto-base-pic</name>
+      <comment>JUNOS Services Crypto Base PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-ssl-pic</name>
+      <comment>JUNOS Services SSL PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-ipsec-xlr64</name>
+      <comment>JUNOS Services IPSec PIC(xlr64) package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-ipsec-xlp64</name>
+      <comment>JUNOS Services IPSec PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-ipsec-pic</name>
+      <comment>JUNOS Services IPSec PIC package [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jservices-crypto-base-xlr64</name>
+      <comment>JUNOS Services Crypto Base PIC package(xlr64) [14.2R6.5]</comment>
+    </package-information>
+    <package-information>
+      <name>jsim-vmx</name>
+      <comment>JUNOS Packet Forwarding Engine Trio Simulation Package [14.2R6.5]</comment>
+    </package-information>
+  </software-information>
+</replyMsgData>
+
+
+
+root@r1> show configuration | display set
+<replyMsgData>
+  <configuration-information xmlns:junos="http://xml.juniper.net/junos/14.2R6/junos">
+    <configuration-output>
+set version 14.2R6.5
+set groups member0 system host-name r1
+set groups member0 system backup-router 10.102.255.254
+set groups member0 interfaces fxp0 unit 0 family inet address 10.102.247.86/20
+set groups global system domain-name englab.juniper.net
+set groups global system domain-search englab.juniper.net
+set groups global system domain-search juniper.net
+set groups global system domain-search jnpr.net
+set groups global system domain-search spglab.juniper.net
+set groups global system time-zone America/Los_Angeles
+set groups global system debugger-on-break
+set groups global system dump-on-panic
+set groups global system authentication-order password
+set groups global system authentication-order radius
+set groups global system authentication-order tacplus
+set groups global system root-authentication encrypted-password "$1$ZUlES4dp$OUwWo1g7cLoV/aMWpHUnC/"
+set groups global system name-server 10.102.149.51
+set groups global system name-server 10.102.149.52
+set groups global system radius-server 192.168.69.162 secret "$9$iHfz9Cu0BRQznCApIRSreWxNVw2GjkKM4JGimP"
+set groups global system radius-server 192.168.64.10 secret "$9$TQ/t1IcSrKAt0IRheK8X7VYgaZDm5zNdiqmTn6"
+set groups global system radius-server 192.168.4.240 secret "$9$GqUqf3nCApOPfQn690ORhSeWL7-boZDylsgoGHk"
+set groups global system tacplus-server 192.168.5.73 secret "$9$sM4GiQz6uORfTCu1hKvwYgoJD"
+set groups global system tacplus-server 192.168.5.73 timeout 15
+set groups global system tacplus-server 192.168.5.73 single-connection
+set groups global system login class wheel permissions snmp
+set groups global system login user regress uid 928
+set groups global system login user regress class superuser
+set groups global system login user regress shell csh
+set groups global system login user regress authentication encrypted-password "$1$kPU..$w.4FGRAGanJ8U4Yq6sbj7."
+set groups global system login user remote uid 2000
+set groups global system login user remote class super-user
+set groups global system services finger
+set groups global system services ftp
+set groups global system services rlogin
+set groups global system services rsh
+set groups global system services ssh root-login allow
+set groups global system services telnet
+set groups global system services xnm-clear-text
+set groups global system syslog host log kernel info
+set groups global system syslog host log any notice
+set groups global system syslog host log pfe info
+set groups global system syslog host log interactive-commands any
+set groups global system syslog file messages kernel info
+set groups global system syslog file messages any notice
+set groups global system syslog file messages authorization info
+set groups global system syslog file messages pfe info
+set groups global system syslog file messages archive world-readable
+set groups global system syslog file security interactive-commands any
+set groups global system syslog file security archive world-readable
+set groups global system processes routing enable
+set groups global system processes ntp enable
+set groups global system processes management enable
+set groups global system processes watchdog enable
+set groups global system processes snmp enable
+set groups global system processes inet-process enable
+set groups global system processes mib-process enable
+set groups global system ntp boot-server 66.129.255.62
+set groups global system ntp server 66.129.255.62
+set groups global chassis dump-on-panic
+set groups global interfaces lo0 unit 0 family inet address 128.102.247.86/32 primary
+set groups global interfaces lo0 unit 0 family iso address 47.0005.80ff.f800.0000.0108.0001.1281.0224.7086.00
+set groups global interfaces lo0 unit 0 family inet6 address abcd::128:102:247:86/128 primary
+set groups global snmp location "Systest lab"
+set groups global snmp contact "Jay Lloyd"
+set groups global snmp interface fxp0.0
+set groups global snmp community public authorization read-only
+set groups global snmp community private authorization read-write
+set groups global routing-options static route 172.16.0.0/12 next-hop 10.102.255.254
+set groups global routing-options static route 172.16.0.0/12 retain
+set groups global routing-options static route 172.16.0.0/12 no-readvertise
+set groups global routing-options static route 192.168.0.0/16 next-hop 10.102.255.254
+set groups global routing-options static route 192.168.0.0/16 retain
+set groups global routing-options static route 192.168.0.0/16 no-readvertise
+set groups global routing-options static route 10.0.0.0/8 next-hop 10.102.255.254
+set groups global routing-options static route 10.0.0.0/8 retain
+set groups global routing-options static route 10.0.0.0/8 no-readvertise
+set groups global routing-options router-id 128.102.247.86
+set apply-groups global
+set apply-groups member0
+set system ports console log-out-on-disconnect
+set system services ssh max-sessions-per-connection 32
+set system services netconf ssh
+set system syslog file default-log-messages any info
+set system syslog file default-log-messages match "(requested 'commit' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|CFMD_CCM_DEFECT| LFMD_3AH | RPD_MPLS_PATH_BFD|(Master Unchanged, Members Changed)|(Master Changed, Members Changed)|(Master Detected, Members Changed)|(vc add)|(vc delete)|(Master detected)|(Master changed)|(Backup detected)|(Backup changed)|(interface vcp-)"
+set system syslog file default-log-messages structured-data
+set snmp trap-group space targets 10.102.247.77
+</configuration-output>
+  </configuration-information>
+</replyMsgData>
+
+
+
+root@r1> show configuration | display inheritance
+<replyMsgData>
+  <configuration-information xmlns:junos="http://xml.juniper.net/junos/14.2R6/junos">
+    <configuration-output>
+## Last commit: 2016-11-09 04:28:56 PST by mgospodinov
+version 14.2R6.5;
+system {
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'r1' was inherited from group 'member0'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    host-name r1;
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'englab.juniper.net' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    domain-name englab.juniper.net;
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'englab.juniper.net' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'juniper.net' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'jnpr.net' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'spglab.juniper.net' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    domain-search [ englab.juniper.net juniper.net jnpr.net spglab.juniper.net ];
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'backup-router' was inherited from group 'member0'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'10.102.255.254' was inherited from group 'member0'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    backup-router 10.102.255.254;
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'America/Los_Angeles' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    time-zone America/Los_Angeles;
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'debugger-on-break' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    debugger-on-break;
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'dump-on-panic' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    dump-on-panic;
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'password' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'radius' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'tacplus' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    authentication-order [ password radius tacplus ];
+    ports {
+        console log-out-on-disconnect;
+    }
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'root-authentication' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    root-authentication {
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'$1$ZUlES4dp$OUwWo1g7cLoV/aMWpHUnC/' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        encrypted-password "$1$ZUlES4dp$OUwWo1g7cLoV/aMWpHUnC/"; ## SECRET-DATA
+    }
+    name-server {
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'10.102.149.51' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        10.102.149.51;
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'10.102.149.52' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        10.102.149.52;
+    }
+    radius-server {
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'192.168.69.162' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'$9$iHfz9Cu0BRQznCApIRSreWxNVw2GjkKM4JGimP' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        192.168.69.162 secret "$9$iHfz9Cu0BRQznCApIRSreWxNVw2GjkKM4JGimP"; ## SECRET-DATA
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'192.168.64.10' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'$9$TQ/t1IcSrKAt0IRheK8X7VYgaZDm5zNdiqmTn6' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        192.168.64.10 secret "$9$TQ/t1IcSrKAt0IRheK8X7VYgaZDm5zNdiqmTn6"; ## SECRET-DATA
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'192.168.4.240' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'$9$GqUqf3nCApOPfQn690ORhSeWL7-boZDylsgoGHk' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        192.168.4.240 secret "$9$GqUqf3nCApOPfQn690ORhSeWL7-boZDylsgoGHk"; ## SECRET-DATA
+    }
+    tacplus-server {
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'192.168.5.73' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        192.168.5.73 {
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'$9$sM4GiQz6uORfTCu1hKvwYgoJD' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            secret "$9$sM4GiQz6uORfTCu1hKvwYgoJD"; ## SECRET-DATA
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'15' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            timeout 15;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'single-connection' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            single-connection;
+        }
+    }
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'login' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    login {
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'wheel' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        class wheel {
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'snmp' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            permissions snmp;
+        }
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'regress' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        user regress {
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'928' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            uid 928;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'superuser' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            class superuser;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'csh' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            shell csh;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'authentication' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            authentication {
+</configuration-output>
+    <configuration-detail>
+      <indent>16</indent>
+      <configuration-detail-line>
+        <indent>16</indent>
+        <detail-message>'$1$kPU..$w.4FGRAGanJ8U4Yq6sbj7.' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+                encrypted-password "$1$kPU..$w.4FGRAGanJ8U4Yq6sbj7."; ## SECRET-DATA
+            }
+        }
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'remote' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        user remote {
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'2000' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            uid 2000;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'super-user' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            class super-user;
+        }
+    }
+    services {
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'finger' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        finger;
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'ftp' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        ftp;
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'rlogin' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        rlogin;
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'rsh' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        rsh;
+        ssh {
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'allow' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            root-login allow;
+            max-sessions-per-connection 32;
+        }
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'telnet' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        telnet;
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'xnm-clear-text' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        xnm-clear-text;
+        netconf {
+            ssh;
+        }
+    }
+    syslog {
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'log' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        host log {
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'kernel' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'info' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            kernel info;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'any' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'notice' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            any notice;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'pfe' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'info' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            pfe info;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'interactive-commands' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'any' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            interactive-commands any;
+        }
+        file default-log-messages {
+            any info;
+            match "(requested 'commit' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|CFMD_CCM_DEFECT| LFMD_3AH | RPD_MPLS_PATH_BFD|(Master Unchanged, Members Changed)|(Master Changed, Members Changed)|(Master Detected, Members Changed)|(vc add)|(vc delete)|(Master detected)|(Master changed)|(Backup detected)|(Backup changed)|(interface vcp-)";
+            structured-data;
+        }
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'messages' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        file messages {
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'kernel' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'info' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            kernel info;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'any' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'notice' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            any notice;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'authorization' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'info' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            authorization info;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'pfe' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'info' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            pfe info;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'archive' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'world-readable' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            archive world-readable;
+        }
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'security' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        file security {
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'interactive-commands' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'any' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            interactive-commands any;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'archive' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'world-readable' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            archive world-readable;
+        }
+    }
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'processes' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    processes {
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'routing' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'enable' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        routing enable;
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'ntp' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'enable' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        ntp enable;
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'management' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'enable' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        management enable;
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'watchdog' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'enable' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        watchdog enable;
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'snmp' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'enable' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        snmp enable;
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'inet-process' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'enable' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        inet-process enable;
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'mib-process' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'enable' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        mib-process enable;
+    }
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'ntp' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    ntp {
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'66.129.255.62' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        boot-server 66.129.255.62;
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'66.129.255.62' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        server 66.129.255.62;
+    }
+}
+</configuration-output>
+    <configuration-detail>
+      <indent>0</indent>
+      <configuration-detail-line>
+        <indent>0</indent>
+        <detail-message>'chassis' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+chassis {
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'dump-on-panic' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    dump-on-panic;
+}
+</configuration-output>
+    <configuration-detail>
+      <indent>0</indent>
+      <configuration-detail-line>
+        <indent>0</indent>
+        <detail-message>'interfaces' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+interfaces {
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'lo0' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    lo0 {
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'0' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        unit 0 {
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'inet' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            family inet {
+</configuration-output>
+    <configuration-detail>
+      <indent>16</indent>
+      <configuration-detail-line>
+        <indent>16</indent>
+        <detail-message>'128.102.247.86/32' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+                address 128.102.247.86/32 {
+</configuration-output>
+    <configuration-detail>
+      <indent>20</indent>
+      <configuration-detail-line>
+        <indent>20</indent>
+        <detail-message>'primary' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+                    primary;
+                }
+            }
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'iso' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            family iso {
+</configuration-output>
+    <configuration-detail>
+      <indent>16</indent>
+      <configuration-detail-line>
+        <indent>16</indent>
+        <detail-message>'47.0005.80ff.f800.0000.0108.0001.1281.0224.7086.00' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+                address 47.0005.80ff.f800.0000.0108.0001.1281.0224.7086.00;
+            }
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'inet6' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            family inet6 {
+</configuration-output>
+    <configuration-detail>
+      <indent>16</indent>
+      <configuration-detail-line>
+        <indent>16</indent>
+        <detail-message>'abcd::128:102:247:86/128' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+                address abcd::128:102:247:86/128 {
+</configuration-output>
+    <configuration-detail>
+      <indent>20</indent>
+      <configuration-detail-line>
+        <indent>20</indent>
+        <detail-message>'primary' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+                    primary;
+                }
+            }
+        }
+    }
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'fxp0' was inherited from group 'member0'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    fxp0 {
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'0' was inherited from group 'member0'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        unit 0 {
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'inet' was inherited from group 'member0'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            family inet {
+</configuration-output>
+    <configuration-detail>
+      <indent>16</indent>
+      <configuration-detail-line>
+        <indent>16</indent>
+        <detail-message>'10.102.247.86/20' was inherited from group 'member0'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+                address 10.102.247.86/20;
+            }
+        }
+    }
+}
+snmp {
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'Systest lab' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    location "Systest lab";
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'Jay Lloyd' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    contact "Jay Lloyd";
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'fxp0.0' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    interface fxp0.0;
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'public' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    community public {
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'read-only' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        authorization read-only;
+    }
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'private' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    community private {
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'read-write' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        authorization read-write;
+    }
+    trap-group space {
+        targets {
+            10.102.247.77;
+        }
+    }
+}
+</configuration-output>
+    <configuration-detail>
+      <indent>0</indent>
+      <configuration-detail-line>
+        <indent>0</indent>
+        <detail-message>'routing-options' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+routing-options {
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'static' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    static {
+        /* corperate and alpha net */
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'172.16.0.0/12' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        route 172.16.0.0/12 {
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'10.102.255.254' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            next-hop 10.102.255.254;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'retain' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            retain;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'no-readvertise' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            no-readvertise;
+        }
+        /* eng lab nets */
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'192.168.0.0/16' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        route 192.168.0.0/16 {
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'10.102.255.254' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            next-hop 10.102.255.254;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'retain' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            retain;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'no-readvertise' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            no-readvertise;
+        }
+</configuration-output>
+    <configuration-detail>
+      <indent>8</indent>
+      <configuration-detail-line>
+        <indent>8</indent>
+        <detail-message>'10.0.0.0/8' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+        route 10.0.0.0/8 {
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'10.102.255.254' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            next-hop 10.102.255.254;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'retain' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            retain;
+</configuration-output>
+    <configuration-detail>
+      <indent>12</indent>
+      <configuration-detail-line>
+        <indent>12</indent>
+        <detail-message>'no-readvertise' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+            no-readvertise;
+        }
+    }
+</configuration-output>
+    <configuration-detail>
+      <indent>4</indent>
+      <configuration-detail-line>
+        <indent>4</indent>
+        <detail-message>'128.102.247.86' was inherited from group 'global'</detail-message>
+      </configuration-detail-line>
+    </configuration-detail>
+    <configuration-output>
+    router-id 128.102.247.86;
+}
+</configuration-output>
+  </configuration-information>
+</replyMsgData>
+
+
+

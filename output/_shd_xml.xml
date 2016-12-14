@@ -1,0 +1,66 @@
+root@r1><rpc-reply><chassis>
+<name>Chassis</name>
+<serial-number>VMX4849</serial-number>
+<description>MX240</description>
+<chassis-module>
+<name>Midplane</name>
+</chassis-module>
+<chassis-module>
+<name>Routing Engine 0</name>
+<description>RE-VMX</description>
+<chassis-re-disk-module>
+<name>ad0</name>
+<disk-size>20473</disk-size>
+<model>QEMU HARDDISK</model>
+<serial-number>QM00001</serial-number>
+<description>Hard Disk</description>
+</chassis-re-disk-module>
+</chassis-module>
+<chassis-module>
+<name>CB 0</name>
+<description>VMX SCB</description>
+</chassis-module>
+<chassis-module>
+<name>CB 1</name>
+<description>VMX SCB</description>
+</chassis-module>
+</chassis>
+</chassis-inventory>
+<cli>
+<banner></banner>
+</cli>
+</rpc-reply>
+
+root@r2><rpc-reply><chassis>
+<name>Chassis</name>
+<serial-number>VMX782a</serial-number>
+<description>MX240</description>
+<chassis-module>
+<name>Midplane</name>
+</chassis-module>
+<chassis-module>
+<name>Routing Engine 0</name>
+<description>RE-VMX</description>
+<chassis-re-disk-module>
+<name>ad0</name>
+<disk-size>20473</disk-size>
+<model>QEMU HARDDISK</model>
+<serial-number>QM00001</serial-number>
+<description>Hard Disk</description>
+</chassis-re-disk-module>
+</chassis-module>
+<chassis-module>
+<name>CB 0</name>
+<description>VMX SCB</description>
+</chassis-module>
+<chassis-module>
+<name>CB 1</name>
+<description>VMX SCB</description>
+</chassis-module>
+</chassis>
+</chassis-inventory>
+<cli>
+<banner></banner>
+</cli>
+</rpc-reply>
+

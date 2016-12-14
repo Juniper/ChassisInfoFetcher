@@ -1,0 +1,22 @@
+root@olive0> show chassis hardware detail | display xml | no-more 
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/15.1D0/junos">
+    <xnm:error xmlns="http://xml.juniper.net/xnm/1.1/xnm" xmlns:xnm="http://xml.juniper.net/xnm/1.1/xnm">
+        <source-daemon>chassis-control</source-daemon>
+        <message>Unrecognized command (chassis-control)</message>
+    </xnm:error>
+    <cli>
+        <banner></banner>
+    </cli>
+</rpc-reply>
+
+root@olive1> show chassis hardware detail | display xml | no-more 
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/15.1D0/junos">
+    <xnm:error xmlns="http://xml.juniper.net/xnm/1.1/xnm" xmlns:xnm="http://xml.juniper.net/xnm/1.1/xnm">
+        <source-daemon>chassis-control</source-daemon>
+        <message>Unrecognized command (chassis-control)</message>
+    </xnm:error>
+    <cli>
+        <banner></banner>
+    </cli>
+</rpc-reply>
+

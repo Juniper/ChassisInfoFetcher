@@ -1,0 +1,62 @@
+root@10.102.247.79> show chassis hardware | display xml
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/14.2R6/junos">
+    <chassis-inventory xmlns="http://xml.juniper.net/junos/14.2R6/junos-chassis">
+        <chassis junos:style="inventory">
+            <name>Chassis</name>
+            <serial-number>VMX782a</serial-number>
+            <description>MX240</description>
+            <chassis-module>
+                <name>Midplane</name>
+            </chassis-module>
+            <chassis-module>
+                <name>Routing Engine 0</name>
+                <description>RE-VMX</description>
+            </chassis-module>
+            <chassis-module>
+                <name>CB 0</name>
+                <description>VMX SCB</description>
+            </chassis-module>
+            <chassis-module>
+                <name>CB 1</name>
+                <description>VMX SCB</description>
+            </chassis-module>
+        </chassis>
+    </chassis-inventory>
+    <cli>
+        <banner></banner>
+    </cli>
+</rpc-reply>
+
+
+
+root@10.102.247.86> show chassis hardware | display xml
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/14.2R6/junos">
+    <chassis-inventory xmlns="http://xml.juniper.net/junos/14.2R6/junos-chassis">
+        <chassis junos:style="inventory">
+            <name>Chassis</name>
+            <serial-number>VMX4849</serial-number>
+            <description>MX240</description>
+            <chassis-module>
+                <name>Midplane</name>
+            </chassis-module>
+            <chassis-module>
+                <name>Routing Engine 0</name>
+                <description>RE-VMX</description>
+            </chassis-module>
+            <chassis-module>
+                <name>CB 0</name>
+                <description>VMX SCB</description>
+            </chassis-module>
+            <chassis-module>
+                <name>CB 1</name>
+                <description>VMX SCB</description>
+            </chassis-module>
+        </chassis>
+    </chassis-inventory>
+    <cli>
+        <banner></banner>
+    </cli>
+</rpc-reply>
+
+
+

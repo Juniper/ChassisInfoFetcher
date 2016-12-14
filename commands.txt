@@ -1,0 +1,7 @@
+{
+    "commandList": [
+        "show version", 
+        "show configuration | display inheritance", 
+        "show chassis hardware | display set"
+    ]
+}

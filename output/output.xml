@@ -1,0 +1,1178 @@
+root@10.102.247.86> show version
+Hostname: r1
+Model: mx240
+Junos: 14.2R6.5
+JUNOS Base OS Software Suite [14.2R6.5]
+JUNOS Base OS boot [14.2R6.5]
+JUNOS Crypto Software Suite [14.2R6.5]
+JUNOS Online Documentation [14.2R6.5]
+JUNOS platform Software Suite [14.2R6.5]
+JUNOS Kernel Software Suite [14.2R6.5]
+JUNOS Routing Software Suite [14.2R6.5]
+JUNOS Runtime Software Suite [14.2R6.5]
+JUNOS Services AACL PIC package [14.2R6.5]
+JUNOS Services AppId PIC package (xlr64) [14.2R6.5]
+JUNOS AppId Services PIC Package [14.2R6.5]
+JUNOS Services Application Level Gateway (xlr64) [14.2R6.5]
+JUNOS Services Application Level Gateway (xlp64) [14.2R6.5]
+JUNOS Services Application Level Gateway [14.2R6.5]
+JUNOS Services HTTP Content Management PIC package (xlr64) [14.2R6.5]
+JUNOS Services HTTP Content Management PIC package [14.2R6.5]
+JUNOS Services Captive Portal and Content Delivery PIC package [14.2R6.5]
+JUNOS Border Gateway Function PIC package [14.2R6.5]
+JUNOS Services LL-PDF PIC package [14.2R6.5]
+JUNOS Services JFLOW PIC package (xlp64) [14.2R6.5]
+JUNOS Services JFLOW PIC package [14.2R6.5]
+JUNOS IDP Services PIC Package [14.2R6.5]
+JUNOS Services Mobile Subscriber Service PIC package (xlr64) [14.2R6.5]
+JUNOS Services Mobile Subscriber Service Container package [14.2R6.5]
+JUNOS MobileNext PIC package (xlr64) [14.2R6.5]
+JUNOS MobileNext PIC package [14.2R6.5]
+JUNOS Services RPM PIC package [14.2R6.5]
+JUNOS Services PTSP PIC package [14.2R6.5]
+JUNOS Services NAT PIC package (xlr64) [14.2R6.5]
+JUNOS Services NAT PIC package (xlp64) [14.2R6.5]
+JUNOS Services NAT PIC package [14.2R6.5]
+JUNOS Services Stateful Firewall PIC package (xlr64) [14.2R6.5]
+JUNOS Services Stateful Firewall PIC package (xlp64) [14.2R6.5]
+JUNOS Services Stateful Firewall PIC package [14.2R6.5]
+JUNOS Services RPM PIC package (xlp64) [14.2R6.5]
+JUNOS BSG PIC package [14.2R6.5]
+JUNOS Services Crypto Base PIC package [14.2R6.5]
+JUNOS Services Crypto Base PIC package [14.2R6.5]
+JUNOS Services SSL PIC package [14.2R6.5]
+JUNOS Services IPSec PIC(xlr64) package [14.2R6.5]
+JUNOS Services IPSec PIC package [14.2R6.5]
+JUNOS Services IPSec PIC package [14.2R6.5]
+JUNOS Services Crypto Base PIC package(xlr64) [14.2R6.5]
+JUNOS Packet Forwarding Engine Trio Simulation Package [14.2R6.5]
+
+
+
+root@10.102.247.86> show configuration | display inheritance
+## Last commit: 2016-11-09 04:28:56 PST by mgospodinov
+version 14.2R6.5;
+system {
+    ##
+    ## 'r1' was inherited from group 'member0'
+    ##
+    host-name r1;
+    ##
+    ## 'englab.juniper.net' was inherited from group 'global'
+    ##
+    domain-name englab.juniper.net;
+    ##
+    ## 'englab.juniper.net' was inherited from group 'global'
+    ## 'juniper.net' was inherited from group 'global'
+    ## 'jnpr.net' was inherited from group 'global'
+    ## 'spglab.juniper.net' was inherited from group 'global'
+    ##
+    domain-search [ englab.juniper.net juniper.net jnpr.net spglab.juniper.net ];
+    ##
+    ## 'backup-router' was inherited from group 'member0'
+    ## '10.102.255.254' was inherited from group 'member0'
+    ##
+    backup-router 10.102.255.254;
+    ##
+    ## 'America/Los_Angeles' was inherited from group 'global'
+    ##
+    time-zone America/Los_Angeles;
+    ##
+    ## 'debugger-on-break' was inherited from group 'global'
+    ##
+    debugger-on-break;
+    ##
+    ## 'dump-on-panic' was inherited from group 'global'
+    ##
+    dump-on-panic;
+    ##
+    ## 'password' was inherited from group 'global'
+    ## 'radius' was inherited from group 'global'
+    ## 'tacplus' was inherited from group 'global'
+    ##
+    authentication-order [ password radius tacplus ];
+    ports {
+        console log-out-on-disconnect;
+    }
+    ##
+    ## 'root-authentication' was inherited from group 'global'
+    ##
+    root-authentication {
+        ##
+        ## '$1$ZUlES4dp$OUwWo1g7cLoV/aMWpHUnC/' was inherited from group 'global'
+        ##
+        encrypted-password "$1$ZUlES4dp$OUwWo1g7cLoV/aMWpHUnC/"; ## SECRET-DATA
+    }
+    name-server {
+        ##
+        ## '10.102.149.51' was inherited from group 'global'
+        ##
+        10.102.149.51;
+        ##
+        ## '10.102.149.52' was inherited from group 'global'
+        ##
+        10.102.149.52;
+    }
+    radius-server {
+        ##
+        ## '192.168.69.162' was inherited from group 'global'
+        ## '$9$iHfz9Cu0BRQznCApIRSreWxNVw2GjkKM4JGimP' was inherited from group 'global'
+        ##
+        192.168.69.162 secret "$9$iHfz9Cu0BRQznCApIRSreWxNVw2GjkKM4JGimP"; ## SECRET-DATA
+        ##
+        ## '192.168.64.10' was inherited from group 'global'
+        ## '$9$TQ/t1IcSrKAt0IRheK8X7VYgaZDm5zNdiqmTn6' was inherited from group 'global'
+        ##
+        192.168.64.10 secret "$9$TQ/t1IcSrKAt0IRheK8X7VYgaZDm5zNdiqmTn6"; ## SECRET-DATA
+        ##
+        ## '192.168.4.240' was inherited from group 'global'
+        ## '$9$GqUqf3nCApOPfQn690ORhSeWL7-boZDylsgoGHk' was inherited from group 'global'
+        ##
+        192.168.4.240 secret "$9$GqUqf3nCApOPfQn690ORhSeWL7-boZDylsgoGHk"; ## SECRET-DATA
+    }
+    tacplus-server {
+        ##
+        ## '192.168.5.73' was inherited from group 'global'
+        ##
+        192.168.5.73 {
+            ##
+            ## '$9$sM4GiQz6uORfTCu1hKvwYgoJD' was inherited from group 'global'
+            ##
+            secret "$9$sM4GiQz6uORfTCu1hKvwYgoJD"; ## SECRET-DATA
+            ##
+            ## '15' was inherited from group 'global'
+            ##
+            timeout 15;
+            ##
+            ## 'single-connection' was inherited from group 'global'
+            ##
+            single-connection;
+        }
+    }
+    ##
+    ## 'login' was inherited from group 'global'
+    ##
+    login {
+        ##
+        ## 'wheel' was inherited from group 'global'
+        ##
+        class wheel {
+            ##
+            ## 'snmp' was inherited from group 'global'
+            ##
+            permissions snmp;
+        }
+        ##
+        ## 'regress' was inherited from group 'global'
+        ##
+        user regress {
+            ##
+            ## '928' was inherited from group 'global'
+            ##
+            uid 928;
+            ##
+            ## 'superuser' was inherited from group 'global'
+            ##
+            class superuser;
+            ##
+            ## 'csh' was inherited from group 'global'
+            ##
+            shell csh;
+            ##
+            ## 'authentication' was inherited from group 'global'
+            ##
+            authentication {
+                ##
+                ## '$1$kPU..$w.4FGRAGanJ8U4Yq6sbj7.' was inherited from group 'global'
+                ##
+                encrypted-password "$1$kPU..$w.4FGRAGanJ8U4Yq6sbj7."; ## SECRET-DATA
+            }
+        }
+        ##
+        ## 'remote' was inherited from group 'global'
+        ##
+        user remote {
+            ##
+            ## '2000' was inherited from group 'global'
+            ##
+            uid 2000;
+            ##
+            ## 'super-user' was inherited from group 'global'
+            ##
+            class super-user;
+        }
+    }
+    services {
+        ##
+        ## 'finger' was inherited from group 'global'
+        ##
+        finger;
+        ##
+        ## 'ftp' was inherited from group 'global'
+        ##
+        ftp;
+        ##
+        ## 'rlogin' was inherited from group 'global'
+        ##
+        rlogin;
+        ##
+        ## 'rsh' was inherited from group 'global'
+        ##
+        rsh;
+        ssh {
+            ##
+            ## 'allow' was inherited from group 'global'
+            ##
+            root-login allow;
+            max-sessions-per-connection 32;
+        }
+        ##
+        ## 'telnet' was inherited from group 'global'
+        ##
+        telnet;
+        ##
+        ## 'xnm-clear-text' was inherited from group 'global'
+        ##
+        xnm-clear-text;
+        netconf {
+            ssh;
+        }
+    }
+    syslog {
+        ##
+        ## 'log' was inherited from group 'global'
+        ##
+        host log {
+            ##
+            ## 'kernel' was inherited from group 'global'
+            ## 'info' was inherited from group 'global'
+            ##
+            kernel info;
+            ##
+            ## 'any' was inherited from group 'global'
+            ## 'notice' was inherited from group 'global'
+            ##
+            any notice;
+            ##
+            ## 'pfe' was inherited from group 'global'
+            ## 'info' was inherited from group 'global'
+            ##
+            pfe info;
+            ##
+            ## 'interactive-commands' was inherited from group 'global'
+            ## 'any' was inherited from group 'global'
+            ##
+            interactive-commands any;
+        }
+        file default-log-messages {
+            any info;
+            match "(requested 'commit' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|CFMD_CCM_DEFECT| LFMD_3AH | RPD_MPLS_PATH_BFD|(Master Unchanged, Members Changed)|(Master Changed, Members Changed)|(Master Detected, Members Changed)|(vc add)|(vc delete)|(Master detected)|(Master changed)|(Backup detected)|(Backup changed)|(interface vcp-)";
+            structured-data;
+        }
+        ##
+        ## 'messages' was inherited from group 'global'
+        ##
+        file messages {
+            ##
+            ## 'kernel' was inherited from group 'global'
+            ## 'info' was inherited from group 'global'
+            ##
+            kernel info;
+            ##
+            ## 'any' was inherited from group 'global'
+            ## 'notice' was inherited from group 'global'
+            ##
+            any notice;
+            ##
+            ## 'authorization' was inherited from group 'global'
+            ## 'info' was inherited from group 'global'
+            ##
+            authorization info;
+            ##
+            ## 'pfe' was inherited from group 'global'
+            ## 'info' was inherited from group 'global'
+            ##
+            pfe info;
+            ##
+            ## 'archive' was inherited from group 'global'
+            ## 'world-readable' was inherited from group 'global'
+            ##
+            archive world-readable;
+        }
+        ##
+        ## 'security' was inherited from group 'global'
+        ##
+        file security {
+            ##
+            ## 'interactive-commands' was inherited from group 'global'
+            ## 'any' was inherited from group 'global'
+            ##
+            interactive-commands any;
+            ##
+            ## 'archive' was inherited from group 'global'
+            ## 'world-readable' was inherited from group 'global'
+            ##
+            archive world-readable;
+        }
+    }
+    ##
+    ## 'processes' was inherited from group 'global'
+    ##
+    processes {
+        ##
+        ## 'routing' was inherited from group 'global'
+        ## 'enable' was inherited from group 'global'
+        ##
+        routing enable;
+        ##
+        ## 'ntp' was inherited from group 'global'
+        ## 'enable' was inherited from group 'global'
+        ##
+        ntp enable;
+        ##
+        ## 'management' was inherited from group 'global'
+        ## 'enable' was inherited from group 'global'
+        ##
+        management enable;
+        ##
+        ## 'watchdog' was inherited from group 'global'
+        ## 'enable' was inherited from group 'global'
+        ##
+        watchdog enable;
+        ##
+        ## 'snmp' was inherited from group 'global'
+        ## 'enable' was inherited from group 'global'
+        ##
+        snmp enable;
+        ##
+        ## 'inet-process' was inherited from group 'global'
+        ## 'enable' was inherited from group 'global'
+        ##
+        inet-process enable;
+        ##
+        ## 'mib-process' was inherited from group 'global'
+        ## 'enable' was inherited from group 'global'
+        ##
+        mib-process enable;
+    }
+    ##
+    ## 'ntp' was inherited from group 'global'
+    ##
+    ntp {
+        ##
+        ## '66.129.255.62' was inherited from group 'global'
+        ##
+        boot-server 66.129.255.62;
+        ##
+        ## '66.129.255.62' was inherited from group 'global'
+        ##
+        server 66.129.255.62;
+    }
+}
+##
+## 'chassis' was inherited from group 'global'
+##
+chassis {
+    ##
+    ## 'dump-on-panic' was inherited from group 'global'
+    ##
+    dump-on-panic;
+}
+##
+## 'interfaces' was inherited from group 'global'
+##
+interfaces {
+    ##
+    ## 'lo0' was inherited from group 'global'
+    ##
+    lo0 {
+        ##
+        ## '0' was inherited from group 'global'
+        ##
+        unit 0 {
+            ##
+            ## 'inet' was inherited from group 'global'
+            ##
+            family inet {
+                ##
+                ## '128.102.247.86/32' was inherited from group 'global'
+                ##
+                address 128.102.247.86/32 {
+                    ##
+                    ## 'primary' was inherited from group 'global'
+                    ##
+                    primary;
+                }
+            }
+            ##
+            ## 'iso' was inherited from group 'global'
+            ##
+            family iso {
+                ##
+                ## '47.0005.80ff.f800.0000.0108.0001.1281.0224.7086.00' was inherited from group 'global'
+                ##
+                address 47.0005.80ff.f800.0000.0108.0001.1281.0224.7086.00;
+            }
+            ##
+            ## 'inet6' was inherited from group 'global'
+            ##
+            family inet6 {
+                ##
+                ## 'abcd::128:102:247:86/128' was inherited from group 'global'
+                ##
+                address abcd::128:102:247:86/128 {
+                    ##
+                    ## 'primary' was inherited from group 'global'
+                    ##
+                    primary;
+                }
+            }
+        }
+    }
+    ##
+    ## 'fxp0' was inherited from group 'member0'
+    ##
+    fxp0 {
+        ##
+        ## '0' was inherited from group 'member0'
+        ##
+        unit 0 {
+            ##
+            ## 'inet' was inherited from group 'member0'
+            ##
+            family inet {
+                ##
+                ## '10.102.247.86/20' was inherited from group 'member0'
+                ##
+                address 10.102.247.86/20;
+            }
+        }
+    }
+}
+snmp {
+    ##
+    ## 'Systest lab' was inherited from group 'global'
+    ##
+    location "Systest lab";
+    ##
+    ## 'Jay Lloyd' was inherited from group 'global'
+    ##
+    contact "Jay Lloyd";
+    ##
+    ## 'fxp0.0' was inherited from group 'global'
+    ##
+    interface fxp0.0;
+    ##
+    ## 'public' was inherited from group 'global'
+    ##
+    community public {
+        ##
+        ## 'read-only' was inherited from group 'global'
+        ##
+        authorization read-only;
+    }
+    ##
+    ## 'private' was inherited from group 'global'
+    ##
+    community private {
+        ##
+        ## 'read-write' was inherited from group 'global'
+        ##
+        authorization read-write;
+    }
+    trap-group space {
+        targets {
+            10.102.247.77;
+        }
+    }
+}
+##
+## 'routing-options' was inherited from group 'global'
+##
+routing-options {
+    ##
+    ## 'static' was inherited from group 'global'
+    ##
+    static {
+        /* corperate and alpha net */
+        ##
+        ## '172.16.0.0/12' was inherited from group 'global'
+        ##
+        route 172.16.0.0/12 {
+            ##
+            ## '10.102.255.254' was inherited from group 'global'
+            ##
+            next-hop 10.102.255.254;
+            ##
+            ## 'retain' was inherited from group 'global'
+            ##
+            retain;
+            ##
+            ## 'no-readvertise' was inherited from group 'global'
+            ##
+            no-readvertise;
+        }
+        /* eng lab nets */
+        ##
+        ## '192.168.0.0/16' was inherited from group 'global'
+        ##
+        route 192.168.0.0/16 {
+            ##
+            ## '10.102.255.254' was inherited from group 'global'
+            ##
+            next-hop 10.102.255.254;
+            ##
+            ## 'retain' was inherited from group 'global'
+            ##
+            retain;
+            ##
+            ## 'no-readvertise' was inherited from group 'global'
+            ##
+            no-readvertise;
+        }
+        ##
+        ## '10.0.0.0/8' was inherited from group 'global'
+        ##
+        route 10.0.0.0/8 {
+            ##
+            ## '10.102.255.254' was inherited from group 'global'
+            ##
+            next-hop 10.102.255.254;
+            ##
+            ## 'retain' was inherited from group 'global'
+            ##
+            retain;
+            ##
+            ## 'no-readvertise' was inherited from group 'global'
+            ##
+            no-readvertise;
+        }
+    }
+    ##
+    ## '128.102.247.86' was inherited from group 'global'
+    ##
+    router-id 128.102.247.86;
+}
+
+
+
+root@10.102.247.86> show chassis hardware | display xml
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/14.2R6/junos">
+    <chassis-inventory xmlns="http://xml.juniper.net/junos/14.2R6/junos-chassis">
+        <chassis junos:style="inventory">
+            <name>Chassis</name>
+            <serial-number>VMX4849</serial-number>
+            <description>MX240</description>
+            <chassis-module>
+                <name>Midplane</name>
+            </chassis-module>
+            <chassis-module>
+                <name>Routing Engine 0</name>
+                <description>RE-VMX</description>
+            </chassis-module>
+            <chassis-module>
+                <name>CB 0</name>
+                <description>VMX SCB</description>
+            </chassis-module>
+            <chassis-module>
+                <name>CB 1</name>
+                <description>VMX SCB</description>
+            </chassis-module>
+        </chassis>
+    </chassis-inventory>
+    <cli>
+        <banner></banner>
+    </cli>
+</rpc-reply>
+
+
+
+root@10.102.247.79> show version
+Hostname: r2
+Model: mx240
+Junos: 14.2R6.5
+JUNOS Base OS Software Suite [14.2R6.5]
+JUNOS Base OS boot [14.2R6.5]
+JUNOS Crypto Software Suite [14.2R6.5]
+JUNOS Online Documentation [14.2R6.5]
+JUNOS platform Software Suite [14.2R6.5]
+JUNOS Kernel Software Suite [14.2R6.5]
+JUNOS Routing Software Suite [14.2R6.5]
+JUNOS Runtime Software Suite [14.2R6.5]
+JUNOS Services AACL PIC package [14.2R6.5]
+JUNOS Services AppId PIC package (xlr64) [14.2R6.5]
+JUNOS AppId Services PIC Package [14.2R6.5]
+JUNOS Services Application Level Gateway (xlr64) [14.2R6.5]
+JUNOS Services Application Level Gateway (xlp64) [14.2R6.5]
+JUNOS Services Application Level Gateway [14.2R6.5]
+JUNOS Services HTTP Content Management PIC package (xlr64) [14.2R6.5]
+JUNOS Services HTTP Content Management PIC package [14.2R6.5]
+JUNOS Services Captive Portal and Content Delivery PIC package [14.2R6.5]
+JUNOS Border Gateway Function PIC package [14.2R6.5]
+JUNOS Services LL-PDF PIC package [14.2R6.5]
+JUNOS Services JFLOW PIC package (xlp64) [14.2R6.5]
+JUNOS Services JFLOW PIC package [14.2R6.5]
+JUNOS IDP Services PIC Package [14.2R6.5]
+JUNOS Services Mobile Subscriber Service PIC package (xlr64) [14.2R6.5]
+JUNOS Services Mobile Subscriber Service Container package [14.2R6.5]
+JUNOS MobileNext PIC package (xlr64) [14.2R6.5]
+JUNOS MobileNext PIC package [14.2R6.5]
+JUNOS Services RPM PIC package [14.2R6.5]
+JUNOS Services PTSP PIC package [14.2R6.5]
+JUNOS Services NAT PIC package (xlr64) [14.2R6.5]
+JUNOS Services NAT PIC package (xlp64) [14.2R6.5]
+JUNOS Services NAT PIC package [14.2R6.5]
+JUNOS Services Stateful Firewall PIC package (xlr64) [14.2R6.5]
+JUNOS Services Stateful Firewall PIC package (xlp64) [14.2R6.5]
+JUNOS Services Stateful Firewall PIC package [14.2R6.5]
+JUNOS Services RPM PIC package (xlp64) [14.2R6.5]
+JUNOS BSG PIC package [14.2R6.5]
+JUNOS Services Crypto Base PIC package [14.2R6.5]
+JUNOS Services Crypto Base PIC package [14.2R6.5]
+JUNOS Services SSL PIC package [14.2R6.5]
+JUNOS Services IPSec PIC(xlr64) package [14.2R6.5]
+JUNOS Services IPSec PIC package [14.2R6.5]
+JUNOS Services IPSec PIC package [14.2R6.5]
+JUNOS Services Crypto Base PIC package(xlr64) [14.2R6.5]
+JUNOS Packet Forwarding Engine Trio Simulation Package [14.2R6.5]
+
+
+
+root@10.102.247.79> show configuration | display inheritance
+## Last commit: 2016-11-09 04:28:43 PST by mgospodinov
+version 14.2R6.5;
+system {
+    ##
+    ## 'r2' was inherited from group 'member0'
+    ##
+    host-name r2;
+    ##
+    ## 'englab.juniper.net' was inherited from group 'global'
+    ##
+    domain-name englab.juniper.net;
+    ##
+    ## 'englab.juniper.net' was inherited from group 'global'
+    ## 'juniper.net' was inherited from group 'global'
+    ## 'jnpr.net' was inherited from group 'global'
+    ## 'spglab.juniper.net' was inherited from group 'global'
+    ##
+    domain-search [ englab.juniper.net juniper.net jnpr.net spglab.juniper.net ];
+    ##
+    ## 'backup-router' was inherited from group 'member0'
+    ## '10.102.255.254' was inherited from group 'member0'
+    ##
+    backup-router 10.102.255.254;
+    ##
+    ## 'America/Los_Angeles' was inherited from group 'global'
+    ##
+    time-zone America/Los_Angeles;
+    ##
+    ## 'debugger-on-break' was inherited from group 'global'
+    ##
+    debugger-on-break;
+    ##
+    ## 'dump-on-panic' was inherited from group 'global'
+    ##
+    dump-on-panic;
+    ##
+    ## 'password' was inherited from group 'global'
+    ## 'radius' was inherited from group 'global'
+    ## 'tacplus' was inherited from group 'global'
+    ##
+    authentication-order [ password radius tacplus ];
+    ports {
+        console log-out-on-disconnect;
+    }
+    ##
+    ## 'root-authentication' was inherited from group 'global'
+    ##
+    root-authentication {
+        ##
+        ## '$1$ZUlES4dp$OUwWo1g7cLoV/aMWpHUnC/' was inherited from group 'global'
+        ##
+        encrypted-password "$1$ZUlES4dp$OUwWo1g7cLoV/aMWpHUnC/"; ## SECRET-DATA
+    }
+    name-server {
+        ##
+        ## '10.102.149.51' was inherited from group 'global'
+        ##
+        10.102.149.51;
+        ##
+        ## '10.102.149.52' was inherited from group 'global'
+        ##
+        10.102.149.52;
+    }
+    radius-server {
+        ##
+        ## '192.168.69.162' was inherited from group 'global'
+        ## '$9$iHfz9Cu0BRQznCApIRSreWxNVw2GjkKM4JGimP' was inherited from group 'global'
+        ##
+        192.168.69.162 secret "$9$iHfz9Cu0BRQznCApIRSreWxNVw2GjkKM4JGimP"; ## SECRET-DATA
+        ##
+        ## '192.168.64.10' was inherited from group 'global'
+        ## '$9$TQ/t1IcSrKAt0IRheK8X7VYgaZDm5zNdiqmTn6' was inherited from group 'global'
+        ##
+        192.168.64.10 secret "$9$TQ/t1IcSrKAt0IRheK8X7VYgaZDm5zNdiqmTn6"; ## SECRET-DATA
+        ##
+        ## '192.168.4.240' was inherited from group 'global'
+        ## '$9$GqUqf3nCApOPfQn690ORhSeWL7-boZDylsgoGHk' was inherited from group 'global'
+        ##
+        192.168.4.240 secret "$9$GqUqf3nCApOPfQn690ORhSeWL7-boZDylsgoGHk"; ## SECRET-DATA
+    }
+    tacplus-server {
+        ##
+        ## '192.168.5.73' was inherited from group 'global'
+        ##
+        192.168.5.73 {
+            ##
+            ## '$9$sM4GiQz6uORfTCu1hKvwYgoJD' was inherited from group 'global'
+            ##
+            secret "$9$sM4GiQz6uORfTCu1hKvwYgoJD"; ## SECRET-DATA
+            ##
+            ## '15' was inherited from group 'global'
+            ##
+            timeout 15;
+            ##
+            ## 'single-connection' was inherited from group 'global'
+            ##
+            single-connection;
+        }
+    }
+    ##
+    ## 'login' was inherited from group 'global'
+    ##
+    login {
+        ##
+        ## 'wheel' was inherited from group 'global'
+        ##
+        class wheel {
+            ##
+            ## 'snmp' was inherited from group 'global'
+            ##
+            permissions snmp;
+        }
+        ##
+        ## 'regress' was inherited from group 'global'
+        ##
+        user regress {
+            ##
+            ## '928' was inherited from group 'global'
+            ##
+            uid 928;
+            ##
+            ## 'superuser' was inherited from group 'global'
+            ##
+            class superuser;
+            ##
+            ## 'csh' was inherited from group 'global'
+            ##
+            shell csh;
+            ##
+            ## 'authentication' was inherited from group 'global'
+            ##
+            authentication {
+                ##
+                ## '$1$kPU..$w.4FGRAGanJ8U4Yq6sbj7.' was inherited from group 'global'
+                ##
+                encrypted-password "$1$kPU..$w.4FGRAGanJ8U4Yq6sbj7."; ## SECRET-DATA
+            }
+        }
+        ##
+        ## 'remote' was inherited from group 'global'
+        ##
+        user remote {
+            ##
+            ## '2000' was inherited from group 'global'
+            ##
+            uid 2000;
+            ##
+            ## 'super-user' was inherited from group 'global'
+            ##
+            class super-user;
+        }
+    }
+    services {
+        ##
+        ## 'finger' was inherited from group 'global'
+        ##
+        finger;
+        ##
+        ## 'ftp' was inherited from group 'global'
+        ##
+        ftp;
+        ##
+        ## 'rlogin' was inherited from group 'global'
+        ##
+        rlogin;
+        ##
+        ## 'rsh' was inherited from group 'global'
+        ##
+        rsh;
+        ssh {
+            ##
+            ## 'allow' was inherited from group 'global'
+            ##
+            root-login allow;
+            max-sessions-per-connection 32;
+        }
+        ##
+        ## 'telnet' was inherited from group 'global'
+        ##
+        telnet;
+        ##
+        ## 'xnm-clear-text' was inherited from group 'global'
+        ##
+        xnm-clear-text;
+        netconf {
+            ssh;
+        }
+    }
+    syslog {
+        ##
+        ## 'log' was inherited from group 'global'
+        ##
+        host log {
+            ##
+            ## 'kernel' was inherited from group 'global'
+            ## 'info' was inherited from group 'global'
+            ##
+            kernel info;
+            ##
+            ## 'any' was inherited from group 'global'
+            ## 'notice' was inherited from group 'global'
+            ##
+            any notice;
+            ##
+            ## 'pfe' was inherited from group 'global'
+            ## 'info' was inherited from group 'global'
+            ##
+            pfe info;
+            ##
+            ## 'interactive-commands' was inherited from group 'global'
+            ## 'any' was inherited from group 'global'
+            ##
+            interactive-commands any;
+        }
+        file default-log-messages {
+            any info;
+            match "(requested 'commit' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|CFMD_CCM_DEFECT| LFMD_3AH | RPD_MPLS_PATH_BFD|(Master Unchanged, Members Changed)|(Master Changed, Members Changed)|(Master Detected, Members Changed)|(vc add)|(vc delete)|(Master detected)|(Master changed)|(Backup detected)|(Backup changed)|(interface vcp-)";
+            structured-data;
+        }
+        ##
+        ## 'messages' was inherited from group 'global'
+        ##
+        file messages {
+            ##
+            ## 'kernel' was inherited from group 'global'
+            ## 'info' was inherited from group 'global'
+            ##
+            kernel info;
+            ##
+            ## 'any' was inherited from group 'global'
+            ## 'notice' was inherited from group 'global'
+            ##
+            any notice;
+            ##
+            ## 'authorization' was inherited from group 'global'
+            ## 'info' was inherited from group 'global'
+            ##
+            authorization info;
+            ##
+            ## 'pfe' was inherited from group 'global'
+            ## 'info' was inherited from group 'global'
+            ##
+            pfe info;
+            ##
+            ## 'archive' was inherited from group 'global'
+            ## 'world-readable' was inherited from group 'global'
+            ##
+            archive world-readable;
+        }
+        ##
+        ## 'security' was inherited from group 'global'
+        ##
+        file security {
+            ##
+            ## 'interactive-commands' was inherited from group 'global'
+            ## 'any' was inherited from group 'global'
+            ##
+            interactive-commands any;
+            ##
+            ## 'archive' was inherited from group 'global'
+            ## 'world-readable' was inherited from group 'global'
+            ##
+            archive world-readable;
+        }
+    }
+    ##
+    ## 'processes' was inherited from group 'global'
+    ##
+    processes {
+        ##
+        ## 'routing' was inherited from group 'global'
+        ## 'enable' was inherited from group 'global'
+        ##
+        routing enable;
+        ##
+        ## 'ntp' was inherited from group 'global'
+        ## 'enable' was inherited from group 'global'
+        ##
+        ntp enable;
+        ##
+        ## 'management' was inherited from group 'global'
+        ## 'enable' was inherited from group 'global'
+        ##
+        management enable;
+        ##
+        ## 'watchdog' was inherited from group 'global'
+        ## 'enable' was inherited from group 'global'
+        ##
+        watchdog enable;
+        ##
+        ## 'snmp' was inherited from group 'global'
+        ## 'enable' was inherited from group 'global'
+        ##
+        snmp enable;
+        ##
+        ## 'inet-process' was inherited from group 'global'
+        ## 'enable' was inherited from group 'global'
+        ##
+        inet-process enable;
+        ##
+        ## 'mib-process' was inherited from group 'global'
+        ## 'enable' was inherited from group 'global'
+        ##
+        mib-process enable;
+    }
+    ##
+    ## 'ntp' was inherited from group 'global'
+    ##
+    ntp {
+        ##
+        ## '66.129.255.62' was inherited from group 'global'
+        ##
+        boot-server 66.129.255.62;
+        ##
+        ## '66.129.255.62' was inherited from group 'global'
+        ##
+        server 66.129.255.62;
+    }
+}
+##
+## 'chassis' was inherited from group 'global'
+##
+chassis {
+    ##
+    ## 'dump-on-panic' was inherited from group 'global'
+    ##
+    dump-on-panic;
+}
+##
+## 'interfaces' was inherited from group 'global'
+##
+interfaces {
+    ##
+    ## 'lo0' was inherited from group 'global'
+    ##
+    lo0 {
+        ##
+        ## '0' was inherited from group 'global'
+        ##
+        unit 0 {
+            ##
+            ## 'inet' was inherited from group 'global'
+            ##
+            family inet {
+                ##
+                ## '128.102.247.79/32' was inherited from group 'global'
+                ##
+                address 128.102.247.79/32 {
+                    ##
+                    ## 'primary' was inherited from group 'global'
+                    ##
+                    primary;
+                }
+            }
+            ##
+            ## 'iso' was inherited from group 'global'
+            ##
+            family iso {
+                ##
+                ## '47.0005.80ff.f800.0000.0108.0001.1281.0224.7079.00' was inherited from group 'global'
+                ##
+                address 47.0005.80ff.f800.0000.0108.0001.1281.0224.7079.00;
+            }
+            ##
+            ## 'inet6' was inherited from group 'global'
+            ##
+            family inet6 {
+                ##
+                ## 'abcd::128:102:247:79/128' was inherited from group 'global'
+                ##
+                address abcd::128:102:247:79/128 {
+                    ##
+                    ## 'primary' was inherited from group 'global'
+                    ##
+                    primary;
+                }
+            }
+        }
+    }
+    ##
+    ## 'fxp0' was inherited from group 'member0'
+    ##
+    fxp0 {
+        ##
+        ## '0' was inherited from group 'member0'
+        ##
+        unit 0 {
+            ##
+            ## 'inet' was inherited from group 'member0'
+            ##
+            family inet {
+                ##
+                ## '10.102.247.79/20' was inherited from group 'member0'
+                ##
+                address 10.102.247.79/20;
+            }
+        }
+    }
+}
+snmp {
+    ##
+    ## 'Systest lab' was inherited from group 'global'
+    ##
+    location "Systest lab";
+    ##
+    ## 'Jay Lloyd' was inherited from group 'global'
+    ##
+    contact "Jay Lloyd";
+    ##
+    ## 'fxp0.0' was inherited from group 'global'
+    ##
+    interface fxp0.0;
+    ##
+    ## 'public' was inherited from group 'global'
+    ##
+    community public {
+        ##
+        ## 'read-only' was inherited from group 'global'
+        ##
+        authorization read-only;
+    }
+    ##
+    ## 'private' was inherited from group 'global'
+    ##
+    community private {
+        ##
+        ## 'read-write' was inherited from group 'global'
+        ##
+        authorization read-write;
+    }
+    trap-group space {
+        targets {
+            10.102.247.77;
+        }
+    }
+}
+##
+## 'routing-options' was inherited from group 'global'
+##
+routing-options {
+    ##
+    ## 'static' was inherited from group 'global'
+    ##
+    static {
+        /* corperate and alpha net */
+        ##
+        ## '172.16.0.0/12' was inherited from group 'global'
+        ##
+        route 172.16.0.0/12 {
+            ##
+            ## '10.102.255.254' was inherited from group 'global'
+            ##
+            next-hop 10.102.255.254;
+            ##
+            ## 'retain' was inherited from group 'global'
+            ##
+            retain;
+            ##
+            ## 'no-readvertise' was inherited from group 'global'
+            ##
+            no-readvertise;
+        }
+        /* eng lab nets */
+        ##
+        ## '192.168.0.0/16' was inherited from group 'global'
+        ##
+        route 192.168.0.0/16 {
+            ##
+            ## '10.102.255.254' was inherited from group 'global'
+            ##
+            next-hop 10.102.255.254;
+            ##
+            ## 'retain' was inherited from group 'global'
+            ##
+            retain;
+            ##
+            ## 'no-readvertise' was inherited from group 'global'
+            ##
+            no-readvertise;
+        }
+        ##
+        ## '10.0.0.0/8' was inherited from group 'global'
+        ##
+        route 10.0.0.0/8 {
+            ##
+            ## '10.102.255.254' was inherited from group 'global'
+            ##
+            next-hop 10.102.255.254;
+            ##
+            ## 'retain' was inherited from group 'global'
+            ##
+            retain;
+            ##
+            ## 'no-readvertise' was inherited from group 'global'
+            ##
+            no-readvertise;
+        }
+    }
+    ##
+    ## '128.102.247.79' was inherited from group 'global'
+    ##
+    router-id 128.102.247.79;
+}
+
+
+
+root@10.102.247.79> show chassis hardware | display xml
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/14.2R6/junos">
+    <chassis-inventory xmlns="http://xml.juniper.net/junos/14.2R6/junos-chassis">
+        <chassis junos:style="inventory">
+            <name>Chassis</name>
+            <serial-number>VMX782a</serial-number>
+            <description>MX240</description>
+            <chassis-module>
+                <name>Midplane</name>
+            </chassis-module>
+            <chassis-module>
+                <name>Routing Engine 0</name>
+                <description>RE-VMX</description>
+            </chassis-module>
+            <chassis-module>
+                <name>CB 0</name>
+                <description>VMX SCB</description>
+            </chassis-module>
+            <chassis-module>
+                <name>CB 1</name>
+                <description>VMX SCB</description>
+            </chassis-module>
+        </chassis>
+    </chassis-inventory>
+    <cli>
+        <banner></banner>
+    </cli>
+</rpc-reply>
+
+
+
