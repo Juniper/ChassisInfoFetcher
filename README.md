@@ -68,7 +68,7 @@ Supported scenarios and modes are:
 > sudo pip install ./py-space-platform
 
   To install the aplication
- > git clone https://git.juniper.net/asmeureanu/ChassisInfoFetcher.git 
+ > git clone https://git.juniper.net/mgospodinov/ChassisInfoFetcher2.0.git 
     
 
 ## How to run the tool via GUI?
