@@ -20,7 +20,7 @@ Supported scenarios and modes are:
 ## Installation using Docker
 
 ##### Downloading the Dockerfile build instructions
->wget https://git.juniper.net/asmeureanu/ChassisInfoFetcher/raw/master/docker/Dockerfile
+>wget https://git.juniper.net/mgospodinov/ChassisInfoFetcher2.0/raw/master/docker/Dockerfile
 
 ##### Building the Docker image
 >docker build -t juniper/chassisinfofetcher .
@@ -30,10 +30,29 @@ Supported scenarios and modes are:
 
 ##### Start a container in shell for manual execution
 >docker run -i -t juniper/chassisinfofetcher  /bin/ash 
+
+##Basic Dependencies
+
+####Ubuntu 14.04
+
+>apt-get install python-pip python-dev libffi-dev libssl-dev libxml2-dev libxslt1-dev
+
+####Ubuntu 16.04
  
+>apt-get install python-pip python-dev libffi-dev libssl-dev libxml2-dev libxslt1-dev
 
+####CentOS 7
 
-## Install on your own linux
+>yum install python-devel
+>yum install python-lxml
+>yum install openssl-devel
+
+####MAC OS X El Capitan
+
+>Xcode
+>easy_install pip
+
+## To install the ChassisInfoFetcher tool
  
 #### Dependencies:
   
