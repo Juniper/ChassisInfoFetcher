@@ -1,6 +1,0 @@
-root@172.30.156.206> show configuration | display inheritence | display xml
-
-error: syntax error, expecting <command>: inheritence
-
-
-
