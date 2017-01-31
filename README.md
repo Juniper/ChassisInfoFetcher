@@ -118,6 +118,7 @@ Format for the configuration of conf/assistedFetcher.conf:
 }
 
    > python fullFetcher.py
+
 Format of the configuration of conf/fullFetcher.py:
 {
     "parallelProcesses": "",
