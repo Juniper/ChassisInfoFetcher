@@ -1,6 +1,6 @@
 # Tool description
 
-Tool designed to help in retrival of chassis information from Juniper devices in situation in which Junos Space Service Now is not installed or not permitted to send data.
+The tool is designed to automatically connect to the customer devices, detect the device group type and fetch the necessary information for Advanced Services deliverables. The customer only needs to install the tool and run it in one of the following modes. 
 
 
 Supported scenarios and modes are:
@@ -50,6 +50,7 @@ Supported scenarios and modes are:
 #### MAC OS X El Capitan
 
 >Xcode
+
 >easy_install pip
 
 ## To install the ChassisInfoFetcher tool

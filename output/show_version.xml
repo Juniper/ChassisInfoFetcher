@@ -56,3 +56,28 @@ JUNOS Online Documentation [20161110.040221_builder_junos_161_x60_d40]
 
 
 
+root@172.30.156.114> show version
+fpc0:
+--------------------------------------------------------------------------
+Hostname: aucklet
+Model: ex4200-48t
+Junos: 14.1X53-D40.8
+JUNOS EX  Software Suite [14.1X53-D40.8]
+JUNOS FIPS mode utilities [14.1X53-D40.8]
+JUNOS Online Documentation [14.1X53-D40.8]
+JUNOS EX 4200 Software Suite [14.1X53-D40.8]
+JUNOS Web Management Platform Package [14.1X53-D40.8]
+
+fpc1:
+--------------------------------------------------------------------------
+Hostname: aucklet
+Model: ex4200-48t
+Junos: 14.1X53-D40.8
+JUNOS EX  Software Suite [14.1X53-D40.8]
+JUNOS FIPS mode utilities [14.1X53-D40.8]
+JUNOS Online Documentation [14.1X53-D40.8]
+JUNOS EX 4200 Software Suite [14.1X53-D40.8]
+JUNOS Web Management Platform Package [14.1X53-D40.8]
+
+
+
