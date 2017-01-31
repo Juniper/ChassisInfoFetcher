@@ -1,4 +1,4 @@
-
+# coding: utf-8
 #!/usr/bin/env python
 """
  ******************************************************************************
@@ -64,8 +64,9 @@ class ui_directFetcher(ui_dialog):
       
     # direct mode > general settings window
     def directFetcher_generalSettings_dialog(self,button):
-        caption = urwid.Text(('standoutLabel',u'Direct Mode > General Settings')) 
-        help = urwid.Text([u'Please fill in the default username / password / port for SSH.'])
+        caption = urwid.Text(('standoutLabel',u'Direct Mode > Settings')) 
+        help = urwid.Text([u'Please fill in the default username / password / port for SSH. If the number of specified processes are more than the devices that the tool collects information from, then the tool can create parallel sessions for all devices and complete execution faster (this uses up more resources on the machine running the tool).'])
+
         
         tb_username=urwid.Edit(('textbox', u"Username :\n"))
         tb_password=urwid.Edit(('textbox', u"Password :\n"),mask="*")
@@ -143,17 +144,26 @@ class ui_directFetcher(ui_dialog):
 
     def directFetcher_commandSettings_dialog(self,button):
         caption = urwid.Text(('standoutLabel',u'Direct Mode > Commands')) 
-        help = urwid.Text([u'Please fill in the show commands you would like to execute'])
+        help = urwid.Text([u'In this section you can manually enter the commands you would like to execute on your devices based on their device group. A default set of commands are provided, but they can be edited either in this menu or in the "commands" folder of the tool. Note: The devices are grouped together based on the type of commands that need to be executed on them.'])
         
-        tb_commands=urwid.Edit(('textbox', u"Commands :\n"))
+        MX = self.menu_button(u'MX/vMX/M/T/ACX/PTX device group', self.directFetcher_MX_dialog)
+        SRX = self.menu_button(u'SRX/vSRX device group', self.directFetcher_SRX_dialog)
+        QFX = self.menu_button(u'QFX/EX device group', self.directFetcher_QFX_dialog)
       
         cancelButton = self.menu_button(u'Cancel', self.exit_window)
 
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),MX,SRX,QFX,cancelButton]))
+
+    def directFetcher_MX_dialog(self,button):
+
+        caption = urwid.Text(('standoutLabel',u'Direct Mode > Commands > MX/vMX/M/T/ACX/PTX device group')) 
+        help = urwid.Text([u'In this menu you can edit the commands that are going to be automatically executed on the devices from this device group. Only "show" commands and the "request support information" command are allowed to be entered. The tool will not execute any other type of command.'])
+        tb_commands=urwid.Edit(('textbox', u"Commands :\n"))
         def load_settings():
             try:
                 settings=None
                 string = ""
-                with open('commands.txt') as data_file:    
+                with open('commands/MX_12.txt') as data_file:    
                    settings = json.load(data_file)
                 for i in xrange(len(settings["commandList"])-1):
                     string += settings["commandList"][i] + ","
@@ -187,18 +197,130 @@ class ui_directFetcher(ui_dialog):
                 
                 data["commandList"]=commandLines
 
-                with open("commands.txt", 'w') as f:
+                with open("commands/MX_12.txt", 'w') as f:
                     f.write(json.dumps(data, indent=4, sort_keys=True))
 
-                self.messageBox("Commands", "Commands have been saved succesfull!")
+                self.messageBox("Commands", "Commands have been saved succesfully!")
             except:
-                self.messageBox("Commands > Error", "There were errors while attempting to save the commands to disk.\nPlease check permissions rights and/or locks for file: commands.txt")
+                self.messageBox("Commands > Error", "There were errors while attempting to save the commands to disk.\nPlease check permissions rights and/or locks for file: commands/MX_12.txt")
                     
         saveButton = self.menu_button(u'Save', saveButton_onclick)
+        cancelButton = self.menu_button(u'Cancel', self.exit_window)
 
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),tb_commands, urwid.Divider(),saveButton,cancelButton]))
+        load_settings()  
+
+    def directFetcher_SRX_dialog(self,button):
+
+        caption = urwid.Text(('standoutLabel',u'Direct Mode > Commands > SRX/vSRX device group')) 
+        help = urwid.Text([u'In this menu you can edit the commands that are going to be automatically executed on the devices from this device group. Only "show" commands and the "request support information" command are allowed to be entered. The tool will not execute any other type of command.'])
+        tb_commands=urwid.Edit(('textbox', u"Commands :\n"))
+        def load_settings():
+            try:
+                settings=None
+                string = ""
+                with open('commands/SRX_12.txt') as data_file:    
+                   settings = json.load(data_file)
+                for i in xrange(len(settings["commandList"])-1):
+                    string += settings["commandList"][i] + ","
+                string += settings["commandList"][-1]
+                tb_commands.set_edit_text(string)
+                           
+
+            except:
+                self.messageBox("Error", "An error occured while attempting to load existing commands!")
+
+
+
+        def saveButton_onclick(button):
+            ### validation of the fields        
+            commands=tb_commands.get_edit_text()
+            commandLines = commands.split(",")
+            
+            for i in xrange(len(commandLines)):
+                commandLines[i]=commandLines[i].strip()
+                if len(str(commandLines[i])) < 4:
+                    self.messageBox("Input Error", "Command should have at least 4 charcters!")
+                    return
+                if (commandLines[i].split(" ", 1)[0] == 'request') and (commandLines[i] != 'request support information'):
+                    self.messageBox("Input Error", "The following command is not allowed: %s"%(commandLines[i]))
+                    return
+            
+        
+            #### saving the settings to disk
+            try:
+                data={}
+                
+                data["commandList"]=commandLines
+
+                with open("commands/SRX_12.txt", 'w') as f:
+                    f.write(json.dumps(data, indent=4, sort_keys=True))
+
+                self.messageBox("Commands", "Commands have been saved succesfully!")
+            except:
+                self.messageBox("Commands > Error", "There were errors while attempting to save the commands to disk.\nPlease check permissions rights and/or locks for file: commands/SRX_12.txt")
+                    
+        saveButton = self.menu_button(u'Save', saveButton_onclick)
+        cancelButton = self.menu_button(u'Cancel', self.exit_window)
 
         self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),tb_commands, urwid.Divider(),saveButton,cancelButton]))
         load_settings()    
+
+    def directFetcher_QFX_dialog(self,button):
+
+        caption = urwid.Text(('standoutLabel',u'Direct Mode > Commands > QFX/EX device group')) 
+        help = urwid.Text([u'In this menu you can edit the commands that are going to be automatically executed on the devices from this device group. Only "show" commands and the "request support information" command are allowed to be entered. The tool will not execute any other type of command.'])
+        tb_commands=urwid.Edit(('textbox', u"Commands :\n"))
+        def load_settings():
+            try:
+                settings=None
+                string = ""
+                with open('commands/QFX_12.txt') as data_file:    
+                   settings = json.load(data_file)
+                for i in xrange(len(settings["commandList"])-1):
+                    string += settings["commandList"][i] + ","
+                string += settings["commandList"][-1]
+                tb_commands.set_edit_text(string)
+                           
+
+            except:
+                self.messageBox("Error", "An error occured while attempting to load existing commands!")
+
+
+
+        def saveButton_onclick(button):
+            ### validation of the fields        
+            commands=tb_commands.get_edit_text()
+            commandLines = commands.split(",")
+            
+            for i in xrange(len(commandLines)):
+                commandLines[i]=commandLines[i].strip()
+                if len(str(commandLines[i])) < 4:
+                    self.messageBox("Input Error", "Command should have at least 4 charcters!")
+                    return
+                if (commandLines[i].split(" ", 1)[0] == 'request') and (commandLines[i] != 'request support information'):
+                    self.messageBox("Input Error", "The following command is not allowed: %s"%(commandLines[i]))
+                    return
+            
+        
+            #### saving the settings to disk
+            try:
+                data={}
+                
+                data["commandList"]=commandLines
+
+                with open("commands/QFX_12.txt", 'w') as f:
+                    f.write(json.dumps(data, indent=4, sort_keys=True))
+
+                self.messageBox("Commands", "Commands have been saved succesfully!")
+            except:
+                self.messageBox("Commands > Error", "There were errors while attempting to save the commands to disk.\nPlease check permissions rights and/or locks for file: commands/QFX_12.txt")
+                    
+        saveButton = self.menu_button(u'Save', saveButton_onclick)
+        cancelButton = self.menu_button(u'Cancel', self.exit_window)
+
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),tb_commands, urwid.Divider(),saveButton,cancelButton]))
+        load_settings()   
 
            
 

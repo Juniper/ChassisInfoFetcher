@@ -45,11 +45,12 @@ class ui_about(ui_dialog):
         about = urwid.Text([u"""The application was developed in a joined effort by:
 
             Alexandru Smeureanu 
-            Michael Kim
-            Stephen Steiner
-            Leo Edwards
-            Mohcene Fares
             Hans Rinsema
+            Leo Edwards
+            Michael Kim
+            Mitko Gospodinov
+            Mohcene Fares
+            Stephen Steiner
 
             """])
         

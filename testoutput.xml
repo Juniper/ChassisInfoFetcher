@@ -1,0 +1,84 @@
+version 15.1R1.9
+system host-name r1
+system domain-name englab.juniper.net
+system domain-search englab.juniper.net
+system domain-search juniper.net
+system domain-search jnpr.net
+system domain-search spglab.juniper.net
+system backup-router address 10.102.191.254
+system time-zone America/Los_Angeles
+system debugger-on-break
+system dump-on-panic
+system authentication-order password
+system authentication-order radius
+system authentication-order tacplus
+system ports console log-out-on-disconnect
+system root-authentication encrypted-password $1$ZUlES4dp$OUwWo1g7cLoV/aMWpHUnC/
+system name-server 10.102.149.51
+system name-server 10.102.149.52
+system radius-server 192.168.69.162 secret $9$iHfz9Cu0BRQznCApIRSreWxNVw2GjkKM4JGimP
+system radius-server 192.168.64.10 secret $9$TQ/t1IcSrKAt0IRheK8X7VYgaZDm5zNdiqmTn6
+system radius-server 192.168.4.240 secret $9$GqUqf3nCApOPfQn690ORhSeWL7-boZDylsgoGHk
+system tacplus-server 192.168.5.73 secret $9$sM4GiQz6uORfTCu1hKvwYgoJD
+system tacplus-server 192.168.5.73 timeout 15
+system tacplus-server 192.168.5.73 single-connection
+system login class wheel permissions snmp
+system login user regress uid 928
+system login user regress class superuser
+system login user regress shell csh
+system login user regress authentication encrypted-password $1$kPU..$w.4FGRAGanJ8U4Yq6sbj7.
+system login user remote uid 2000
+system login user remote class super-user
+system services finger
+system services ftp
+system services rlogin
+system services rsh
+system services ssh root-login allow
+system services ssh max-sessions-per-connection 32
+system services telnet
+system services xnm-clear-text
+system services netconf ssh
+system syslog host log kernel info
+system syslog host log any notice
+system syslog host log pfe info
+system syslog host log interactive-commands any
+system syslog file default-log-messages any info
+system syslog file default-log-messages match "(requested 'commit' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|CFMD_CCM_DEFECT| LFMD_3AH | RPD_MPLS_PATH_BFD|(Master Unchanged, Members Changed)|(Master Changed, Members Changed)|(Master Detected, Members Changed)|(vc add)|(vc delete)|(Master detected)|(Master changed)|(Backup detected)|(Backup changed)|(interface vcp-)"
+system syslog file default-log-messages structured-data
+system syslog file messages kernel info
+system syslog file messages any notice
+system syslog file messages authorization info
+system syslog file messages pfe info
+system syslog file messages archive world-readable
+system syslog file security interactive-commands any
+system syslog file security archive world-readable
+system processes routing enable
+system processes ntp enable
+system processes management enable
+system processes watchdog enable
+system processes snmp enable
+system processes inet-process enable
+system processes mib-process enable
+system ntp boot-server 66.129.255.62
+system ntp server 66.129.255.62
+chassis dump-on-panic
+interfaces interface lo0 unit 0 family inet address 128.102.186.219/32 primary
+interfaces interface lo0 unit 0 family iso address 47.0005.80ff.f800.0000.0108.0001.1281.0218.6219.00
+interfaces interface lo0 unit 0 family inet6 address abcd::128:102:186:219/128 primary
+interfaces interface fxp0 unit 0 family inet address 10.102.186.219/20
+snmp location "Systest lab"
+snmp contact "Jay Lloyd"
+snmp interface fxp0.0
+snmp community public authorization read-only
+snmp community private authorization read-write
+snmp trap-group space targets 10.102.185.182
+routing-options static route 172.16.0.0/12 next-hop 10.102.191.254
+routing-options static route 172.16.0.0/12 retain
+routing-options static route 172.16.0.0/12 no-readvertise
+routing-options static route 192.168.0.0/16 next-hop 10.102.191.254
+routing-options static route 192.168.0.0/16 retain
+routing-options static route 192.168.0.0/16 no-readvertise
+routing-options static route 10.0.0.0/8 next-hop 10.102.191.254
+routing-options static route 10.0.0.0/8 retain
+routing-options static route 10.0.0.0/8 no-readvertise
+routing-options router-id 128.102.186.219

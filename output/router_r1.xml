@@ -1,0 +1,318 @@
+root@r1>
+set version 15.1R1.9
+set system host-name r1
+set system domain-name englab.juniper.net
+set system domain-search englab.juniper.net
+set system domain-search juniper.net
+set system domain-search jnpr.net
+set system domain-search spglab.juniper.net
+set system backup-router address 10.102.191.254
+set system time-zone America/Los_Angeles
+set system debugger-on-break
+set system dump-on-panic
+set system authentication-order password
+set system authentication-order radius
+set system authentication-order tacplus
+set system ports console log-out-on-disconnect
+set system root-authentication encrypted-password $1$ZUlES4dp$OUwWo1g7cLoV/aMWpHUnC/
+set system name-server 10.102.149.51
+set system name-server 10.102.149.52
+set system radius-server 192.168.69.162 secret $9$iHfz9Cu0BRQznCApIRSreWxNVw2GjkKM4JGimP
+set system radius-server 192.168.64.10 secret $9$TQ/t1IcSrKAt0IRheK8X7VYgaZDm5zNdiqmTn6
+set system radius-server 192.168.4.240 secret $9$GqUqf3nCApOPfQn690ORhSeWL7-boZDylsgoGHk
+set system tacplus-server 192.168.5.73 secret $9$sM4GiQz6uORfTCu1hKvwYgoJD
+set system tacplus-server 192.168.5.73 timeout 15
+set system tacplus-server 192.168.5.73 single-connection
+set system login class wheel permissions snmp
+set system login user regress uid 928
+set system login user regress class superuser
+set system login user regress shell csh
+set system login user regress authentication encrypted-password $1$kPU..$w.4FGRAGanJ8U4Yq6sbj7.
+set system login user remote uid 2000
+set system login user remote class super-user
+set system services finger
+set system services ftp
+set system services rlogin
+set system services rsh
+set system services ssh root-login allow
+set system services ssh max-sessions-per-connection 32
+set system services telnet
+set system services xnm-clear-text
+set system services netconf ssh
+set system syslog host log kernel info
+set system syslog host log any notice
+set system syslog host log pfe info
+set system syslog host log interactive-commands any
+set system syslog file default-log-messages any info
+set system syslog file default-log-messages match "(requested 'commit' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|CFMD_CCM_DEFECT| LFMD_3AH | RPD_MPLS_PATH_BFD|(Master Unchanged, Members Changed)|(Master Changed, Members Changed)|(Master Detected, Members Changed)|(vc add)|(vc delete)|(Master detected)|(Master changed)|(Backup detected)|(Backup changed)|(interface vcp-)|(AIS_DATA_AVAILABLE)"
+set system syslog file default-log-messages structured-data
+set system syslog file messages kernel info
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file messages pfe info
+set system syslog file messages archive world-readable
+set system syslog file security interactive-commands any
+set system syslog file security archive world-readable
+set system processes routing enable
+set system processes ntp enable
+set system processes management enable
+set system processes watchdog enable
+set system processes snmp enable
+set system processes inet-process enable
+set system processes mib-process enable
+set system ntp boot-server 66.129.255.62
+set system ntp server 66.129.255.62
+set chassis dump-on-panic
+set interfaces interface lo0 unit 0 family inet address 128.102.185.183/32 primary
+set interfaces interface lo0 unit 0 family iso address 47.0005.80ff.f800.0000.0108.0001.1281.0218.5183.00
+set interfaces interface lo0 unit 0 family inet6 address abcd::128:102:185:183/128 primary
+set interfaces interface fxp0 unit 0 family inet address 10.102.185.183/20
+set snmp location "Systest lab"
+set snmp contact "Jay Lloyd"
+set snmp interface fxp0.0
+set snmp community public authorization read-only
+set snmp community private authorization read-write
+set snmp trap-group space targets 10.102.177.58
+set routing-options static route 172.16.0.0/12 next-hop 10.102.191.254
+set routing-options static route 172.16.0.0/12 retain
+set routing-options static route 172.16.0.0/12 no-readvertise
+set routing-options static route 192.168.0.0/16 next-hop 10.102.191.254
+set routing-options static route 192.168.0.0/16 retain
+set routing-options static route 192.168.0.0/16 no-readvertise
+set routing-options static route 10.0.0.0/8 next-hop 10.102.191.254
+set routing-options static route 10.0.0.0/8 retain
+set routing-options static route 10.0.0.0/8 no-readvertise
+set routing-options router-id 128.102.185.183
+
+root@r1>
+<chassis-inventory>
+<chassis>
+<name>Chassis</name>
+<serial-number>VMX4849</serial-number>
+<description>MX240</description>
+<chassis-module>
+<name>Midplane</name>
+</chassis-module>
+<chassis-module>
+<name>Routing Engine 0</name>
+<serial-number>38fb291a-db</serial-number>
+<description>RE-VMX</description>
+<chassis-re-disk-module>
+<name>ada0</name>
+<disk-size>23553</disk-size>
+<model>QEMU HARDDISK
+</model>
+<serial-number>QM00001
+</serial-number>
+<description>Hard Disk</description>
+</chassis-re-disk-module>
+</chassis-module>
+<chassis-module>
+<name>CB 0</name>
+<description>VMX SCB</description>
+</chassis-module>
+<chassis-module>
+<name>CB 1</name>
+<description>VMX SCB</description>
+</chassis-module>
+<chassis-module>
+<name>FPC 0</name>
+<description>Virtual 20x1G + 4x10G FPC</description>
+<chassis-sub-module>
+<name>CPU</name>
+<version>Rev. 1.0</version>
+<part-number>RIOT</part-number>
+<serial-number>123XYZ987</serial-number>
+</chassis-sub-module>
+<chassis-sub-module>
+<name>MIC 0</name>
+<description>Virtual 20x 1GE(LAN) SFP</description>
+<chassis-sub-sub-module>
+<name>PIC 0</name>
+<part-number>BUILTIN</part-number>
+<serial-number>BUILTIN</serial-number>
+<description>Virtual 10x 1GE(LAN) SFP</description>
+</chassis-sub-sub-module>
+<chassis-sub-sub-module>
+<name>PIC 1</name>
+<part-number>BUILTIN</part-number>
+<serial-number>BUILTIN</serial-number>
+<description>Virtual 10x 1GE(LAN) SFP</description>
+</chassis-sub-sub-module>
+</chassis-sub-module>
+<chassis-sub-module>
+<name>MIC 1</name>
+<description>Virtual 4x 10GE(LAN) XFP</description>
+<chassis-sub-sub-module>
+<name>PIC 2</name>
+<part-number>BUILTIN</part-number>
+<serial-number>BUILTIN</serial-number>
+<description>Virtual 2x 10GE(LAN) XFP</description>
+</chassis-sub-sub-module>
+<chassis-sub-sub-module>
+<name>PIC 3</name>
+<part-number>BUILTIN</part-number>
+<serial-number>BUILTIN</serial-number>
+<description>Virtual 2x 10GE(LAN) XFP</description>
+</chassis-sub-sub-module>
+</chassis-sub-module>
+</chassis-module>
+</chassis>
+</chassis-inventory>
+
+
+
+root@r1>
+<software-information  xmlns:junos="http://xml.juniper.net/junos/15.1R1/junos">
+<host-name>r1</host-name>
+<product-model>mx240</product-model>
+<product-name>mx240</product-name>
+<junos-version>15.1R1.9</junos-version>
+<package-information>
+<name>os-kernel</name>
+<comment>JUNOS OS Kernel 32-bit  [20150617.306001_builder_stable_10]</comment>
+</package-information>
+<package-information>
+<name>os-runtime</name>
+<comment>JUNOS OS runtime [20150617.306001_builder_stable_10]</comment>
+</package-information>
+<package-information>
+<name>zoneinfo</name>
+<comment>JUNOS OS time zone information [20150617.306001_builder_stable_10]</comment>
+</package-information>
+<package-information>
+<name>junos-libs</name>
+<comment>JUNOS libs [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>junos-runtime</name>
+<comment>JUNOS runtime [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>vmguest</name>
+<comment>JUNOS Packet Forwarding Engine Trio Simulation Package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>py-base</name>
+<comment>JUNOS py base [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>os-vmguest</name>
+<comment>JUNOS OS vmguest [20150617.306001_builder_stable_10]</comment>
+</package-information>
+<package-information>
+<name>os-crypto</name>
+<comment>JUNOS OS crypto [20150617.306001_builder_stable_10]</comment>
+</package-information>
+<package-information>
+<name>netstack</name>
+<comment>JUNOS network stack and utilities [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>junos-platform</name>
+<comment>JUNOS platform support [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>junos-modules</name>
+<comment>JUNOS modules [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>junos-daemons</name>
+<comment>JUNOS daemons [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-voice</name>
+<comment>JUNOS Voice Services Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-ssl</name>
+<comment>JUNOS Services SSL [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-sfw</name>
+<comment>JUNOS Services Stateful Firewall [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-rpm</name>
+<comment>JUNOS Services RPM [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-ptsp</name>
+<comment>JUNOS Services PTSP Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-nat</name>
+<comment>JUNOS Services NAT [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-mss</name>
+<comment>JUNOS Services Mobile Subscriber Service Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-mobile</name>
+<comment>JUNOS Services MobileNext Software package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-llpdf</name>
+<comment>JUNOS Services LL-PDF Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-jflow</name>
+<comment>JUNOS Services Jflow Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-ipsec</name>
+<comment>JUNOS Services IPSec [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-idp</name>
+<comment>JUNOS IDP Services [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-hcm</name>
+<comment>JUNOS Services HTTP Content Management package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-crypto-base</name>
+<comment>JUNOS Services Crypto [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-cpcd</name>
+<comment>JUNOS Services Captive Portal and Content Delivery Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-bgf</name>
+<comment>JUNOS Border Gateway Function package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-appid</name>
+<comment>JUNOS AppId Services [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-alg</name>
+<comment>JUNOS Services Application Level Gateways [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-aacl</name>
+<comment>JUNOS Services AACL Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jpfe-platform</name>
+<comment>JUNOS Packet Forwarding Engine Support (MX/EX92XX Common) [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jpfe-common</name>
+<comment>JUNOS Packet Forwarding Engine Support (M/T Common) [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jdocs</name>
+<comment>JUNOS Online Documentation [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>fips-mode</name>
+<comment>JUNOS FIPS mode utilities [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+</software-information>
+
+
+

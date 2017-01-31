@@ -1,562 +1,172 @@
-root@r1><rpc-reply><configuration xmlns="http://xml.juniper.net/xnm/1.1/xnm" junos:commit-seconds="1478694536" junos:commit-localtime="2016-11-09 04:28:56 PST" junos:commit-user="mgospodinov">
-    <version>14.2R6.5</version>
-    <system>
-        <host-name>r1</host-name>
-        <domain-name>englab.juniper.net</domain-name>
-        <domain-search>englab.juniper.net</domain-search>
-        <domain-search>juniper.net</domain-search>
-        <domain-search>jnpr.net</domain-search>
-        <domain-search>spglab.juniper.net</domain-search>
-        <backup-router>
-            <address>10.102.255.254</address>
-        </backup-router>
-        <time-zone>America/Los_Angeles</time-zone>
-        <undocumented><debugger-on-break/></undocumented>
-        <undocumented><dump-on-panic>
-        </dump-on-panic></undocumented>
-        <authentication-order>password</authentication-order>
-        <authentication-order>radius</authentication-order>
-        <authentication-order>tacplus</authentication-order>
-        <ports>
-            <console>
-                <log-out-on-disconnect/>
-            </console>
-        </ports>
-        <root-authentication>
-            <encrypted-password>$1$ZUlES4dp$OUwWo1g7cLoV/aMWpHUnC/</encrypted-password>
-        </root-authentication>
-        <name-server>
-            <name>10.102.149.51</name>
-        </name-server>
-        <name-server>
-            <name>10.102.149.52</name>
-        </name-server>
-        <radius-server>
-            <name>192.168.69.162</name>
-            <secret>$9$iHfz9Cu0BRQznCApIRSreWxNVw2GjkKM4JGimP</secret>
-        </radius-server>
-        <radius-server>
-            <name>192.168.64.10</name>
-            <secret>$9$TQ/t1IcSrKAt0IRheK8X7VYgaZDm5zNdiqmTn6</secret>
-        </radius-server>
-        <radius-server>
-            <name>192.168.4.240</name>
-            <secret>$9$GqUqf3nCApOPfQn690ORhSeWL7-boZDylsgoGHk</secret>
-        </radius-server>
-        <tacplus-server>
-            <name>192.168.5.73</name>
-            <secret>$9$sM4GiQz6uORfTCu1hKvwYgoJD</secret>
-            <timeout>15</timeout>
-            <single-connection/>
-        </tacplus-server>
-        <login>
-            <class>
-                <name>wheel</name>
-                <permissions>snmp</permissions>
-            </class>
-            <user>
-                <name>regress</name>
-                <uid>928</uid>
-                <class>superuser</class>
-                <undocumented><shell>csh</shell></undocumented>
-                <authentication>
-                    <encrypted-password>$1$kPU..$w.4FGRAGanJ8U4Yq6sbj7.</encrypted-password>
-                </authentication>
-            </user>
-            <user>
-                <name>remote</name>
-                <uid>2000</uid>
-                <class>super-user</class>
-            </user>
-        </login>
-        <services>
-            <finger>
-            </finger>
-            <ftp>
-            </ftp>
-            <undocumented><rlogin>
-            </rlogin></undocumented>
-            <undocumented><rsh>
-            </rsh></undocumented>
-            <ssh>
-                <root-login>allow</root-login>
-                <max-sessions-per-connection>32</max-sessions-per-connection>
-            </ssh>
-            <telnet>
-            </telnet>
-            <xnm-clear-text>
-            </xnm-clear-text>
-            <netconf>
-                <ssh>
-                </ssh>
-            </netconf>
-        </services>
-        <syslog>
-            <host>
-                <name>log</name>
-                <contents>
-                    <name>kernel</name>
-                    <info/>
-                </contents>
-                <contents>
-                    <name>any</name>
-                    <notice/>
-                </contents>
-                <contents>
-                    <name>pfe</name>
-                    <info/>
-                </contents>
-                <contents>
-                    <name>interactive-commands</name>
-                    <any/>
-                </contents>
-            </host>
-            <file>
-                <name>default-log-messages</name>
-                <contents>
-                    <name>any</name>
-                    <info/>
-                </contents>
-<match>(requested 'commit' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|CFMD_CCM_DEFECT| LFMD_3AH | RPD_MPLS_PATH_BFD|(Master Unchanged, Members Changed)|(Master Changed, Members Changed)|(Master Detected, Members Changed)|(vc add)|(vc delete)|(Master detected)|(Master changed)|(Backup detected)|(Backup changed)|(interface vcp-)
-                </match>
-                <structured-data>
-                </structured-data>
-            </file>
-            <file>
-                <name>messages</name>
-                <contents>
-                    <name>kernel</name>
-                    <info/>
-                </contents>
-                <contents>
-                    <name>any</name>
-                    <notice/>
-                </contents>
-                <contents>
-                    <name>authorization</name>
-                    <info/>
-                </contents>
-                <contents>
-                    <name>pfe</name>
-                    <info/>
-                </contents>
-                <archive>
-                    <world-readable/>
-                </archive>
-            </file>
-            <file>
-                <name>security</name>
-                <contents>
-                    <name>interactive-commands</name>
-                    <any/>
-                </contents>
-                <archive>
-                    <world-readable/>
-                </archive>
-            </file>
-        </syslog>
-        <processes>
-            <routing>
-                <undocumented><enable/></undocumented>
-            </routing>
-            <ntp>
-                <undocumented><enable/></undocumented>
-            </ntp>
-            <undocumented><management>
-                <enable/>
-            </management></undocumented>
-            <watchdog>
-                <enable/>
-            </watchdog>
-            <daemon-process>
-                <name>snmp</name>
-                <undocumented><enable/></undocumented>
-            </daemon-process>
-            <daemon-process>
-                <name>inet-process</name>
-                <undocumented><enable/></undocumented>
-            </daemon-process>
-            <daemon-process>
-                <name>mib-process</name>
-                <undocumented><enable/></undocumented>
-            </daemon-process>
-        </processes>
-        <ntp>
-            <boot-server>66.129.255.62</boot-server>
-            <server>
-                <name>66.129.255.62</name>
-            </server>
-        </ntp>
-    </system>
-    <chassis>
-        <undocumented><dump-on-panic/></undocumented>
-    </chassis>
-    <interfaces>
-        <interface>
-            <name>lo0</name>
-            <unit>
-                <name>0</name>
-                <family>
-                    <inet>
-                        <address>
-                            <name>128.102.247.86/32</name>
-                            <primary/>
-                        </address>
-                    </inet>
-                    <iso>
-                        <address>
-                            <name>47.0005.80ff.f800.0000.0108.0001.1281.0224.7086.00</name>
-                        </address>
-                    </iso>
-                    <inet6>
-                        <address>
-                            <name>abcd::128:102:247:86/128</name>
-                            <primary/>
-                        </address>
-                    </inet6>
-                </family>
-            </unit>
-        </interface>
-        <interface>
-            <name>fxp0</name>
-            <unit>
-                <name>0</name>
-                <family>
-                    <inet>
-                        <address>
-                            <name>10.102.247.86/20</name>
-                        </address>
-                    </inet>
-                </family>
-            </unit>
-        </interface>
-    </interfaces>
-    <snmp>
-        <location>Systest lab</location>
-        <contact>Jay Lloyd</contact>
-        <interface>fxp0.0</interface>
-        <community>
-            <name>public</name>
-            <authorization>read-only</authorization>
-        </community>
-        <community>
-            <name>private</name>
-            <authorization>read-write</authorization>
-        </community>
-        <trap-group>
-            <name>space</name>
-            <targets>
-                <name>10.102.247.77</name>
-            </targets>
-        </trap-group>
-    </snmp>
-    <routing-options>
-        <static>
-            <route comment="/* corperate and alpha net */" >
-                <name>172.16.0.0/12</name>
-                <next-hop>10.102.255.254</next-hop>
-                <retain/>
-                <no-readvertise/>
-            </route>
-            <route comment="/* eng lab nets */" >
-                <name>192.168.0.0/16</name>
-                <next-hop>10.102.255.254</next-hop>
-                <retain/>
-                <no-readvertise/>
-            </route>
-            <route>
-                <name>10.0.0.0/8</name>
-                <next-hop>10.102.255.254</next-hop>
-                <retain/>
-                <no-readvertise/>
-            </route>
-        </static>
-        <router-id>128.102.247.86</router-id>
-    </routing-options>
-</configuration>
-<cli>
-<banner></banner>
-</cli>
-</rpc-reply>
+root@r1>
+set version 15.1R1.9
+set system host-name r1
+set system domain-name englab.juniper.net
+set system domain-search englab.juniper.net
+set system domain-search juniper.net
+set system domain-search jnpr.net
+set system domain-search spglab.juniper.net
+set system backup-router address 10.102.191.254
+set system time-zone America/Los_Angeles
+set system debugger-on-break
+set system dump-on-panic
+set system authentication-order password
+set system authentication-order radius
+set system authentication-order tacplus
+set system ports console log-out-on-disconnect
+set system root-authentication encrypted-password $1$ZUlES4dp$OUwWo1g7cLoV/aMWpHUnC/
+set system name-server 10.102.149.51
+set system name-server 10.102.149.52
+set system radius-server 192.168.69.162 secret $9$iHfz9Cu0BRQznCApIRSreWxNVw2GjkKM4JGimP
+set system radius-server 192.168.64.10 secret $9$TQ/t1IcSrKAt0IRheK8X7VYgaZDm5zNdiqmTn6
+set system radius-server 192.168.4.240 secret $9$GqUqf3nCApOPfQn690ORhSeWL7-boZDylsgoGHk
+set system tacplus-server 192.168.5.73 secret $9$sM4GiQz6uORfTCu1hKvwYgoJD
+set system tacplus-server 192.168.5.73 timeout 15
+set system tacplus-server 192.168.5.73 single-connection
+set system login class wheel permissions snmp
+set system login user regress uid 928
+set system login user regress class superuser
+set system login user regress shell csh
+set system login user regress authentication encrypted-password $1$kPU..$w.4FGRAGanJ8U4Yq6sbj7.
+set system login user remote uid 2000
+set system login user remote class super-user
+set system services finger
+set system services ftp
+set system services rlogin
+set system services rsh
+set system services ssh root-login allow
+set system services ssh max-sessions-per-connection 32
+set system services telnet
+set system services xnm-clear-text
+set system services netconf ssh
+set system syslog host log kernel info
+set system syslog host log any notice
+set system syslog host log pfe info
+set system syslog host log interactive-commands any
+set system syslog file default-log-messages any info
+set system syslog file default-log-messages match "(requested 'commit' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|CFMD_CCM_DEFECT| LFMD_3AH | RPD_MPLS_PATH_BFD|(Master Unchanged, Members Changed)|(Master Changed, Members Changed)|(Master Detected, Members Changed)|(vc add)|(vc delete)|(Master detected)|(Master changed)|(Backup detected)|(Backup changed)|(interface vcp-)|(AIS_DATA_AVAILABLE)"
+set system syslog file default-log-messages structured-data
+set system syslog file messages kernel info
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file messages pfe info
+set system syslog file messages archive world-readable
+set system syslog file security interactive-commands any
+set system syslog file security archive world-readable
+set system processes routing enable
+set system processes ntp enable
+set system processes management enable
+set system processes watchdog enable
+set system processes snmp enable
+set system processes inet-process enable
+set system processes mib-process enable
+set system ntp boot-server 66.129.255.62
+set system ntp server 66.129.255.62
+set chassis dump-on-panic
+set interfaces interface lo0 unit 0 family inet address 128.102.185.183/32 primary
+set interfaces interface lo0 unit 0 family iso address 47.0005.80ff.f800.0000.0108.0001.1281.0218.5183.00
+set interfaces interface lo0 unit 0 family inet6 address abcd::128:102:185:183/128 primary
+set interfaces interface fxp0 unit 0 family inet address 10.102.185.183/20
+set snmp location "Systest lab"
+set snmp contact "Jay Lloyd"
+set snmp interface fxp0.0
+set snmp community public authorization read-only
+set snmp community private authorization read-write
+set snmp trap-group space targets 10.102.177.58
+set routing-options static route 172.16.0.0/12 next-hop 10.102.191.254
+set routing-options static route 172.16.0.0/12 retain
+set routing-options static route 172.16.0.0/12 no-readvertise
+set routing-options static route 192.168.0.0/16 next-hop 10.102.191.254
+set routing-options static route 192.168.0.0/16 retain
+set routing-options static route 192.168.0.0/16 no-readvertise
+set routing-options static route 10.0.0.0/8 next-hop 10.102.191.254
+set routing-options static route 10.0.0.0/8 retain
+set routing-options static route 10.0.0.0/8 no-readvertise
+set routing-options router-id 128.102.185.183
 
-root@r2><rpc-reply><configuration xmlns="http://xml.juniper.net/xnm/1.1/xnm" junos:commit-seconds="1478694523" junos:commit-localtime="2016-11-09 04:28:43 PST" junos:commit-user="mgospodinov">
-    <version>14.2R6.5</version>
-    <system>
-        <host-name>r2</host-name>
-        <domain-name>englab.juniper.net</domain-name>
-        <domain-search>englab.juniper.net</domain-search>
-        <domain-search>juniper.net</domain-search>
-        <domain-search>jnpr.net</domain-search>
-        <domain-search>spglab.juniper.net</domain-search>
-        <backup-router>
-            <address>10.102.255.254</address>
-        </backup-router>
-        <time-zone>America/Los_Angeles</time-zone>
-        <undocumented><debugger-on-break/></undocumented>
-        <undocumented><dump-on-panic>
-        </dump-on-panic></undocumented>
-        <authentication-order>password</authentication-order>
-        <authentication-order>radius</authentication-order>
-        <authentication-order>tacplus</authentication-order>
-        <ports>
-            <console>
-                <log-out-on-disconnect/>
-            </console>
-        </ports>
-        <root-authentication>
-            <encrypted-password>$1$ZUlES4dp$OUwWo1g7cLoV/aMWpHUnC/</encrypted-password>
-        </root-authentication>
-        <name-server>
-            <name>10.102.149.51</name>
-        </name-server>
-        <name-server>
-            <name>10.102.149.52</name>
-        </name-server>
-        <radius-server>
-            <name>192.168.69.162</name>
-            <secret>$9$iHfz9Cu0BRQznCApIRSreWxNVw2GjkKM4JGimP</secret>
-        </radius-server>
-        <radius-server>
-            <name>192.168.64.10</name>
-            <secret>$9$TQ/t1IcSrKAt0IRheK8X7VYgaZDm5zNdiqmTn6</secret>
-        </radius-server>
-        <radius-server>
-            <name>192.168.4.240</name>
-            <secret>$9$GqUqf3nCApOPfQn690ORhSeWL7-boZDylsgoGHk</secret>
-        </radius-server>
-        <tacplus-server>
-            <name>192.168.5.73</name>
-            <secret>$9$sM4GiQz6uORfTCu1hKvwYgoJD</secret>
-            <timeout>15</timeout>
-            <single-connection/>
-        </tacplus-server>
-        <login>
-            <class>
-                <name>wheel</name>
-                <permissions>snmp</permissions>
-            </class>
-            <user>
-                <name>regress</name>
-                <uid>928</uid>
-                <class>superuser</class>
-                <undocumented><shell>csh</shell></undocumented>
-                <authentication>
-                    <encrypted-password>$1$kPU..$w.4FGRAGanJ8U4Yq6sbj7.</encrypted-password>
-                </authentication>
-            </user>
-            <user>
-                <name>remote</name>
-                <uid>2000</uid>
-                <class>super-user</class>
-            </user>
-        </login>
-        <services>
-            <finger>
-            </finger>
-            <ftp>
-            </ftp>
-            <undocumented><rlogin>
-            </rlogin></undocumented>
-            <undocumented><rsh>
-            </rsh></undocumented>
-            <ssh>
-                <root-login>allow</root-login>
-                <max-sessions-per-connection>32</max-sessions-per-connection>
-            </ssh>
-            <telnet>
-            </telnet>
-            <xnm-clear-text>
-            </xnm-clear-text>
-            <netconf>
-                <ssh>
-                </ssh>
-            </netconf>
-        </services>
-        <syslog>
-            <host>
-                <name>log</name>
-                <contents>
-                    <name>kernel</name>
-                    <info/>
-                </contents>
-                <contents>
-                    <name>any</name>
-                    <notice/>
-                </contents>
-                <contents>
-                    <name>pfe</name>
-                    <info/>
-                </contents>
-                <contents>
-                    <name>interactive-commands</name>
-                    <any/>
-                </contents>
-            </host>
-            <file>
-                <name>default-log-messages</name>
-                <contents>
-                    <name>any</name>
-                    <info/>
-                </contents>
-<match>(requested 'commit' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|CFMD_CCM_DEFECT| LFMD_3AH | RPD_MPLS_PATH_BFD|(Master Unchanged, Members Changed)|(Master Changed, Members Changed)|(Master Detected, Members Changed)|(vc add)|(vc delete)|(Master detected)|(Master changed)|(Backup detected)|(Backup changed)|(interface vcp-)
-                </match>
-                <structured-data>
-                </structured-data>
-            </file>
-            <file>
-                <name>messages</name>
-                <contents>
-                    <name>kernel</name>
-                    <info/>
-                </contents>
-                <contents>
-                    <name>any</name>
-                    <notice/>
-                </contents>
-                <contents>
-                    <name>authorization</name>
-                    <info/>
-                </contents>
-                <contents>
-                    <name>pfe</name>
-                    <info/>
-                </contents>
-                <archive>
-                    <world-readable/>
-                </archive>
-            </file>
-            <file>
-                <name>security</name>
-                <contents>
-                    <name>interactive-commands</name>
-                    <any/>
-                </contents>
-                <archive>
-                    <world-readable/>
-                </archive>
-            </file>
-        </syslog>
-        <processes>
-            <routing>
-                <undocumented><enable/></undocumented>
-            </routing>
-            <ntp>
-                <undocumented><enable/></undocumented>
-            </ntp>
-            <undocumented><management>
-                <enable/>
-            </management></undocumented>
-            <watchdog>
-                <enable/>
-            </watchdog>
-            <daemon-process>
-                <name>snmp</name>
-                <undocumented><enable/></undocumented>
-            </daemon-process>
-            <daemon-process>
-                <name>inet-process</name>
-                <undocumented><enable/></undocumented>
-            </daemon-process>
-            <daemon-process>
-                <name>mib-process</name>
-                <undocumented><enable/></undocumented>
-            </daemon-process>
-        </processes>
-        <ntp>
-            <boot-server>66.129.255.62</boot-server>
-            <server>
-                <name>66.129.255.62</name>
-            </server>
-        </ntp>
-    </system>
-    <chassis>
-        <undocumented><dump-on-panic/></undocumented>
-    </chassis>
-    <interfaces>
-        <interface>
-            <name>lo0</name>
-            <unit>
-                <name>0</name>
-                <family>
-                    <inet>
-                        <address>
-                            <name>128.102.247.79/32</name>
-                            <primary/>
-                        </address>
-                    </inet>
-                    <iso>
-                        <address>
-                            <name>47.0005.80ff.f800.0000.0108.0001.1281.0224.7079.00</name>
-                        </address>
-                    </iso>
-                    <inet6>
-                        <address>
-                            <name>abcd::128:102:247:79/128</name>
-                            <primary/>
-                        </address>
-                    </inet6>
-                </family>
-            </unit>
-        </interface>
-        <interface>
-            <name>fxp0</name>
-            <unit>
-                <name>0</name>
-                <family>
-                    <inet>
-                        <address>
-                            <name>10.102.247.79/20</name>
-                        </address>
-                    </inet>
-                </family>
-            </unit>
-        </interface>
-    </interfaces>
-    <snmp>
-        <location>Systest lab</location>
-        <contact>Jay Lloyd</contact>
-        <interface>fxp0.0</interface>
-        <community>
-            <name>public</name>
-            <authorization>read-only</authorization>
-        </community>
-        <community>
-            <name>private</name>
-            <authorization>read-write</authorization>
-        </community>
-        <trap-group>
-            <name>space</name>
-            <targets>
-                <name>10.102.247.77</name>
-            </targets>
-        </trap-group>
-    </snmp>
-    <routing-options>
-        <static>
-            <route comment="/* corperate and alpha net */" >
-                <name>172.16.0.0/12</name>
-                <next-hop>10.102.255.254</next-hop>
-                <retain/>
-                <no-readvertise/>
-            </route>
-            <route comment="/* eng lab nets */" >
-                <name>192.168.0.0/16</name>
-                <next-hop>10.102.255.254</next-hop>
-                <retain/>
-                <no-readvertise/>
-            </route>
-            <route>
-                <name>10.0.0.0/8</name>
-                <next-hop>10.102.255.254</next-hop>
-                <retain/>
-                <no-readvertise/>
-            </route>
-        </static>
-        <router-id>128.102.247.79</router-id>
-    </routing-options>
-</configuration>
-<cli>
-<banner></banner>
-</cli>
-</rpc-reply>
+root@r2>
+set version 15.1R1.9
+set system host-name r2
+set system domain-name englab.juniper.net
+set system domain-search englab.juniper.net
+set system domain-search juniper.net
+set system domain-search jnpr.net
+set system domain-search spglab.juniper.net
+set system backup-router address 10.102.191.254
+set system time-zone America/Los_Angeles
+set system debugger-on-break
+set system dump-on-panic
+set system authentication-order password
+set system authentication-order radius
+set system authentication-order tacplus
+set system ports console log-out-on-disconnect
+set system root-authentication encrypted-password $1$ZUlES4dp$OUwWo1g7cLoV/aMWpHUnC/
+set system name-server 10.102.149.51
+set system name-server 10.102.149.52
+set system radius-server 192.168.69.162 secret $9$iHfz9Cu0BRQznCApIRSreWxNVw2GjkKM4JGimP
+set system radius-server 192.168.64.10 secret $9$TQ/t1IcSrKAt0IRheK8X7VYgaZDm5zNdiqmTn6
+set system radius-server 192.168.4.240 secret $9$GqUqf3nCApOPfQn690ORhSeWL7-boZDylsgoGHk
+set system tacplus-server 192.168.5.73 secret $9$sM4GiQz6uORfTCu1hKvwYgoJD
+set system tacplus-server 192.168.5.73 timeout 15
+set system tacplus-server 192.168.5.73 single-connection
+set system login class wheel permissions snmp
+set system login user regress uid 928
+set system login user regress class superuser
+set system login user regress shell csh
+set system login user regress authentication encrypted-password $1$kPU..$w.4FGRAGanJ8U4Yq6sbj7.
+set system login user remote uid 2000
+set system login user remote class super-user
+set system services finger
+set system services ftp
+set system services rlogin
+set system services rsh
+set system services ssh root-login allow
+set system services ssh max-sessions-per-connection 32
+set system services telnet
+set system services xnm-clear-text
+set system services netconf ssh
+set system syslog host log kernel info
+set system syslog host log any notice
+set system syslog host log pfe info
+set system syslog host log interactive-commands any
+set system syslog file default-log-messages any info
+set system syslog file default-log-messages match "(requested 'commit' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|CFMD_CCM_DEFECT| LFMD_3AH | RPD_MPLS_PATH_BFD|(Master Unchanged, Members Changed)|(Master Changed, Members Changed)|(Master Detected, Members Changed)|(vc add)|(vc delete)|(Master detected)|(Master changed)|(Backup detected)|(Backup changed)|(interface vcp-)|(AIS_DATA_AVAILABLE)"
+set system syslog file default-log-messages structured-data
+set system syslog file messages kernel info
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file messages pfe info
+set system syslog file messages archive world-readable
+set system syslog file security interactive-commands any
+set system syslog file security archive world-readable
+set system processes routing enable
+set system processes ntp enable
+set system processes management enable
+set system processes watchdog enable
+set system processes snmp enable
+set system processes inet-process enable
+set system processes mib-process enable
+set system ntp boot-server 66.129.255.62
+set system ntp server 66.129.255.62
+set chassis dump-on-panic
+set interfaces interface lo0 unit 0 family inet address 128.102.182.215/32 primary
+set interfaces interface lo0 unit 0 family iso address 47.0005.80ff.f800.0000.0108.0001.1281.0218.2215.00
+set interfaces interface lo0 unit 0 family inet6 address abcd::128:102:182:215/128 primary
+set interfaces interface fxp0 unit 0 family inet address 10.102.182.215/20
+set snmp location "Systest lab"
+set snmp contact "Jay Lloyd"
+set snmp interface fxp0.0
+set snmp community public authorization read-only
+set snmp community private authorization read-write
+set snmp trap-group space targets 10.102.177.58
+set routing-options static route 172.16.0.0/12 next-hop 10.102.191.254
+set routing-options static route 172.16.0.0/12 retain
+set routing-options static route 172.16.0.0/12 no-readvertise
+set routing-options static route 192.168.0.0/16 next-hop 10.102.191.254
+set routing-options static route 192.168.0.0/16 retain
+set routing-options static route 192.168.0.0/16 no-readvertise
+set routing-options static route 10.0.0.0/8 next-hop 10.102.191.254
+set routing-options static route 10.0.0.0/8 retain
+set routing-options static route 10.0.0.0/8 no-readvertise
+set routing-options router-id 128.102.182.215
 

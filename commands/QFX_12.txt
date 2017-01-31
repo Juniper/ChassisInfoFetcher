@@ -1,0 +1,12 @@
+{
+    "commandList": [
+        "show version", 
+        "show configuration | display inheritance | display set", 
+        "show configuration | display inheritance | display xml", 
+        "show chassis hardware detail | display xml", 
+        "show chassis hardware detail", 
+        "show chassis hardware clei-models | display xml", 
+        "show chassis hardware clei-models", 
+        "request support information"
+    ]
+}

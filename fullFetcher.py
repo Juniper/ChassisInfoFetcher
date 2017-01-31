@@ -39,6 +39,8 @@ import string
 import re
 import json
 
+from StringIO import StringIO
+
 from multiprocessing import Pool
 from datetime import date, datetime, timedelta
 
@@ -112,10 +114,75 @@ class FullFetcher(DirectFetcher):
         logging.info(msg)
         return (True,msg)
 
+    def unwrap(self, text):
+
+        tagToUnwrap = ["replyMsgData", "configuration-information", "configuration-output"]
+        for i in xrange(len(tagToUnwrap)):
+            text = re.sub('<'+tagToUnwrap[i]+'.*>', '', text)
+            text = re.sub('</'+tagToUnwrap[i]+'>', '', text)
+        return text
+
+    def cleanNamespace(self,text):
+        it = etree.iterparse(StringIO(text))
+        for _, el in it:
+            if '}' in el.tag:
+                el.tag = el.tag.split('}', 1)[1]  # strip all namespaces
+        root = it.root
+
+        string=""
+
+
+        self.parse_tree(root)
+        for value in self.parsedValues:
+            string = string + value + "\n"
+        self.parsedValues = []
+        return string
+
      # process job OVERIDDED from the directFecther since it uses SpaceEz and not direct connections
+
+    def parse_tree(self, root, commandLine=[""]):
+        #print ("Hello {}".format(root.tag))
+        blacklist = {"name","contents","daemon-process"}
+        ignore = {"configuration", "undocumented","rpc-reply", "cli"}
+        if(root.tag not in ignore):  #!!!ignores comments, and the <configuration> and <rpc-reply> tags and root.tag.find("{")==-1)
+            if root.tag not in blacklist:
+                commandLine.append(root.tag)
+                #print ("{}".format(root.tag))
+            if(len(root)==0):
+                if(root.text!=None):
+                    if len(root.text.strip().replace(" ",""))==len(root.text.strip()):
+                        line = " ".join(commandLine) + " " + root.text.strip() + "\n"
+                    else:
+                        line = " ".join(commandLine) + ' "' + root.text.strip() + '"'
+                else:
+                    line = " ".join(commandLine) 
+                self.parsedValues.append(line.strip())
+                #commandLine.pop()
+            else:
+
+
+                if (root[0].tag=="name" and len(root)>1):
+                    commandLine.append(root[0].text.strip())
+                    for i in xrange(1,len(root)):
+                        self.parse_tree(root[i],commandLine)
+                    #print ("1 {}".format(commandLine))
+                    commandLine.pop()
+                else:
+                    for child in root:
+                        self.parse_tree(child,commandLine)
+
+            #print ("2 {}".format(commandLine))
+            if root.tag not in blacklist:
+                commandLine.pop()
+        elif root.tag == "cli":
+            pass
+        else:
+            for child in root:
+                self.parse_tree(child,commandLine)
+
     def job(self,args):
         output = {}
-        output["host_%s"%args["name"]] = ""
+        output["router_%s"%args["name"]] = ""
         commandOutput = ""
         commandCheck = ""
         flag = 0
@@ -123,49 +190,90 @@ class FullFetcher(DirectFetcher):
         
         logging.info("Connecting to: "+args["ipAddr"])
 
-        try:
-            with open("fullFetcherCommands.txt", "r") as data_file:
-                commandSettings = json.load(data_file)
-
-        except:
-            msg="Loading and Verifying Device List : Unable to read input file 'commands.txt'."
-            logging.error(msg)
-            return (False,msg)
       
         try:
             space = rest.Space("https://"+args["url"], args["username"], args["password"])
 
-            for i in xrange(len(commandSettings["commandList"])):
-                #print ("Command {0}".format(commandSettings["commandList"][i].strip()))
-                commandCheck = commandSettings["commandList"][i].strip()  #commandCheck contains the current command being evaluated 
-
-                if ((commandCheck.split(" ",1)[0]=="show" or commandCheck =="request support information") and commandCheck.split("|")[-1].strip() != "display xml"):
-
-                    result=space.device_management.devices.\
+            autoDetect=space.device_management.devices.\
                           get(filter_={'serialNumber': args["serialNumber"] })[0].\
-                          exec_rpc.post(rpcCommand="<command>" + commandCheck + "</command>")
+                          exec_rpc.post(rpcCommand="<command>show chassis hardware</command>")
 
-                    output_xml=result.xpath('netConfReplies/netConfReply/replyMsgData')
-
-                    if len(output_xml)!=1:
-                        logging.error("The reply from the server does not contain a valid \""+commandCheck+"\" reply. Full reply was logged in DEBUG level.")
-                        logging.debug(etree.tostring(output_xml, pretty_print=True))
-                        return ""
-
-                    output_xml=output_xml[0]
-
-                    commandOutput = "root@%s> %s\n"%(args["name"],commandCheck) + etree.tostring(output_xml, pretty_print=True) + "\n\n\n"
-                    output["host_%s"%args["name"]] += commandOutput         #Preparation for the two types of output: file_host1 contains the output of all the commands ran on host1;
-                    output[commandCheck] = commandOutput                    #file_show_chassis_hardware contains the output of the "show chassis harware" command from all hosts
-                else:
-                    logging.error("The following command is not allowed : %s "%(commandCheck))   
-                    return output                 
-                
-
-     
         except RestException as ex:
             logging.error("An errror occured during the communication with the Junos Space API.\n\tHTTP error code : %s;\n\tJunos Space Message : %s "%(ex.response,ex.response.text))
             return ""
+
+        autoDetect = etree.tostring(autoDetect, pretty_print=True)
+        if(autoDetect.find("<description>MX")>-1 or autoDetect.find("<description>M")>-1 or autoDetect.find("<description>T")>-1 or autoDetect.find("<description>PTX")>-1 or autoDetect.find("<description>ACX")>-1):
+            try:
+                with open("commands/MX_4.txt", "r") as data_file:
+                    commandSettings = json.load(data_file)
+                    logging.info("Loaded list of commands " + "["+args["host"]+"]")
+
+            except:
+                msg="Loading and Verifying Device List : Unable to read input file 'commands/MX_4.txt'."
+                logging.error(msg)
+                return (False,msg)
+
+        elif(autoDetect.find("<description>SRX")>-1):
+            try:
+                with open("commands/SRX_4.txt", "r") as data_file:
+                    commandSettings = json.load(data_file)
+                    logging.info("Loaded list of commands " + "["+args["host"]+"]")
+
+            except:
+                msg="Loading and Verifying Device List : Unable to read input file 'commands/SRX_4.txt'."
+                logging.error(msg)
+                return (False,msg)
+
+        elif(autoDetect.find("<description>QFX")>-1 or autoDetect.find("<description>EX")>-1):
+            try:
+                with open("commands/QFX_4.txt", "r") as data_file:
+                    commandSettings = json.load(data_file)
+                    logging.info("Loaded list of commands " + "["+args["host"]+"]")
+
+            except:
+                msg="Loading and Verifying Device List : Unable to read input file 'commands/QFX_4.txt'."
+                logging.error(msg)
+                return (False,msg)
+        else:
+            msg = "The device was not recognized!"
+            logging.error(msg)   
+            return (False, msg)
+
+
+
+        for i in xrange(len(commandSettings["commandList"])):
+            #print ("Command {0}".format(commandSettings["commandList"][i].strip()))
+            commandCheck = commandSettings["commandList"][i].strip()  #commandCheck contains the current command being evaluated 
+
+            if ((commandCheck.split(" ",1)[0]=="show" or commandCheck =="request support information") and commandCheck.split("|")[-1].strip() != "display xml"):
+
+                result=space.device_management.devices.\
+                      get(filter_={'serialNumber': args["serialNumber"] })[0].\
+                      exec_rpc.post(rpcCommand="<command>" + commandCheck + "</command>")
+
+                output_xml=result.xpath('netConfReplies/netConfReply/replyMsgData')
+
+                if len(output_xml)!=1:
+                    logging.error("The reply from the server does not contain a valid \""+commandCheck+"\" reply. Full reply was logged in DEBUG level.")
+                    logging.debug(etree.tostring(output_xml, pretty_print=True))
+                    return ""
+
+                output_text=etree.tostring(output_xml[0], pretty_print=True)
+                finalText = self.unwrap(output_text)
+                #if (commandCheck.find("configuration")==-1):
+                #    finalText = self.cleanNamespace(finalText)
+
+                
+
+
+                commandOutput = "root@%s> %s\n"%(args["name"],commandCheck) + finalText + "\n\n\n"
+                output["router_%s"%args["name"]] += commandOutput         #Preparation for the two types of output: file_host1 contains the output of all the commands ran on host1;
+                output[commandCheck] = commandOutput                    #file_show_chassis_hardware contains the output of the "show chassis harware" command from all hosts
+            else:
+                logging.error("The following command is not allowed : %s "%(commandCheck))   
+                return output                 
+                
  
 
         #output ="root@%s> show chassis hardware detail | display xml | no-more\n"%(args["name"])

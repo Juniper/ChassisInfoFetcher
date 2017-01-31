@@ -1,0 +1,160 @@
+root@r2> show chassis hardware detail
+
+  <chassis-inventory xmlns:junos="http://xml.juniper.net/junos/15.1R1/junos">
+    <chassis junos:style="inventory">
+      <name>Chassis</name>
+      <serial-number>VMX782a</serial-number>
+      <description>MX240</description>
+      <chassis-module>
+        <name>Midplane</name>
+      </chassis-module>
+      <chassis-module>
+        <name>Routing Engine 0</name>
+        <serial-number>38fb2a5a-db</serial-number>
+        <description>RE-VMX</description>
+        <chassis-re-disk-module>
+          <name>ada0</name>
+          <disk-size>23553</disk-size>
+          <model>QEMU HARDDISK
+</model>
+          <serial-number>QM00001
+</serial-number>
+          <description>Hard Disk</description>
+        </chassis-re-disk-module>
+      </chassis-module>
+      <chassis-module>
+        <name>CB 0</name>
+        <description>VMX SCB</description>
+      </chassis-module>
+      <chassis-module>
+        <name>CB 1</name>
+        <description>VMX SCB</description>
+      </chassis-module>
+      <chassis-module>
+        <name>FPC 0</name>
+        <description>Virtual 20x1G + 4x10G FPC</description>
+        <chassis-sub-module>
+          <name>CPU</name>
+          <version>Rev. 1.0</version>
+          <part-number>RIOT</part-number>
+          <serial-number>123XYZ987</serial-number>
+        </chassis-sub-module>
+        <chassis-sub-module>
+          <name>MIC 0</name>
+          <description>Virtual 20x 1GE(LAN) SFP</description>
+          <chassis-sub-sub-module>
+            <name>PIC 0</name>
+            <part-number>BUILTIN</part-number>
+            <serial-number>BUILTIN</serial-number>
+            <description>Virtual 10x 1GE(LAN) SFP</description>
+          </chassis-sub-sub-module>
+          <chassis-sub-sub-module>
+            <name>PIC 1</name>
+            <part-number>BUILTIN</part-number>
+            <serial-number>BUILTIN</serial-number>
+            <description>Virtual 10x 1GE(LAN) SFP</description>
+          </chassis-sub-sub-module>
+        </chassis-sub-module>
+        <chassis-sub-module>
+          <name>MIC 1</name>
+          <description>Virtual 4x 10GE(LAN) XFP</description>
+          <chassis-sub-sub-module>
+            <name>PIC 2</name>
+            <part-number>BUILTIN</part-number>
+            <serial-number>BUILTIN</serial-number>
+            <description>Virtual 2x 10GE(LAN) XFP</description>
+          </chassis-sub-sub-module>
+          <chassis-sub-sub-module>
+            <name>PIC 3</name>
+            <part-number>BUILTIN</part-number>
+            <serial-number>BUILTIN</serial-number>
+            <description>Virtual 2x 10GE(LAN) XFP</description>
+          </chassis-sub-sub-module>
+        </chassis-sub-module>
+      </chassis-module>
+    </chassis>
+  </chassis-inventory>
+
+
+
+
+root@r1> show chassis hardware detail
+
+  <chassis-inventory xmlns:junos="http://xml.juniper.net/junos/15.1R1/junos">
+    <chassis junos:style="inventory">
+      <name>Chassis</name>
+      <serial-number>VMX4849</serial-number>
+      <description>MX240</description>
+      <chassis-module>
+        <name>Midplane</name>
+      </chassis-module>
+      <chassis-module>
+        <name>Routing Engine 0</name>
+        <serial-number>38fb291a-db</serial-number>
+        <description>RE-VMX</description>
+        <chassis-re-disk-module>
+          <name>ada0</name>
+          <disk-size>23553</disk-size>
+          <model>QEMU HARDDISK
+</model>
+          <serial-number>QM00001
+</serial-number>
+          <description>Hard Disk</description>
+        </chassis-re-disk-module>
+      </chassis-module>
+      <chassis-module>
+        <name>CB 0</name>
+        <description>VMX SCB</description>
+      </chassis-module>
+      <chassis-module>
+        <name>CB 1</name>
+        <description>VMX SCB</description>
+      </chassis-module>
+      <chassis-module>
+        <name>FPC 0</name>
+        <description>Virtual 20x1G + 4x10G FPC</description>
+        <chassis-sub-module>
+          <name>CPU</name>
+          <version>Rev. 1.0</version>
+          <part-number>RIOT</part-number>
+          <serial-number>123XYZ987</serial-number>
+        </chassis-sub-module>
+        <chassis-sub-module>
+          <name>MIC 0</name>
+          <description>Virtual 20x 1GE(LAN) SFP</description>
+          <chassis-sub-sub-module>
+            <name>PIC 0</name>
+            <part-number>BUILTIN</part-number>
+            <serial-number>BUILTIN</serial-number>
+            <description>Virtual 10x 1GE(LAN) SFP</description>
+          </chassis-sub-sub-module>
+          <chassis-sub-sub-module>
+            <name>PIC 1</name>
+            <part-number>BUILTIN</part-number>
+            <serial-number>BUILTIN</serial-number>
+            <description>Virtual 10x 1GE(LAN) SFP</description>
+          </chassis-sub-sub-module>
+        </chassis-sub-module>
+        <chassis-sub-module>
+          <name>MIC 1</name>
+          <description>Virtual 4x 10GE(LAN) XFP</description>
+          <chassis-sub-sub-module>
+            <name>PIC 2</name>
+            <part-number>BUILTIN</part-number>
+            <serial-number>BUILTIN</serial-number>
+            <description>Virtual 2x 10GE(LAN) XFP</description>
+          </chassis-sub-sub-module>
+          <chassis-sub-sub-module>
+            <name>PIC 3</name>
+            <part-number>BUILTIN</part-number>
+            <serial-number>BUILTIN</serial-number>
+            <description>Virtual 2x 10GE(LAN) XFP</description>
+          </chassis-sub-sub-module>
+        </chassis-sub-module>
+      </chassis-module>
+    </chassis>
+  </chassis-inventory>
+
+
+
+

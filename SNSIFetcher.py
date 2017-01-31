@@ -39,6 +39,8 @@ import string
 import re
 import json
 
+from StringIO import StringIO
+
 from multiprocessing import Pool
 from datetime import date, datetime, timedelta
 
@@ -109,7 +111,7 @@ class SNSIFetcher(DirectFetcher):
             logging.error(msg)
             return ""
           
-        print(response.text)
+        #print(response.text)
         
         result=json.loads(response.text)
         #print(json.dumps(result, indent=4, sort_keys=True))
@@ -140,10 +142,73 @@ class SNSIFetcher(DirectFetcher):
         logging.info(msg)
         return (True,msg)
 
+    def cleanNamespace(self,text):
+        textEdit = re.sub('<configuration.*>', '', text)
+        textEdit = re.sub('</configuration>', '', textEdit)
+
+        it = ET.iterparse(StringIO(textEdit))
+        for _, el in it:
+            if '}' in el.tag:
+                el.tag = el.tag.split('}', 1)[1]  # strip all namespaces
+        root = it.root
+
+        string=""
+
+
+
+        self.parse_tree(root)
+        for value in self.parsedValues:
+            string = string + value + "\n"
+        self.parsedValues = []
+        return string
+
+     # process job OVERIDDED from the directFecther since it uses SpaceEz and not direct connections
+
+    def parse_tree(self, root, commandLine=["set"]):
+        #print ("Hello {}".format(root.tag))
+        blacklist = {"name","contents","daemon-process"}
+        ignore = {"configuration", "undocumented","rpc-reply", "cli"}
+        if(root.tag not in ignore):  #!!!ignores comments, and the <configuration> and <rpc-reply> tags and root.tag.find("{")==-1)
+            if root.tag not in blacklist:
+                commandLine.append(root.tag)
+                #print ("{}".format(root.tag))
+            if(len(root)==0):
+                if(root.text!=None):
+                    if len(root.text.strip().replace(" ",""))==len(root.text.strip()):
+                        line = " ".join(commandLine) + " " + root.text.strip() + "\n"
+                    else:
+                        line = " ".join(commandLine) + ' "' + root.text.strip() + '"'
+                else:
+                    line = " ".join(commandLine) 
+                self.parsedValues.append(line.strip())
+                #commandLine.pop()
+            else:
+
+
+                if (root[0].tag=="name" and len(root)>1):
+                    commandLine.append(root[0].text.strip())
+                    for i in xrange(1,len(root)):
+                        self.parse_tree(root[i],commandLine)
+                    #print ("1 {}".format(commandLine))
+                    commandLine.pop()
+                else:
+                    for child in root:
+                        self.parse_tree(child,commandLine)
+
+            #print ("2 {}".format(commandLine))
+            if root.tag not in blacklist:
+                commandLine.pop()
+        elif root.tag == "cli":
+            pass
+        else:
+            for child in root:
+                self.parse_tree(child,commandLine)
+
+
      # process job OVERIDDED from the directFecther since it uses SpaceEz and not direct connections
     def job(self,args):
         output = {}
-        output["host_%s"%args["hostname"]] = "" 
+        output["router_%s"%args["hostname"]] = "" 
         commandOutput = ""
 
                 
@@ -200,44 +265,100 @@ class SNSIFetcher(DirectFetcher):
         #fo.write(response.content)                             
         #fo.close()
 
-        try:
-            with open("SNSIcommands.txt", "r") as commands:
-                commandLines = json.load(commands)
 
+        try:
+            in_memory_zip=io.BytesIO(response.content)    # take the in memory zip file and make it behave like a file handle
+            zfile=zipfile.ZipFile(in_memory_zip)          # open the zip file  
         except:
-            msg="Loading and Verifying Device List : Unable to read input file 'SNSIcommands.txt'."
+            msg="[%s] Zip file retrieved from Junos Space is invalid."%(args["hostname"])
             logging.error(msg)
-            return (False,msg)
+            return ""  
+
+        for name in zfile.namelist(): 
+            #print("Heloo {0}".format(commandLines[i]))   
+            #print("Heloo1 {0}".format(name)) 
+            #print("Heloo2 {0}".format(name.find(commandLines[i].strip())))             # list files and detect search for the show display file                  
+            if name.find("_shd_xml") >-1:             # found the files
+                
+                autoDetect=zfile.read(name)+"\n"+"\n"                  # retrive the content
+                if autoDetect=="":
+                    msg="[%s] Zip file retrieved from Junos Space does not contain the \"%s\" information."%(args["hostname"],commandLines["commandList"][i].strip())
+                    logging.error(msg)
+                    return commandOutput #will return empty if no file containing "show display" was found containing the show display
+
+                if(autoDetect.find("<description>MX")>-1 or autoDetect.find("<description>M")>-1 or autoDetect.find("<description>T")>-1 or autoDetect.find("<description>PTX")>-1 or autoDetect.find("<description>ACX")>-1):
+                    try:
+                        with open("commands/MX_3.txt", "r") as data_file:
+                            commandLines = json.load(data_file)
+                            logging.info("Loaded list of commands " + "["+args["host"]+"]")
+
+                    except:
+                        msg="Loading and Verifying Device List : Unable to read input file 'commands/MX_3.txt'."
+                        logging.error(msg)
+                        return (False,msg)
+
+                elif(autoDetect.find("<description>SRX")>-1):
+                    try:
+                        with open("commands/SRX_3.txt", "r") as data_file:
+                            commandLines = json.load(data_file)
+                            logging.info("Loaded list of commands " + "["+args["host"]+"]")
+
+                    except:
+                        msg="Loading and Verifying Device List : Unable to read input file 'commands/SRX_3.txt'."
+                        logging.error(msg)
+                        return (False,msg)
+
+                elif(autoDetect.find("<description>QFX")>-1 or autoDetect.find("<description>EX")>-1):
+                    try:
+                        with open("commands/QFX_3.txt", "r") as data_file:
+                            commandLines = json.load(data_file)
+                            logging.info("Loaded list of commands " + "["+args["host"]+"]")
+
+                    except:
+                        msg="Loading and Verifying Device List : Unable to read input file 'commands/QFX_3.txt'."
+                        logging.error(msg)
+                        return (False,msg)
+                else:
+                    msg = "The device was not recognized!"
+                    logging.error(msg)   
+                    return (False, msg)
+
+
+
 
         
         try:
 
             in_memory_zip=io.BytesIO(response.content)    # take the in memory zip file and make it behave like a file handle
             zfile=zipfile.ZipFile(in_memory_zip)          # open the zip file 
-            for i in xrange(len(commandLines["commandList"])):    
-                for name in zfile.namelist(): 
-                    #print("Heloo {0}".format(commandLines[i]))   
-                    #print("Heloo1 {0}".format(name)) 
-                    #print("Heloo2 {0}".format(name.find(commandLines[i].strip())))             # list files and detect search for the show display file                  
-                    if name.find(commandLines["commandList"][i].strip()) >-1:             # found the files
-                        
-                        commandOutput=zfile.read(name)+"\n"+"\n"                  # retrive the content
-                        if commandOutput=="":
-                            msg="[%s] Zip file retrieved from Junos Space does not contain the \"%s\" information."%(args["hostname"],commandLines["commandList"][i].strip())
-                            logging.error(msg)
-                            return commandOutput #will return empty if no file containing "show display" was found containing the show display
-
-
-                        header="root@"+args["hostname"]+"""><rpc-reply>"""
-                        tailer="""<cli>\n<banner></banner>\n</cli>\n</rpc-reply>\n"""
-
-                        commandOutput=header+"\n".join(commandOutput.splitlines()[1:]).strip("\n")+"\n"+tailer+"\n"  # prepare output 
-                        output["host_%s"%args["hostname"]]+= commandOutput
-                        output[commandLines["commandList"][i].strip()] = commandOutput
         except:
             msg="[%s] Zip file retrieved from Junos Space is invalid."%(args["hostname"])
             logging.error(msg)
-            return ""      
+            return "" 
+
+        for i in xrange(len(commandLines["commandList"])):    
+            for name in zfile.namelist(): 
+                #print("Heloo {0}".format(commandLines[i]))   
+                #print("Heloo1 {0}".format(name)) 
+                #print("Heloo2 {0}".format(name.find(commandLines[i].strip())))             # list files and detect search for the show display file                  
+                if name.find(commandLines["commandList"][i].strip()) >-1:             # found the files
+                    
+                    commandOutput=zfile.read(name)+"\n"+"\n"                  # retrive the contents
+                    if commandOutput=="":
+                        msg="[%s] Zip file retrieved from Junos Space does not contain the \"%s\" information."%(args["hostname"],commandLines["commandList"][i].strip())
+                        logging.error(msg)
+                        return commandOutput #will return empty if no file containing "show display" was found containing the show display
+
+
+                    header="root@"+args["hostname"]+">"
+                    if commandLines["commandList"][i].strip()=="_cfg_xml":
+                        commandOutput = self.cleanNamespace("""<rpc-reply>"""+commandOutput+"""</rpc-reply>""")
+
+                    commandOutput=header+"\n" + commandOutput + "\n"  # prepare output 
+
+
+                    output["router_%s"%args["hostname"]]+= commandOutput
+                    output[commandLines["commandList"][i].strip()] = commandOutput   
         
 
         # xcontent = ET.fromstring(output)

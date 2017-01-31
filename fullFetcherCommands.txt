@@ -1,7 +1,0 @@
-{
-    "commandList": [
-        "show version", 
-        "show configuration | display set", 
-        "show configuration | display inheritance"
-    ]
-}

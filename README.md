@@ -88,7 +88,68 @@ Individual scenarions can also be run separate:
    
    > python SNSIFetcher.py
    
-Settings file for the individual CLI tools are being stored in the conf/ folder
+The CIF tool can be run without a GUI by executing the following commands directly. In order to successfully execute each fetcher, the login details required need to be included in the corresponding files in the conf directory. Each fetcher has a separate command: 
+
+    > python directFetcher.py
+
+The conf/directFetcher.conf file needs to be configured with the following template:
+{
+    "parallelProcesses": "10",
+    "password": "Device password",
+    "port": [
+        "22"
+    ],
+    "username": "Device username"
+}
+    > python assistedFetcher.py
+
+Format for the configuration of conf/assistedFetcher.conf:
+
+{
+    "device_ssh_password": "",
+    "device_ssh_username": "",
+    "js_password": "Junos Space password",
+    "js_username": "Junos Space username",
+    "parallelProcesses": "12",
+    "port": [
+        "list of ssh ports"
+    ],
+    "url": "Junos Space GUI IP address"
+}
+
+    > python fullFetcher.py
+Format of the configuration of conf/fullFetcher.py:
+{
+    "parallelProcesses": "",
+    "password_js": "Junos Space password",
+    "url": "Junos Space GUI IP address",
+    "username_js": "Junos Space username"
+}
+
+
+    > python SNSIFetcher.py
+The format of the configuration in conf SNSIFetcher.py is identical to that of conf/fullFetcher.py.
+
+## Output!
+
+The configuration output from the devices is presented in two formats. 
+
+Let us suppose that "show chassis hardware" and "show configuration | display inheritance" are run on RouterA and RouterB. Then two output files will be: router_RouterA (containing "show chassis hardware" and "show configuration | display inheritance" for RouterA), router_RouterB (containing "show chassis hardware" and "show configuration | display inheritance" for RouterB), show_chassis_hardware (containing "show chassis hardware" for RouterA and RouterB), and show_configuration_display_inheritance (containing "show configuration | display inheritance" for RouterA and RouterB).
+
+The output of all commands in the SNSI and Full modes is in xml format with the exception of: "show configuration | display inheritance | display set" which is parsed into a "set" format. 
+
+
+## Commands!
+
+
+
+
+## Modes!
+
+Only Direct Mode does not require for Junos Space to be connected to the devices. All other modes use features from Junos Space, so for successful execution of the sctipt, make sure that your Junos Space is correctly connected to the respective devices.
+
+
+
 
     
     

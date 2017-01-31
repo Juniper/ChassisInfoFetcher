@@ -1,378 +1,308 @@
-root@r1><rpc-reply><host-name>r1</host-name>
+root@r1>
+<software-information  xmlns:junos="http://xml.juniper.net/junos/15.1R1/junos">
+<host-name>r1</host-name>
 <product-model>mx240</product-model>
 <product-name>mx240</product-name>
+<junos-version>15.1R1.9</junos-version>
 <package-information>
-<name>junos-version</name>
-<comment>Junos: 14.2R6.5</comment>
+<name>os-kernel</name>
+<comment>JUNOS OS Kernel 32-bit  [20150617.306001_builder_stable_10]</comment>
 </package-information>
 <package-information>
-<name>jbase</name>
-<comment>JUNOS Base OS Software Suite [14.2R6.5]</comment>
+<name>os-runtime</name>
+<comment>JUNOS OS runtime [20150617.306001_builder_stable_10]</comment>
 </package-information>
 <package-information>
-<name>junos</name>
-<comment>JUNOS Base OS boot [14.2R6.5]</comment>
+<name>zoneinfo</name>
+<comment>JUNOS OS time zone information [20150617.306001_builder_stable_10]</comment>
 </package-information>
 <package-information>
-<name>jcrypto</name>
-<comment>JUNOS Crypto Software Suite [14.2R6.5]</comment>
+<name>junos-libs</name>
+<comment>JUNOS libs [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>junos-runtime</name>
+<comment>JUNOS runtime [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>vmguest</name>
+<comment>JUNOS Packet Forwarding Engine Trio Simulation Package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>py-base</name>
+<comment>JUNOS py base [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>os-vmguest</name>
+<comment>JUNOS OS vmguest [20150617.306001_builder_stable_10]</comment>
+</package-information>
+<package-information>
+<name>os-crypto</name>
+<comment>JUNOS OS crypto [20150617.306001_builder_stable_10]</comment>
+</package-information>
+<package-information>
+<name>netstack</name>
+<comment>JUNOS network stack and utilities [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>junos-platform</name>
+<comment>JUNOS platform support [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>junos-modules</name>
+<comment>JUNOS modules [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>junos-daemons</name>
+<comment>JUNOS daemons [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-voice</name>
+<comment>JUNOS Voice Services Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-ssl</name>
+<comment>JUNOS Services SSL [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-sfw</name>
+<comment>JUNOS Services Stateful Firewall [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-rpm</name>
+<comment>JUNOS Services RPM [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-ptsp</name>
+<comment>JUNOS Services PTSP Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-nat</name>
+<comment>JUNOS Services NAT [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-mss</name>
+<comment>JUNOS Services Mobile Subscriber Service Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-mobile</name>
+<comment>JUNOS Services MobileNext Software package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-llpdf</name>
+<comment>JUNOS Services LL-PDF Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-jflow</name>
+<comment>JUNOS Services Jflow Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-ipsec</name>
+<comment>JUNOS Services IPSec [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-idp</name>
+<comment>JUNOS IDP Services [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-hcm</name>
+<comment>JUNOS Services HTTP Content Management package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-crypto-base</name>
+<comment>JUNOS Services Crypto [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-cpcd</name>
+<comment>JUNOS Services Captive Portal and Content Delivery Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-bgf</name>
+<comment>JUNOS Border Gateway Function package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-appid</name>
+<comment>JUNOS AppId Services [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-alg</name>
+<comment>JUNOS Services Application Level Gateways [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-aacl</name>
+<comment>JUNOS Services AACL Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jpfe-platform</name>
+<comment>JUNOS Packet Forwarding Engine Support (MX/EX92XX Common) [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jpfe-common</name>
+<comment>JUNOS Packet Forwarding Engine Support (M/T Common) [20150618.043753_builder_junos_151_r1]</comment>
 </package-information>
 <package-information>
 <name>jdocs</name>
-<comment>JUNOS Online Documentation [14.2R6.5]</comment>
+<comment>JUNOS Online Documentation [20150618.043753_builder_junos_151_r1]</comment>
 </package-information>
 <package-information>
-<name>jplatform</name>
-<comment>JUNOS platform Software Suite [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jkernel</name>
-<comment>JUNOS Kernel Software Suite [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jroute</name>
-<comment>JUNOS Routing Software Suite [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jruntime</name>
-<comment>JUNOS Runtime Software Suite [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-aacl-pic</name>
-<comment>JUNOS Services AACL PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-appid-xlr64</name>
-<comment>JUNOS Services AppId PIC package (xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-appid-pic</name>
-<comment>JUNOS AppId Services PIC Package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-alg-xlr64</name>
-<comment>JUNOS Services Application Level Gateway (xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-alg-xlp64</name>
-<comment>JUNOS Services Application Level Gateway (xlp64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-alg-pic</name>
-<comment>JUNOS Services Application Level Gateway [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-hcm-xlr64</name>
-<comment>JUNOS Services HTTP Content Management PIC package (xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-hcm-pic</name>
-<comment>JUNOS Services HTTP Content Management PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-cpcd-pic</name>
-<comment>JUNOS Services Captive Portal and Content Delivery PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-bgf-pic</name>
-<comment>JUNOS Border Gateway Function PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-llpdf-pic</name>
-<comment>JUNOS Services LL-PDF PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-jflow-xlp64</name>
-<comment>JUNOS Services JFLOW PIC package (xlp64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-jflow-pic</name>
-<comment>JUNOS Services JFLOW PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-idp-pic</name>
-<comment>JUNOS IDP Services PIC Package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-mss-xlr64</name>
-<comment>JUNOS Services Mobile Subscriber Service PIC package (xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-mss-xlr</name>
-<comment>JUNOS Services Mobile Subscriber Service Container package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-mobile-xlr64</name>
-<comment>JUNOS MobileNext PIC package (xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-mobile-pic</name>
-<comment>JUNOS MobileNext PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-rpm-pic</name>
-<comment>JUNOS Services RPM PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-ptsp-pic</name>
-<comment>JUNOS Services PTSP PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-nat-xlr64</name>
-<comment>JUNOS Services NAT PIC package (xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-nat-xlp64</name>
-<comment>JUNOS Services NAT PIC package (xlp64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-nat-pic</name>
-<comment>JUNOS Services NAT PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-sfw-xlr64</name>
-<comment>JUNOS Services Stateful Firewall PIC package (xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-sfw-xlp64</name>
-<comment>JUNOS Services Stateful Firewall PIC package (xlp64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-sfw-pic</name>
-<comment>JUNOS Services Stateful Firewall PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-rpm-xlp64</name>
-<comment>JUNOS Services RPM PIC package (xlp64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-voice-bsg</name>
-<comment>JUNOS BSG PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-crypto-base-xlp64</name>
-<comment>JUNOS Services Crypto Base PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-crypto-base-pic</name>
-<comment>JUNOS Services Crypto Base PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-ssl-pic</name>
-<comment>JUNOS Services SSL PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-ipsec-xlr64</name>
-<comment>JUNOS Services IPSec PIC(xlr64) package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-ipsec-xlp64</name>
-<comment>JUNOS Services IPSec PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-ipsec-pic</name>
-<comment>JUNOS Services IPSec PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-crypto-base-xlr64</name>
-<comment>JUNOS Services Crypto Base PIC package(xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jsim-vmx</name>
-<comment>JUNOS Packet Forwarding Engine Trio Simulation Package [14.2R6.5]</comment>
+<name>fips-mode</name>
+<comment>JUNOS FIPS mode utilities [20150618.043753_builder_junos_151_r1]</comment>
 </package-information>
 </software-information>
-<cli>
-<banner></banner>
-</cli>
-</rpc-reply>
 
-root@r2><rpc-reply><host-name>r2</host-name>
+
+
+root@r2>
+<software-information  xmlns:junos="http://xml.juniper.net/junos/15.1R1/junos">
+<host-name>r2</host-name>
 <product-model>mx240</product-model>
 <product-name>mx240</product-name>
+<junos-version>15.1R1.9</junos-version>
 <package-information>
-<name>junos-version</name>
-<comment>Junos: 14.2R6.5</comment>
+<name>os-kernel</name>
+<comment>JUNOS OS Kernel 32-bit  [20150617.306001_builder_stable_10]</comment>
 </package-information>
 <package-information>
-<name>jbase</name>
-<comment>JUNOS Base OS Software Suite [14.2R6.5]</comment>
+<name>os-runtime</name>
+<comment>JUNOS OS runtime [20150617.306001_builder_stable_10]</comment>
 </package-information>
 <package-information>
-<name>junos</name>
-<comment>JUNOS Base OS boot [14.2R6.5]</comment>
+<name>zoneinfo</name>
+<comment>JUNOS OS time zone information [20150617.306001_builder_stable_10]</comment>
 </package-information>
 <package-information>
-<name>jcrypto</name>
-<comment>JUNOS Crypto Software Suite [14.2R6.5]</comment>
+<name>junos-libs</name>
+<comment>JUNOS libs [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>junos-runtime</name>
+<comment>JUNOS runtime [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>vmguest</name>
+<comment>JUNOS Packet Forwarding Engine Trio Simulation Package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>py-base</name>
+<comment>JUNOS py base [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>os-vmguest</name>
+<comment>JUNOS OS vmguest [20150617.306001_builder_stable_10]</comment>
+</package-information>
+<package-information>
+<name>os-crypto</name>
+<comment>JUNOS OS crypto [20150617.306001_builder_stable_10]</comment>
+</package-information>
+<package-information>
+<name>netstack</name>
+<comment>JUNOS network stack and utilities [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>junos-platform</name>
+<comment>JUNOS platform support [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>junos-modules</name>
+<comment>JUNOS modules [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>junos-daemons</name>
+<comment>JUNOS daemons [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-voice</name>
+<comment>JUNOS Voice Services Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-ssl</name>
+<comment>JUNOS Services SSL [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-sfw</name>
+<comment>JUNOS Services Stateful Firewall [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-rpm</name>
+<comment>JUNOS Services RPM [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-ptsp</name>
+<comment>JUNOS Services PTSP Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-nat</name>
+<comment>JUNOS Services NAT [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-mss</name>
+<comment>JUNOS Services Mobile Subscriber Service Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-mobile</name>
+<comment>JUNOS Services MobileNext Software package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-llpdf</name>
+<comment>JUNOS Services LL-PDF Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-jflow</name>
+<comment>JUNOS Services Jflow Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-ipsec</name>
+<comment>JUNOS Services IPSec [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-idp</name>
+<comment>JUNOS IDP Services [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-hcm</name>
+<comment>JUNOS Services HTTP Content Management package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-crypto-base</name>
+<comment>JUNOS Services Crypto [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-cpcd</name>
+<comment>JUNOS Services Captive Portal and Content Delivery Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-bgf</name>
+<comment>JUNOS Border Gateway Function package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-appid</name>
+<comment>JUNOS AppId Services [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-alg</name>
+<comment>JUNOS Services Application Level Gateways [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jservices-aacl</name>
+<comment>JUNOS Services AACL Container package [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jpfe-platform</name>
+<comment>JUNOS Packet Forwarding Engine Support (MX/EX92XX Common) [20150618.043753_builder_junos_151_r1]</comment>
+</package-information>
+<package-information>
+<name>jpfe-common</name>
+<comment>JUNOS Packet Forwarding Engine Support (M/T Common) [20150618.043753_builder_junos_151_r1]</comment>
 </package-information>
 <package-information>
 <name>jdocs</name>
-<comment>JUNOS Online Documentation [14.2R6.5]</comment>
+<comment>JUNOS Online Documentation [20150618.043753_builder_junos_151_r1]</comment>
 </package-information>
 <package-information>
-<name>jplatform</name>
-<comment>JUNOS platform Software Suite [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jkernel</name>
-<comment>JUNOS Kernel Software Suite [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jroute</name>
-<comment>JUNOS Routing Software Suite [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jruntime</name>
-<comment>JUNOS Runtime Software Suite [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-aacl-pic</name>
-<comment>JUNOS Services AACL PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-appid-xlr64</name>
-<comment>JUNOS Services AppId PIC package (xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-appid-pic</name>
-<comment>JUNOS AppId Services PIC Package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-alg-xlr64</name>
-<comment>JUNOS Services Application Level Gateway (xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-alg-xlp64</name>
-<comment>JUNOS Services Application Level Gateway (xlp64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-alg-pic</name>
-<comment>JUNOS Services Application Level Gateway [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-hcm-xlr64</name>
-<comment>JUNOS Services HTTP Content Management PIC package (xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-hcm-pic</name>
-<comment>JUNOS Services HTTP Content Management PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-cpcd-pic</name>
-<comment>JUNOS Services Captive Portal and Content Delivery PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-bgf-pic</name>
-<comment>JUNOS Border Gateway Function PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-llpdf-pic</name>
-<comment>JUNOS Services LL-PDF PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-jflow-xlp64</name>
-<comment>JUNOS Services JFLOW PIC package (xlp64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-jflow-pic</name>
-<comment>JUNOS Services JFLOW PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-idp-pic</name>
-<comment>JUNOS IDP Services PIC Package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-mss-xlr64</name>
-<comment>JUNOS Services Mobile Subscriber Service PIC package (xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-mss-xlr</name>
-<comment>JUNOS Services Mobile Subscriber Service Container package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-mobile-xlr64</name>
-<comment>JUNOS MobileNext PIC package (xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-mobile-pic</name>
-<comment>JUNOS MobileNext PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-rpm-pic</name>
-<comment>JUNOS Services RPM PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-ptsp-pic</name>
-<comment>JUNOS Services PTSP PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-nat-xlr64</name>
-<comment>JUNOS Services NAT PIC package (xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-nat-xlp64</name>
-<comment>JUNOS Services NAT PIC package (xlp64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-nat-pic</name>
-<comment>JUNOS Services NAT PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-sfw-xlr64</name>
-<comment>JUNOS Services Stateful Firewall PIC package (xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-sfw-xlp64</name>
-<comment>JUNOS Services Stateful Firewall PIC package (xlp64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-sfw-pic</name>
-<comment>JUNOS Services Stateful Firewall PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-rpm-xlp64</name>
-<comment>JUNOS Services RPM PIC package (xlp64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-voice-bsg</name>
-<comment>JUNOS BSG PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-crypto-base-xlp64</name>
-<comment>JUNOS Services Crypto Base PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-crypto-base-pic</name>
-<comment>JUNOS Services Crypto Base PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-ssl-pic</name>
-<comment>JUNOS Services SSL PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-ipsec-xlr64</name>
-<comment>JUNOS Services IPSec PIC(xlr64) package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-ipsec-xlp64</name>
-<comment>JUNOS Services IPSec PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-ipsec-pic</name>
-<comment>JUNOS Services IPSec PIC package [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jservices-crypto-base-xlr64</name>
-<comment>JUNOS Services Crypto Base PIC package(xlr64) [14.2R6.5]</comment>
-</package-information>
-<package-information>
-<name>jsim-vmx</name>
-<comment>JUNOS Packet Forwarding Engine Trio Simulation Package [14.2R6.5]</comment>
+<name>fips-mode</name>
+<comment>JUNOS FIPS mode utilities [20150618.043753_builder_junos_151_r1]</comment>
 </package-information>
 </software-information>
-<cli>
-<banner></banner>
-</cli>
-</rpc-reply>
+
+
 

@@ -1,0 +1,8 @@
+{
+    "commandList": [
+        "_cfg_xml", 
+        "_shd_xml", 
+        "_ver_xml", 
+        "_rsi"
+    ]
+}

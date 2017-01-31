@@ -1,0 +1,98 @@
+root@172.30.156.206> show configuration  | display inheritance | display set
+set version 16.1X60-D40.3
+set system host-name marlin-re0
+set system backup-router 172.30.156.1
+set system root-authentication encrypted-password "$1$ArEODNtv$djxZaD/NL0thcyGeUNZ7X1"
+set system login message "********************************************************\n*  JTAC AMS Ultralab                                   *\n*  Resource: jtac-AUT-MX240-r1002                      *\n*  DNS: marlin.jtac-emea.jnpr.net                      *\n*  Only login to this device if you have it reserved!  *\n*                                                      *\n*  Before releasing your reservation, please run:      *\n*  <load override lrmdefault> to cleanup your config!  *\n********************************************************"
+set system login user lab uid 2000
+set system login user lab class operator
+set system login user lab authentication encrypted-password "$1$3B0iQkWK$Dt6Eet8Z0BXZz.Mxky8Nb/"
+set system login user labroot uid 2001
+set system login user labroot class super-user
+set system login user labroot authentication encrypted-password "$1$hscl9rEz$msT/cNwetSkMUBbxtcMJj0"
+set system services ftp
+set system services ssh protocol-version v2
+set system syslog user * any emergency
+set system syslog file messages any any
+set system syslog file messages authorization info
+set system syslog file messages firewall none
+set system syslog file messages explicit-priority
+set system syslog file interactive-commands interactive-commands any
+set system commit synchronize
+set interfaces ge-1/2/0 unit 0 family inet address 10.1.1.10/24
+set interfaces xe-1/2/0 unit 0 family inet address 10.1.1.10/24
+set interfaces ge-1/3/0 unit 0 family inet address 10.1.2.10/24
+set interfaces xe-1/3/0 unit 0 family inet address 10.1.2.10/24
+set interfaces lo0 unit 0 family inet address 10.1.1.1/32
+set interfaces lo0 unit 1 family inet address 10.1.2.1/32
+set interfaces fxp0 unit 0 family inet address 172.30.156.206/24
+set routing-options static route 0.0.0.0/0 next-hop 172.30.156.1
+set routing-options static route 0.0.0.0/0 retain
+set routing-options static route 0.0.0.0/0 no-readvertise
+set protocols lldp interface all
+set routing-instances VR1 instance-type virtual-router
+set routing-instances VR1 interface ge-1/2/0.0
+set routing-instances VR1 interface xe-1/2/0.0
+set routing-instances VR1 interface lo0.0
+set routing-instances VR1 protocols ospf area 0.0.0.0 interface ge-1/2/0.0
+set routing-instances VR1 protocols ospf area 0.0.0.0 interface lo0.0
+set routing-instances VR1 protocols ospf area 0.0.0.0 interface xe-1/2/0.0
+set routing-instances VR2 instance-type virtual-router
+set routing-instances VR2 interface ge-1/3/0.0
+set routing-instances VR2 interface xe-1/3/0.0
+set routing-instances VR2 interface lo0.1
+set routing-instances VR2 protocols ospf area 0.0.0.0 interface ge-1/3/0.0
+set routing-instances VR2 protocols ospf area 0.0.0.0 interface lo0.1
+set routing-instances VR2 protocols ospf area 0.0.0.0 interface xe-1/3/0.0
+
+
+
+root@172.30.156.207> show configuration  | display inheritance | display set
+set version 14.2R5.8
+set system host-name marlin-re1
+set system backup-router 172.30.156.1
+set system root-authentication encrypted-password "$1$ArEODNtv$djxZaD/NL0thcyGeUNZ7X1"
+set system login message "********************************************************\n*  JTAC AMS Ultralab                                   *\n*  Resource: jtac-AUT-MX240-r1002                      *\n*  DNS: marlin.jtac-emea.jnpr.net                      *\n*  Only login to this device if you have it reserved!  *\n*                                                      *\n*  Before releasing your reservation, please run:      *\n*  <load override lrmdefault> to cleanup your config!  *\n********************************************************"
+set system login user lab uid 2000
+set system login user lab class operator
+set system login user lab authentication encrypted-password "$1$3B0iQkWK$Dt6Eet8Z0BXZz.Mxky8Nb/"
+set system login user labroot uid 2001
+set system login user labroot class super-user
+set system login user labroot authentication encrypted-password "$1$hscl9rEz$msT/cNwetSkMUBbxtcMJj0"
+set system services ftp
+set system services ssh protocol-version v2
+set system syslog user * any emergency
+set system syslog file messages any any
+set system syslog file messages authorization info
+set system syslog file messages firewall none
+set system syslog file messages explicit-priority
+set system syslog file interactive-commands interactive-commands any
+set system commit synchronize
+set interfaces ge-1/2/0 unit 0 family inet address 10.1.1.10/24
+set interfaces xe-1/2/0 unit 0 family inet address 10.1.1.10/24
+set interfaces ge-1/3/0 unit 0 family inet address 10.1.2.10/24
+set interfaces xe-1/3/0 unit 0 family inet address 10.1.2.10/24
+set interfaces lo0 unit 0 family inet address 10.1.1.1/32
+set interfaces lo0 unit 1 family inet address 10.1.2.1/32
+set interfaces fxp0 unit 0 family inet address 172.30.156.207/24
+set routing-options static route 0.0.0.0/0 next-hop 172.30.156.1
+set routing-options static route 0.0.0.0/0 retain
+set routing-options static route 0.0.0.0/0 no-readvertise
+set protocols lldp interface all
+set routing-instances VR1 instance-type virtual-router
+set routing-instances VR1 interface ge-1/2/0.0
+set routing-instances VR1 interface xe-1/2/0.0
+set routing-instances VR1 interface lo0.0
+set routing-instances VR1 protocols ospf area 0.0.0.0 interface ge-1/2/0.0
+set routing-instances VR1 protocols ospf area 0.0.0.0 interface lo0.0
+set routing-instances VR1 protocols ospf area 0.0.0.0 interface xe-1/2/0.0
+set routing-instances VR2 instance-type virtual-router
+set routing-instances VR2 interface ge-1/3/0.0
+set routing-instances VR2 interface xe-1/3/0.0
+set routing-instances VR2 interface lo0.1
+set routing-instances VR2 protocols ospf area 0.0.0.0 interface ge-1/3/0.0
+set routing-instances VR2 protocols ospf area 0.0.0.0 interface lo0.1
+set routing-instances VR2 protocols ospf area 0.0.0.0 interface xe-1/3/0.0
+
+
+

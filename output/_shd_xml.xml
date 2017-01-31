@@ -1,4 +1,6 @@
-root@r1><rpc-reply><chassis>
+root@r1>
+<chassis-inventory>
+<chassis>
 <name>Chassis</name>
 <serial-number>VMX4849</serial-number>
 <description>MX240</description>
@@ -7,12 +9,15 @@ root@r1><rpc-reply><chassis>
 </chassis-module>
 <chassis-module>
 <name>Routing Engine 0</name>
+<serial-number>38fb291a-db</serial-number>
 <description>RE-VMX</description>
 <chassis-re-disk-module>
-<name>ad0</name>
-<disk-size>20473</disk-size>
-<model>QEMU HARDDISK</model>
-<serial-number>QM00001</serial-number>
+<name>ada0</name>
+<disk-size>23553</disk-size>
+<model>QEMU HARDDISK
+</model>
+<serial-number>QM00001
+</serial-number>
 <description>Hard Disk</description>
 </chassis-re-disk-module>
 </chassis-module>
@@ -24,14 +29,56 @@ root@r1><rpc-reply><chassis>
 <name>CB 1</name>
 <description>VMX SCB</description>
 </chassis-module>
+<chassis-module>
+<name>FPC 0</name>
+<description>Virtual 20x1G + 4x10G FPC</description>
+<chassis-sub-module>
+<name>CPU</name>
+<version>Rev. 1.0</version>
+<part-number>RIOT</part-number>
+<serial-number>123XYZ987</serial-number>
+</chassis-sub-module>
+<chassis-sub-module>
+<name>MIC 0</name>
+<description>Virtual 20x 1GE(LAN) SFP</description>
+<chassis-sub-sub-module>
+<name>PIC 0</name>
+<part-number>BUILTIN</part-number>
+<serial-number>BUILTIN</serial-number>
+<description>Virtual 10x 1GE(LAN) SFP</description>
+</chassis-sub-sub-module>
+<chassis-sub-sub-module>
+<name>PIC 1</name>
+<part-number>BUILTIN</part-number>
+<serial-number>BUILTIN</serial-number>
+<description>Virtual 10x 1GE(LAN) SFP</description>
+</chassis-sub-sub-module>
+</chassis-sub-module>
+<chassis-sub-module>
+<name>MIC 1</name>
+<description>Virtual 4x 10GE(LAN) XFP</description>
+<chassis-sub-sub-module>
+<name>PIC 2</name>
+<part-number>BUILTIN</part-number>
+<serial-number>BUILTIN</serial-number>
+<description>Virtual 2x 10GE(LAN) XFP</description>
+</chassis-sub-sub-module>
+<chassis-sub-sub-module>
+<name>PIC 3</name>
+<part-number>BUILTIN</part-number>
+<serial-number>BUILTIN</serial-number>
+<description>Virtual 2x 10GE(LAN) XFP</description>
+</chassis-sub-sub-module>
+</chassis-sub-module>
+</chassis-module>
 </chassis>
 </chassis-inventory>
-<cli>
-<banner></banner>
-</cli>
-</rpc-reply>
 
-root@r2><rpc-reply><chassis>
+
+
+root@r2>
+<chassis-inventory>
+<chassis>
 <name>Chassis</name>
 <serial-number>VMX782a</serial-number>
 <description>MX240</description>
@@ -40,12 +87,15 @@ root@r2><rpc-reply><chassis>
 </chassis-module>
 <chassis-module>
 <name>Routing Engine 0</name>
+<serial-number>38fb2a5a-db</serial-number>
 <description>RE-VMX</description>
 <chassis-re-disk-module>
-<name>ad0</name>
-<disk-size>20473</disk-size>
-<model>QEMU HARDDISK</model>
-<serial-number>QM00001</serial-number>
+<name>ada0</name>
+<disk-size>23553</disk-size>
+<model>QEMU HARDDISK
+</model>
+<serial-number>QM00001
+</serial-number>
 <description>Hard Disk</description>
 </chassis-re-disk-module>
 </chassis-module>
@@ -57,10 +107,50 @@ root@r2><rpc-reply><chassis>
 <name>CB 1</name>
 <description>VMX SCB</description>
 </chassis-module>
+<chassis-module>
+<name>FPC 0</name>
+<description>Virtual 20x1G + 4x10G FPC</description>
+<chassis-sub-module>
+<name>CPU</name>
+<version>Rev. 1.0</version>
+<part-number>RIOT</part-number>
+<serial-number>123XYZ987</serial-number>
+</chassis-sub-module>
+<chassis-sub-module>
+<name>MIC 0</name>
+<description>Virtual 20x 1GE(LAN) SFP</description>
+<chassis-sub-sub-module>
+<name>PIC 0</name>
+<part-number>BUILTIN</part-number>
+<serial-number>BUILTIN</serial-number>
+<description>Virtual 10x 1GE(LAN) SFP</description>
+</chassis-sub-sub-module>
+<chassis-sub-sub-module>
+<name>PIC 1</name>
+<part-number>BUILTIN</part-number>
+<serial-number>BUILTIN</serial-number>
+<description>Virtual 10x 1GE(LAN) SFP</description>
+</chassis-sub-sub-module>
+</chassis-sub-module>
+<chassis-sub-module>
+<name>MIC 1</name>
+<description>Virtual 4x 10GE(LAN) XFP</description>
+<chassis-sub-sub-module>
+<name>PIC 2</name>
+<part-number>BUILTIN</part-number>
+<serial-number>BUILTIN</serial-number>
+<description>Virtual 2x 10GE(LAN) XFP</description>
+</chassis-sub-sub-module>
+<chassis-sub-sub-module>
+<name>PIC 3</name>
+<part-number>BUILTIN</part-number>
+<serial-number>BUILTIN</serial-number>
+<description>Virtual 2x 10GE(LAN) XFP</description>
+</chassis-sub-sub-module>
+</chassis-sub-module>
+</chassis-module>
 </chassis>
 </chassis-inventory>
-<cli>
-<banner></banner>
-</cli>
-</rpc-reply>
+
+
 

@@ -1,4 +1,4 @@
-
+# coding: utf-8
 #!/usr/bin/env python
 """
  ******************************************************************************
@@ -43,7 +43,7 @@ class ui_fullFetcher(ui_dialog):
     # full mode main dialog
     def ShowDialog(self,button):
         caption = urwid.Text(('standoutLabel',u'Junos Space | Full Mode')) 
-        help = urwid.Text([u'In the full mode the tool will retrieve the device list from Junos Space and instruct Junos space to connect to all devices to retrieve the chassis information.'])
+        help = urwid.Text([u'In full mode the tool retrieves the device list from Junos Space and instructs Junos space to connect to all devices to retrieve the information necessary for the Advanced Services deliverable. For successful execution, please enter the necessary info in the Settings menu.'])
         generalSettings = self.menu_button(u'Settings', self.fullFetcher_generalSettings_dialog)
         commandSettings = self.menu_button(u'Commands', self.fullFetcher_commandSettings_dialog)
         verifyFileButton = self.menu_button(u'Verify Junos Space connectity', self.fullFetcher_verify)
@@ -57,7 +57,7 @@ class ui_fullFetcher(ui_dialog):
     # full mode > general settings window
     def fullFetcher_generalSettings_dialog(self,button):
         caption = urwid.Text(('standoutLabel',u'Full Mode > Settings')) 
-        help = urwid.Text([u'Please fill in the default url / username / password for Junos Space API'])
+        help = urwid.Text([u'Please fill in the default url / username / password for Junos Space API. If the number of specified processes are more than the devices that the tool collects information from, then the tool can create parallel sessions for all devices and complete execution faster (this uses up more resources on the machine running the tool).'])
         
         tb_username=urwid.Edit(('textbox', u"Junos Space Username :\n"))
         tb_password=urwid.Edit(('textbox', u"Junos Space Password :\n"),mask="*")
@@ -134,23 +134,36 @@ class ui_fullFetcher(ui_dialog):
 
     def fullFetcher_commandSettings_dialog(self,button):
         caption = urwid.Text(('standoutLabel',u'Full Mode > Commands')) 
-        help = urwid.Text([u'Please fill in the show commands you would like to execute'])
+        help = urwid.Text([u'In this section you can manually enter the commands you would like to execute on your devices based on their device group. A default set of commands are provided, but they can be edited either in this menu or in the "commands" folder of the tool. Note: The devices are grouped together based on the type of commands that need to be executed on them.'])
+
+        MX = self.menu_button(u'MX/vMX/M/T/ACX/PTX device group', self.fullFetcher_MX_dialog)
+        SRX = self.menu_button(u'SRX/vSRX device group', self.fullFetcher_SRX_dialog)
+        QFX = self.menu_button(u'QFX/EX device group', self.fullFetcher_QFX_dialog)
         
-        tb_commands=urwid.Edit(('textbox', u"Commands :\n"))
       
         cancelButton = self.menu_button(u'Cancel', self.exit_window)
+
+
+
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),MX,SRX,QFX,cancelButton]))
+
+    def fullFetcher_MX_dialog(self,button):
+
+        caption = urwid.Text(('standoutLabel',u'Full Mode > Commands > MX/vMX/M/T/ACX/PTX device group')) 
+        help = urwid.Text([u'In this menu you can edit the commands that are going to be automatically executed on the devices from this device group. Only "show" commands and the "request support information" command are allowed to be entered. The tool will not execute any other type of command.'])
+        tb_commands=urwid.Edit(('textbox', u"Commands :\n"))
 
         def load_settings():
             try:
                 settings=None
                 string = ""
-                with open('fullFetcherCommands.txt') as data_file:    
+                with open('commands/MX_4.txt') as data_file:    
                    settings = json.load(data_file)
                 for i in xrange(len(settings["commandList"])-1):
                     string += settings["commandList"][i] + ","
                 string += settings["commandList"][-1]
                 tb_commands.set_edit_text(string)
-                           
+                       
 
             except:
                 self.messageBox("Error", "An error occured while attempting to load existing commands!")
@@ -180,18 +193,132 @@ class ui_fullFetcher(ui_dialog):
                 #for i in xrange(len(commandLines)):
                 data["commandList"]=commandLines
 
-                with open("fullFetcherCommands.txt", 'w') as f:
+                with open("commands/MX_4.txt", 'w') as f:
                     f.write(json.dumps(data, indent=4, sort_keys=True))
 
-                self.messageBox("Commands", "Commands have been saved succesfull!")
+                self.messageBox("Commands", "Commands have been saved succesfully!")
             except:
-                self.messageBox("Commands > Error", "There were errors while attempting to save the commands to disk.\nPlease check permissions rights and/or locks for file: fullFetcherCommands.txt")
+                self.messageBox("Commands > Error", "There were errors while attempting to save the commands to disk.\nPlease check permissions rights and/or locks for file: commands/MX_4.txt")
                     
         saveButton = self.menu_button(u'Save', saveButton_onclick)
+        cancelButton = self.menu_button(u'Cancel', self.exit_window)
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),tb_commands,urwid.Divider(),saveButton,cancelButton])) 
+        load_settings()   
 
 
-        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),tb_commands, urwid.Divider(),saveButton,cancelButton]))
-        load_settings()    
+    def fullFetcher_SRX_dialog(self,button):
+
+            caption = urwid.Text(('standoutLabel',u'Full Mode > Commands')) 
+            help = urwid.Text([u'In this you can edit the commands that are going to be automatically executed on the devices from this device group. Only "show" commands and the "request support information" command are allowed to be entered. The tool will not execute any other type of command.'])
+            tb_commands=urwid.Edit(('textbox', u"Commands :\n"))
+            def load_settings():
+                try:
+                    settings=None
+                    string = ""
+                    with open('commands/SRX_4.txt') as data_file:    
+                       settings = json.load(data_file)
+                    for i in xrange(len(settings["commandList"])-1):
+                        string += settings["commandList"][i] + ","
+                    string += settings["commandList"][-1]
+                    tb_commands.set_edit_text(string)
+                           
+
+                except:
+                    self.messageBox("Error", "An error occured while attempting to load existing commands!")
+
+
+
+            def saveButton_onclick(button):
+                ### validation of the fields        
+                commands=tb_commands.get_edit_text()
+                commandLines = commands.split(",")
+                
+                for i in xrange(len(commandLines)):
+                    commandLines[i]=commandLines[i].strip()
+                    if len(str(commandLines[i])) < 4:
+                        self.messageBox("Input Error", "Command should have at least 4 charcters! (Check for trailing commas")
+                        return
+                    if (commandLines[i].split(" ", 1)[0] == 'request') and (commandLines[i] != 'request support information'):
+                        self.messageBox("Input Error", "The following command is not allowed: %s"%(commandLines[i]))
+                        return
+                    if (commandLines[i].split("|", 1)[-1].strip() == 'display xml'):
+                        self.messageBox("Input Error", "The following command is not allowed: %s"%(commandLines[i]))
+                        return
+            
+                #### saving the settings to disk
+                try:
+                    data={}
+                    #for i in xrange(len(commandLines)):
+                    data["commandList"]=commandLines
+
+                    with open("commands/SRX_4.txt", 'w') as f:
+                        f.write(json.dumps(data, indent=4, sort_keys=True))
+
+                    self.messageBox("Commands", "Commands have been saved succesfull!")
+                except:
+                    self.messageBox("Commands > Error", "There were errors while attempting to save the commands to disk.\nPlease check permissions rights and/or locks for file: fullFetcherCommands.txt")
+                        
+            saveButton = self.menu_button(u'Save', saveButton_onclick)
+            cancelButton = self.menu_button(u'Cancel', self.exit_window)
+            self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),tb_commands,urwid.Divider(),saveButton,cancelButton])) 
+            load_settings()  
+
+    def fullFetcher_QFX_dialog(self,button):
+
+            caption = urwid.Text(('standoutLabel',u'Full Mode > Commands')) 
+            help = urwid.Text([u'In this you can edit the commands that are going to be automatically executed on the devices from this device group. Only "show" commands and the "request support information" command are allowed to be entered. The tool will not execute any other type of command.'])
+            tb_commands=urwid.Edit(('textbox', u"Commands :\n"))
+            def load_settings():
+                try:
+                    settings=None
+                    string = ""
+                    with open('commands/QFX_4.txt') as data_file:    
+                       settings = json.load(data_file)
+                    for i in xrange(len(settings["commandList"])-1):
+                        string += settings["commandList"][i] + ","
+                    string += settings["commandList"][-1]
+                    tb_commands.set_edit_text(string)
+                           
+
+                except:
+                    self.messageBox("Error", "An error occured while attempting to load existing commands!")
+
+
+
+            def saveButton_onclick(button):
+                ### validation of the fields        
+                commands=tb_commands.get_edit_text()
+                commandLines = commands.split(",")
+                
+                for i in xrange(len(commandLines)):
+                    commandLines[i]=commandLines[i].strip()
+                    if len(str(commandLines[i])) < 4:
+                        self.messageBox("Input Error", "Command should have at least 4 charcters! (Check for trailing commas")
+                        return
+                    if (commandLines[i].split(" ", 1)[0] == 'request') and (commandLines[i] != 'request support information'):
+                        self.messageBox("Input Error", "The following command is not allowed: %s"%(commandLines[i]))
+                        return
+                    if (commandLines[i].split("|", 1)[-1].strip() == 'display xml'):
+                        self.messageBox("Input Error", "The following command is not allowed: %s"%(commandLines[i]))
+                        return
+            
+                #### saving the settings to disk
+                try:
+                    data={}
+                    #for i in xrange(len(commandLines)):
+                    data["commandList"]=commandLines
+
+                    with open("commands/QFX_4.txt", 'w') as f:
+                        f.write(json.dumps(data, indent=4, sort_keys=True))
+
+                    self.messageBox("Commands", "Commands have been saved succesfull!")
+                except:
+                    self.messageBox("Commands > Error", "There were errors while attempting to save the commands to disk.\nPlease check permissions rights and/or locks for file: fullFetcherCommands.txt")
+                        
+            saveButton = self.menu_button(u'Save', saveButton_onclick)
+            cancelButton = self.menu_button(u'Cancel', self.exit_window)
+            self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),tb_commands,urwid.Divider(),saveButton,cancelButton])) 
+            load_settings()  
 
     # assisted mode > run  | creates the DirectFetcher object and runs the appropiate console tool
     def fullFetcher_run(self,button):

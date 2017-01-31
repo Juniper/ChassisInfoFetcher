@@ -1,4 +1,4 @@
-
+# coding: utf-8
 #!/usr/bin/env python
 """
  ******************************************************************************
@@ -40,6 +40,7 @@ from ui_fullFetcher import ui_fullFetcher
 from ui_SNSIFetcher import ui_SNSIFetcher
 from ui_help import ui_help
 from ui_about import ui_about  
+from ui_xmlTransformation import ui_xmlTransformation
 
 class ui_main(ui_dialog):
     
@@ -51,6 +52,7 @@ class ui_main(ui_dialog):
         self.ui_SNSIFetcher_dialog=ui_SNSIFetcher(top)
         self.ui_help_dialog=ui_help(top)
         self.ui_about_dialog=ui_about(top)
+        self.ui_xmlTransformation_dialog=ui_xmlTransformation(top)
 
     def Pass(self):
         pass
@@ -78,13 +80,17 @@ Do you accept and acknowledge the above disclaimer."""])
         self.top.open_listbox(urwid.ListBox([caption,urwid.Divider(),disclaimer,urwid.Divider(),bno,byes]))
 
     def ShowDialog(self):
-        menu_top = self.menu(u'Chassis Information Fetcher', [
+        help = urwid.Text([u'The ChassisInfoFetcher tool connects in parallel to all customer specified devices (mode dependant - check Help section), automatically detects the type of device and fetches the necessary information for that device type. The customer needs to select one of the modes, enter the required credentials (* Mode > Settings) and run the tool.'])
+        menu_top = self.menu(u'Chassis Information Fetcher 2.0', [
+
+        help,
         urwid.Divider(),
-        self.menu_button(u'Direct Fetcher', self.ui_directFetcher_dialog.ShowDialog),
-        self.menu_button(u'Junos Space | Assisted Fetcher', self.ui_assistedFetcher_dialog.ShowDialog),
-        self.menu_button(u'Junos Space | Service Now Service Insight Fetcher', self.ui_SNSIFetcher_dialog.ShowDialog),
-        self.menu_button(u'Junos Space | Full Fetcher', self.ui_fullFetcher_dialog.ShowDialog),
+        self.menu_button(u'Direct Mode', self.ui_directFetcher_dialog.ShowDialog),
+        self.menu_button(u'Junos Space | Assisted Mode', self.ui_assistedFetcher_dialog.ShowDialog),
+        self.menu_button(u'Junos Space | Service Now Service Insight Mode', self.ui_SNSIFetcher_dialog.ShowDialog),
+        self.menu_button(u'Junos Space | Full Mode', self.ui_fullFetcher_dialog.ShowDialog),
         urwid.Divider(),
+        self.menu_button(u'Additional features', self.ui_xmlTransformation_dialog.ShowDialog),
         self.menu_button(u'Help', self.ui_help_dialog.ShowDialog),
         self.menu_button(u'About', self.ui_about_dialog.ShowDialog),
         urwid.Divider(),
