@@ -129,6 +129,7 @@ Format of the configuration of conf/fullFetcher.py:
 
 
    > python SNSIFetcher.py
+
 The format of the configuration in conf SNSIFetcher.py is identical to that of conf/fullFetcher.py.
 
 ## Output!
