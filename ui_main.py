@@ -90,7 +90,7 @@ Do you accept and acknowledge the above disclaimer."""])
         self.menu_button(u'Junos Space | Service Now Service Insight Mode', self.ui_SNSIFetcher_dialog.ShowDialog),
         self.menu_button(u'Junos Space | Full Mode', self.ui_fullFetcher_dialog.ShowDialog),
         urwid.Divider(),
-        self.menu_button(u'Additional features', self.ui_xmlTransformation_dialog.ShowDialog),
+        #self.menu_button(u'Additional features', self.ui_xmlTransformation_dialog.ShowDialog),
         self.menu_button(u'Help', self.ui_help_dialog.ShowDialog),
         self.menu_button(u'About', self.ui_about_dialog.ShowDialog),
         urwid.Divider(),
