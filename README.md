@@ -90,7 +90,7 @@ Individual scenarions can also be run separate:
    
 The CIF tool can be run without a GUI by executing the following commands directly. In order to successfully execute each fetcher, the login details required need to be included in the corresponding files in the conf directory. Each fetcher has a separate command: 
 
-    > python directFetcher.py
+   > python directFetcher.py
 
 The conf/directFetcher.conf file needs to be configured with the following template:
 {
@@ -101,7 +101,7 @@ The conf/directFetcher.conf file needs to be configured with the following templ
     ],
     "username": "Device username"
 }
-    > python assistedFetcher.py
+   > python assistedFetcher.py
 
 Format for the configuration of conf/assistedFetcher.conf:
 
@@ -117,7 +117,7 @@ Format for the configuration of conf/assistedFetcher.conf:
     "url": "Junos Space GUI IP address"
 }
 
-    > python fullFetcher.py
+   > python fullFetcher.py
 Format of the configuration of conf/fullFetcher.py:
 {
     "parallelProcesses": "",
@@ -127,7 +127,7 @@ Format of the configuration of conf/fullFetcher.py:
 }
 
 
-    > python SNSIFetcher.py
+   > python SNSIFetcher.py
 The format of the configuration in conf SNSIFetcher.py is identical to that of conf/fullFetcher.py.
 
 ## Output!
