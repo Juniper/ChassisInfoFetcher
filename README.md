@@ -26,12 +26,14 @@ Supported scenarios and modes are:
 >docker build -t juniper/chassisinfofetcher .
 
 ##### Running the application inside a container
->docker run -i -t juniper/chassisinfofetcher  /bin/ash -c "cd ChassisInfoFetcher;/usr/bin/python2.7 app.py"
+>docker run -i -t juniper/chassisinfofetcher  /bin/ash -c "cd ChassisInfoFetcher2.0;/usr/bin/python2.7 app.py"
 
 ##### Start a container in shell for manual execution
 >docker run -i -t juniper/chassisinfofetcher  /bin/ash 
 
-## Basic Dependencies
+## Installation without Docker
+
+### Basic dependencies 
 
 #### Ubuntu 14.04
 
@@ -53,9 +55,7 @@ Supported scenarios and modes are:
 
 >easy_install pip
 
-## To install the ChassisInfoFetcher tool
- 
-#### Dependencies:
+### To install the ChassisInfoFetcher tool
   
   To install PyEz : 
 > pip install junos-eznc
