@@ -17,7 +17,7 @@ Supported scenarios and modes are:
     Junos Space | SNSI Mode - In the SNSI mode the tool will retrieve the iJMB files collected by Junos Space from the devices and extract 
                                      the needed chassis information.
 
-## 1.Installation using Docker
+## 1. Installation using Docker
 
 ##### Downloading the Dockerfile build instructions
 >wget https://git.juniper.net/mgospodinov/ChassisInfoFetcher2.0/raw/master/docker/Dockerfile
@@ -55,7 +55,7 @@ Supported scenarios and modes are:
 
 >easy_install pip
 
-### 2.2 To install the ChassisInfoFetcher tool
+### 2.2 Install the ChassisInfoFetcher tool
   
   To install PyEz : 
 > pip install junos-eznc
