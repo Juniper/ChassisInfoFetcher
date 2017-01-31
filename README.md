@@ -17,7 +17,7 @@ Supported scenarios and modes are:
     Junos Space | SNSI Mode - In the SNSI mode the tool will retrieve the iJMB files collected by Junos Space from the devices and extract 
                                      the needed chassis information.
 
-## Installation using Docker
+## 1.Installation using Docker
 
 ##### Downloading the Dockerfile build instructions
 >wget https://git.juniper.net/mgospodinov/ChassisInfoFetcher2.0/raw/master/docker/Dockerfile
@@ -31,9 +31,9 @@ Supported scenarios and modes are:
 ##### Start a container in shell for manual execution
 >docker run -i -t juniper/chassisinfofetcher  /bin/ash 
 
-## Installation without Docker
+## 2. Installation without Docker
 
-### Basic dependencies 
+### 2.1 Basic dependencies 
 
 #### Ubuntu 14.04
 
@@ -55,7 +55,7 @@ Supported scenarios and modes are:
 
 >easy_install pip
 
-### To install the ChassisInfoFetcher tool
+### 2.2 To install the ChassisInfoFetcher tool
   
   To install PyEz : 
 > pip install junos-eznc
@@ -72,12 +72,12 @@ Supported scenarios and modes are:
  > git clone https://git.juniper.net/mgospodinov/ChassisInfoFetcher2.0.git 
     
 
-## How to run the tool via GUI?
+## 3. How to run the tool via GUI?
 
 To run the tool GUI :
    > python app.py
    
-## How to use the tool without GUI?
+## 4. How to use the tool without GUI?
 
 Individual scenarions can also be run separate:
    
@@ -133,7 +133,7 @@ Format of the configuration of conf/fullFetcher.py:
 
 The format of the configuration in conf SNSIFetcher.py is identical to that of conf/fullFetcher.py.
 
-## Output!
+## 5. Output
 
 The configuration output from the devices is presented in two formats. 
 
@@ -142,7 +142,7 @@ Let us suppose that "show chassis hardware" and "show configuration | display in
 The output of all commands in the SNSI and Full modes is in xml format with the exception of: "show configuration | display inheritance | display set" which is parsed into a "set" format. 
 
 
-## Modes!
+## 6. Modes
 
 Only Direct Mode does not require for Junos Space to be connected to the devices. All other modes use features from Junos Space, so for successful execution of the sctipt, make sure that your Junos Space is correctly connected to the respective devices.
 
