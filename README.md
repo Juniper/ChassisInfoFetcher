@@ -139,11 +139,6 @@ Let us suppose that "show chassis hardware" and "show configuration | display in
 The output of all commands in the SNSI and Full modes is in xml format with the exception of: "show configuration | display inheritance | display set" which is parsed into a "set" format. 
 
 
-## Commands!
-
-
-
-
 ## Modes!
 
 Only Direct Mode does not require for Junos Space to be connected to the devices. All other modes use features from Junos Space, so for successful execution of the sctipt, make sure that your Junos Space is correctly connected to the respective devices.
