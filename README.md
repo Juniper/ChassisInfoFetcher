@@ -146,10 +146,15 @@ Each mode is configured with a default set of commands that can be modified from
 By default the necessary commands are provided in the commands directory of the tool. They are separated by device group: MX is used for the MX/vMX/M/T/ACX/PTX devices, QFX for the QFX/EX devices, and SRX for the SRX/vSRX devices. The numbers following the device type refer to the specific modes: MX_12 is for Direct and Assisted modes, MX_3 is for the SNSI mode and MX_4 is for the Full mode. The SNSI mode does not accept commands, because it uses the iJMB file to fetch the device configuration. 
 
 Here you can find a mapping between the iJMB attachment files and the configuration information included in them:
+
         _AISESI.txt — Contains event support information; output of multiple Junos OS show commands 
+        
         _rsi.txt — Contains “request support information” of the device 
+        
         _cfg_xml.xml — Contains device configuration information in XML format (show configuration | display inheritance | display xml)
+        
         _shd_xml.xml — Contains output of the “show chassis hardware” command in XML format 
+        
         _ver_xml.xml — Contains the hostname and version information about the software (including the software help files and AI-Scripts bundle) running on the device (show version) 
 
 This is why in the SNSI mode > Commands section, the relevant files are specified and not actual commands (for example, the section includes: _AISESI.txt, _cfg_xml, _shd_xml). Similarly the MX_3, QFX_3, and SRX_3 files do not contain commands.
