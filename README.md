@@ -91,7 +91,7 @@ Individual scenarions can also be run separate:
    > python SNSIFetcher.py
    
 ### 4.1
-The ChassisInfoFetcher (CIF) tool can be run without a GUI by executing the following commands directly. In order to successfully execute each mode, the login details required need to be included in the corresponding configuration files in the conf directory. Each fetcher has a specific login details that need to be provided: 
+The ChassisInfoFetcher (CIF) tool can be run without a GUI by executing the following commands directly. In order to successfully execute each mode, the login details required need to be included in the corresponding configuration files in the conf directory. Each fetcher has a specific login details that need to be provided.
 
    > python directFetcher.py
    
@@ -99,7 +99,7 @@ In direct mode the tool retrieves the device list and login details stored in th
 <Device IP address, Username, Password, SSH port>
 Alternatively, you can include only the IP address of the devices in the hosts file and specify the username, password, and SSH port in the Direct mode > Settings menu:
 
-
+Login details:
 The conf/directFetcher.conf file needs to be configured with the following template:
 {
     "parallelProcesses": "12",
