@@ -99,15 +99,19 @@ In direct mode the tool retrieves the device list and login details stored in th
 <Device IP address, Username, Password, SSH port>
 Alternatively, you can include only the IP address of the devices in the hosts file and specify the username, password, and SSH port in the Direct mode > Settings menu:
 
-Login details:
+### Login details:
 The conf/directFetcher.conf file needs to be configured with the following template:
 {
     "parallelProcesses": "12",
+    
     "password": "Device password",
+    
     "port": [
         "22"
     ],
+    
     "username": "Device login"
+    
 }
    > python assistedFetcher.py
 
@@ -155,7 +159,7 @@ Here you can find a mapping between the iJMB attachment files and the configurat
 This is why in the SNSI mode > Commands section, the relevant files are specified and not actual commands (for example, the section includes: _AISESI.txt, _cfg_xml, _shd_xml). Similarly the MX_3, QFX_3, and SRX_3 files do not contain commands.
 
 
-## 6. Output
+## 5. Output
 
 The configuration output from the devices is presented in two formats. 
 
@@ -164,7 +168,7 @@ Let us suppose that "show chassis hardware" and "show configuration | display in
 The output of all commands in the SNSI and Full modes is in xml format with the exception of: "show configuration | display inheritance | display set" which is automatically parsed into a "set plain text" format by the tool. 
 
 
-## 7. Use of Junos Space
+## 6. Use of Junos Space
 
 Only Direct Mode does not require for Junos Space to be connected to the devices. All other modes use features from Junos Space, so for successful execution of the sctipt, make sure that your Junos Space is correctly connected to the respective devices.
 
