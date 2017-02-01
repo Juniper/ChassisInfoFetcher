@@ -103,15 +103,11 @@ Alternatively, you can include only the IP address of the devices in the hosts f
 The conf/directFetcher.conf file needs to be configured with the following template:
 {
     "parallelProcesses": "12",
-    
     "password": "Device password",
-    
     "port": [
         "22"
     ],
-    
     "username": "Device login"
-    
 }
    > python assistedFetcher.py
 
