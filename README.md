@@ -56,6 +56,8 @@ Supported scenarios and modes are:
 
 >easy_install pip
 
+#### Windows - not supported
+
 ### 2.2 Install the ChassisInfoFetcher tool
   
   To install PyEz : 
