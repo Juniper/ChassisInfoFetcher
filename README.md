@@ -56,7 +56,10 @@ Supported scenarios and modes are:
 
 >easy_install pip
 
-#### Windows - not supported
+#### Windows
+
+>Not supported
+
 
 ### 2.2 Install the ChassisInfoFetcher tool
   
