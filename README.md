@@ -21,13 +21,13 @@ Supported scenarios and modes are:
 ## 1. Installation using Docker
 
 ##### Downloading the Dockerfile build instructions
->wget https://git.juniper.net/mgospodinov/ChassisInfoFetcher2.0/raw/master/docker/Dockerfile
+>wget https://git.juniper.net/mgospodinov/ChassisInfoFetcher/raw/master/docker/Dockerfile
 
 ##### Building the Docker image
 >docker build -t juniper/chassisinfofetcher .
 
 ##### Running the application inside a container
->docker run -i -t juniper/chassisinfofetcher  /bin/ash -c "cd ChassisInfoFetcher2.0;/usr/bin/python2.7 app.py"
+>docker run -i -t juniper/chassisinfofetcher  /bin/ash -c "cd ChassisInfoFetcher;/usr/bin/python2.7 app.py"
 
 ##### Start a container in shell for manual execution
 >docker run -i -t juniper/chassisinfofetcher  /bin/ash 
@@ -75,7 +75,7 @@ Supported scenarios and modes are:
 > sudo pip install ./py-space-platform
 
   To install the aplication
- > git clone https://git.juniper.net/mgospodinov/ChassisInfoFetcher2.0.git 
+ > git clone https://git.juniper.net/mgospodinov/ChassisInfoFetcher.git 
     
 
 ## 3. How to run the tool via GUI?
