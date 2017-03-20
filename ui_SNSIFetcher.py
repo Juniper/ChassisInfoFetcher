@@ -46,14 +46,43 @@ class ui_SNSIFetcher(ui_dialog):
         caption = urwid.Text(('standoutLabel',u'Junos Space | SNSI Mode')) 
         help = urwid.Text([u'In SNSI mode the tool connects to Junos Space, retrieves the iJMB files collected by Junos Space and extracts the needed chassis information. Since this mode works with the iJMB files, in the command section, the necessary attachment files need to be specified, rather than regular commands.'])
         generalSettings = self.menu_button(u'Settings', self.SNSIFetcher_generalSettings_dialog)
-        commandSettings = self.menu_button(u'Commands', self.SNSIFetcher_commandSettings_dialog)
-        verifyFileButton = self.menu_button(u'Verify Junos Space connectity', self.SNSIFetcher_verify)
-        runButton = self.menu_button(u'Run', self.SNSIFetcher_run)
+        fetchInstallBase = self.menu_button(u'Fetch Install Base information', self.SNSIFetcher_IB)
+        fetchASdeliverable = self.menu_button(u'Fetch information for Advanced Service deliverables', self.SNSIFetcher_AS)
         cancelButton = self.menu_button(u'Cancel', self.exit_window)
 
-        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help, urwid.Divider(),generalSettings, commandSettings, verifyFileButton, runButton,cancelButton]))
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help, urwid.Divider(),generalSettings, fetchInstallBase, fetchASdeliverable, cancelButton]))
          
 
+    def SNSIFetcher_IB(self,button):
+        caption = urwid.Text(('standoutLabel',u'Direct Mode > Install Base'))
+
+        verifyFileButton = self.menu_button(u'Verify Junos Space connectity', self.SNSIFetcher_verify)
+        runButton = self.menu_button(u'Run', self.SNSIFetcherIB_run)
+        cancelButton = self.menu_button(u'Cancel', self.exit_window)
+
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(), verifyFileButton, runButton,cancelButton]))
+
+    def SNSIFetcher_AS(self,button):
+        caption = urwid.Text(('standoutLabel',u'Direct Mode > Advanced Service Deliverables'))
+
+        commandSettings = self.menu_button(u'Commands', self.SNSIFetcher_commandSettings_dialog)
+        verifyFileButton = self.menu_button(u'Verify Junos Space connectity', self.SNSIFetcher_verify)
+        runButton = self.menu_button(u'Run', self.SNSIFetcherAS_run)
+        cancelButton = self.menu_button(u'Cancel', self.exit_window)
+
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(), commandSettings, verifyFileButton, runButton,cancelButton]))
+
+    # direct mode > run  | creates the DirectFetcher object and runs the appropiate console tool
+    def SNSIFetcherIB_run(self,button):
+        with open("execute.task", 'w') as f:
+            f.write("SNSIFetcherIB")
+
+        self.exit_program(None)   #closing the graphical interface to run the DirectFetcher
+
+    def SNSIFetcherAS_run(self,button):
+        with open("execute.task", 'w') as f:
+            f.write("SNSIFetcherAS")
+        self.exit_program(None)   #closing the graphical interface to run the DirectFetcher      
 
     # full mode > general settings window
     def SNSIFetcher_generalSettings_dialog(self,button):
@@ -349,7 +378,7 @@ class ui_SNSIFetcher(ui_dialog):
         button = self.menu_button(u'OK', self.exit_window)
        
         # creation of tool object
-        df=SNSIFetcher()
+        df=SNSIFetcher("IB")
         (result,message)=df.LoadInputFile()
         messageLabel.set_text(message+"\n")
         dialog=self.top.message_box(urwid.Pile([captionLabel, urwid.Divider(),messageLabel,urwid.Divider(),button]))

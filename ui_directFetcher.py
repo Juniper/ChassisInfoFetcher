@@ -45,20 +45,43 @@ class ui_directFetcher(ui_dialog):
         help = urwid.Text([u'In the direct mode the tool will retrieve the device list from \'hosts.csv\' file, will proceed to connect on all devices in a parallel fashion and retrieve the requested chassis information.'])
         
         generalSettings = self.menu_button(u'Settings', self.directFetcher_generalSettings_dialog)
+
+        fetchInstallBase = self.menu_button(u'Fetch Install Base information', self.directFetcher_IB)
+        fetchASdeliverable = self.menu_button(u'Fetch information for Advanced Service deliverables', self.directFetcher_AS)
+        #runButton = self.menu_button(u'Run', self.directFetcher_run)
+        cancelButton = self.menu_button(u'Cancel', self.exit_window)
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help, urwid.Divider(),generalSettings, fetchInstallBase, fetchASdeliverable, cancelButton]))
+
+        
+    def directFetcher_IB(self,button):
+        caption = urwid.Text(('standoutLabel',u'Direct Mode > Install Base'))
+
+        verifyFileButton = self.menu_button(u'Verify \'hosts.csv\' ', self.directFetcher_verify)
+        runButton = self.menu_button(u'Run', self.directFetcherIB_run)
+        cancelButton = self.menu_button(u'Cancel', self.exit_window)
+
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(), verifyFileButton, runButton,cancelButton]))
+
+    def directFetcher_AS(self,button):
+        caption = urwid.Text(('standoutLabel',u'Direct Mode > Advanced Service Deliverables'))
+
         commandSettings = self.menu_button(u'Commands', self.directFetcher_commandSettings_dialog)
         verifyFileButton = self.menu_button(u'Verify \'hosts.csv\' ', self.directFetcher_verify)
-        runButton = self.menu_button(u'Run', self.directFetcher_run)
+        runButton = self.menu_button(u'Run', self.directFetcherAS_run)
         cancelButton = self.menu_button(u'Cancel', self.exit_window)
-        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help, urwid.Divider(),generalSettings, commandSettings, verifyFileButton, runButton,cancelButton]))
 
-        #top.open_box(urwid.Filler(urwid.Pile([caption,urwid.Divider(),help, urwid.Divider(),generalSettings,verifyFileButton, runButton,cancelButton])))
-
-
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(), commandSettings, verifyFileButton, runButton,cancelButton]))
 
     # direct mode > run  | creates the DirectFetcher object and runs the appropiate console tool
-    def directFetcher_run(self,button):
+    def directFetcherIB_run(self,button):
         with open("execute.task", 'w') as f:
-            f.write("DirectFetcher")
+            f.write("DirectFetcherIB")
+
+        self.exit_program(None)   #closing the graphical interface to run the DirectFetcher
+
+    def directFetcherAS_run(self,button):
+        with open("execute.task", 'w') as f:
+            f.write("DirectFetcherAS")
         self.exit_program(None)   #closing the graphical interface to run the DirectFetcher
 
       
@@ -332,7 +355,7 @@ class ui_directFetcher(ui_dialog):
         button = self.menu_button(u'OK', self.exit_window)
        
         # creation of tool object
-        df=DirectFetcher()
+        df=DirectFetcher("IB")
         (result,message)=df.LoadInputFile()
         messageLabel.set_text(message+"\n")
         dialog=self.top.message_box(urwid.Pile([captionLabel, urwid.Divider(),messageLabel,urwid.Divider(),button]))

@@ -182,7 +182,7 @@ class FullFetcher(DirectFetcher):
 
     def job(self,args):
         output = {}
-        output["router_%s"%args["name"]] = ""
+        output["router_%s"%args["ipAddr"]] = ""
         commandOutput = ""
         commandCheck = ""
         flag = 0
@@ -203,14 +203,20 @@ class FullFetcher(DirectFetcher):
             return ""
 
         autoDetect = etree.tostring(autoDetect, pretty_print=True)
+
+        if self.path == "IB":
+            output["router_%s"%args["ipAddr"]] = autoDetect
+            output['show chassis hardware detail | display xml']=autoDetect
+            return output
+            
         if(autoDetect.find("<description>MX")>-1 or autoDetect.find("<description>M")>-1 or autoDetect.find("<description>T")>-1 or autoDetect.find("<description>PTX")>-1 or autoDetect.find("<description>ACX")>-1):
             try:
                 with open("commands/MX_4.txt", "r") as data_file:
                     commandSettings = json.load(data_file)
-                    logging.info("Loaded list of commands " + "["+args["host"]+"]")
+                    logging.info("Loaded list of commands " + "["+args["ipAddr"]+"]")
 
             except:
-                msg="Loading and Verifying Device List : Unable to read input file 'commands/MX_4.txt'."
+                msg="Loading and Verifying Device List : Unable to read input file 'commands/MX_4.txt.'."
                 logging.error(msg)
                 return (False,msg)
 
@@ -218,7 +224,7 @@ class FullFetcher(DirectFetcher):
             try:
                 with open("commands/SRX_4.txt", "r") as data_file:
                     commandSettings = json.load(data_file)
-                    logging.info("Loaded list of commands " + "["+args["host"]+"]")
+                    logging.info("Loaded list of commands " + "["+args["ipAddr"]+"]")
 
             except:
                 msg="Loading and Verifying Device List : Unable to read input file 'commands/SRX_4.txt'."
@@ -229,7 +235,7 @@ class FullFetcher(DirectFetcher):
             try:
                 with open("commands/QFX_4.txt", "r") as data_file:
                     commandSettings = json.load(data_file)
-                    logging.info("Loaded list of commands " + "["+args["host"]+"]")
+                    logging.info("Loaded list of commands " + "["+args["ipAddr"]+"]")
 
             except:
                 msg="Loading and Verifying Device List : Unable to read input file 'commands/QFX_4.txt'."
@@ -267,8 +273,8 @@ class FullFetcher(DirectFetcher):
                 
 
 
-                commandOutput = "root@%s> %s\n"%(args["name"],commandCheck) + finalText + "\n\n\n"
-                output["router_%s"%args["name"]] += commandOutput         #Preparation for the two types of output: file_host1 contains the output of all the commands ran on host1;
+                commandOutput = "root@%s> %s\n"%(args["ipAddr"],commandCheck) + finalText + "\n\n\n"
+                output["router_%s"%args["ipAddr"]] += commandOutput         #Preparation for the two types of output: file_host1 contains the output of all the commands ran on host1;
                 output[commandCheck] = commandOutput                    #file_show_chassis_hardware contains the output of the "show chassis harware" command from all hosts
             else:
                 logging.error("The following command is not allowed : %s "%(commandCheck))   
@@ -285,7 +291,7 @@ class FullFetcher(DirectFetcher):
 
 if __name__ == '__main__':
     logging.config.fileConfig('conf/logging.conf')
-    f=FullFetcher()
+    f=FullFetcher(sys.argv[1])
     f.LoadInputFile()
     #f.job("{'username': 'mkim', 'host': '172.30.77.181', 'password': 'mkim', 'port': '22'}")
     #f.job(f.jobList[0])

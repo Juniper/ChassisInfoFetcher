@@ -129,7 +129,7 @@ class AssistedFetcher(DirectFetcher):
 
 if __name__ == '__main__':
     logging.config.fileConfig('conf/logging.conf')
-    f=AssistedFetcher()
+    f=AssistedFetcher(sys.argv[1])
     logging.info(f.LoadInputFile())
     #df.job("{'username': 'mkim', 'host': '172.30.77.181', 'password': 'mkim', 'port': '22'}")
     f.Run()

@@ -75,32 +75,64 @@ if os.path.exists("execute.task"):
         task = f.read()
     os.remove("execute.task")
 
-if task=="DirectFetcher":
-    df=DirectFetcher()
+if task=="DirectFetcherIB":
+    df=DirectFetcher("IB")
     print("\n--------------------------------------------------------------------")
     print("\n  Direct Mode")
     print("\n--------------------------------------------------------------------")
     df.LoadInputFile()
     df.Run()
 
-elif task=="AssistedFetcher":
-    df=AssistedFetcher()
+elif task=="DirectFetcherAS":
+    df=DirectFetcher("AS")
+    print("\n--------------------------------------------------------------------")
+    print("\n  Direct Mode")
+    print("\n--------------------------------------------------------------------")
+    df.LoadInputFile()
+    df.Run()
+
+elif task=="AssistedFetcherIB":
+    df=AssistedFetcher("IB")
     print("\n--------------------------------------------------------------------")
     print("\n  Assisted Mode")
     print("\n--------------------------------------------------------------------")
     df.LoadInputFile()
     df.Run()
 
-elif task=="FullFetcher":
-    df=FullFetcher()
+elif task=="AssistedFetcherAS":
+    df=AssistedFetcher("AS")
+    print("\n--------------------------------------------------------------------")
+    print("\n  Assisted Mode")
+    print("\n--------------------------------------------------------------------")
+    df.LoadInputFile()
+    df.Run()
+
+elif task=="FullFetcherIB":
+    df=FullFetcher("IB")
     print("\n-------------------------------------------------")
     print("\n  Full Mode ")
     print("\n-------------------------------------------------")
     df.LoadInputFile()
     df.Run()
 
-elif task=="SNSIFetcher":
-    df=SNSIFetcher()
+elif task=="FullFetcherAS":
+    df=FullFetcher("AS")
+    print("\n-------------------------------------------------")
+    print("\n  Full Mode ")
+    print("\n-------------------------------------------------")
+    df.LoadInputFile()
+    df.Run()
+
+elif task=="SNSIFetcherIB":
+    df=SNSIFetcher("IB")
+    print("\n-------------------------------------------------")
+    print("\n  SNSI Mode ")
+    print("\n-------------------------------------------------")
+    df.LoadInputFile()
+    df.Run()
+
+elif task=="SNSIFetcherAS":
+    df=SNSIFetcher("AS")
     print("\n-------------------------------------------------")
     print("\n  SNSI Mode ")
     print("\n-------------------------------------------------")

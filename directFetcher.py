@@ -57,10 +57,11 @@ import logging.config
 
 class DirectFetcher:
  
-    def __init__(self):
+    def __init__(self, path):
         self.THREADCOUNT=15
         self.jobList=[]
         self.parsedValues=[]
+        self.path=path
     
     def __call__(self,args):
         return self.job(args)
@@ -77,16 +78,23 @@ class DirectFetcher:
         
         try:
             ssh = paramiko.SSHClient()
+            ssh.load_system_host_keys()
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            ssh.connect(args["host"], username=args["username"], password=args["password"])
-            ssh.exec_command('cli')
-            ssh_stdin, out, ssh_stderr = ssh.exec_command('show chassis hardware detail | display xml')
+            ssh.connect(args["host"], port =22, username=args["username"], password=args["password"])
+            #ssh.exec_command('cli')
+            ssh_stdin, out, ssh_stderr = ssh.exec_command('cli show chassis hardware detail "|" display xml')
             autoDetect = out.read()
+            #print ("Hello {}".format(autoDetect))
         
         except Exception as err:
             logging.error("Error parsing command output ["+args["host"]+"]:", err)
             return ""
 
+        if self.path == "IB":
+            output["router_%s"%args["host"]] = autoDetect
+            output['show chassis hardware detail | display xml']=autoDetect
+            return output
+        #print ("{}".format(self.path))
 
         if(autoDetect.find("<description>MX")>-1 or autoDetect.find("<description>M")>-1 or autoDetect.find("<description>T")>-1 or autoDetect.find("<description>PTX")>-1 or autoDetect.find("<description>ACX")>-1):
             try:
@@ -130,7 +138,7 @@ class DirectFetcher:
                 #print ("{}".format(len(commandSettings["commandList"])))
                 commandCheck = commandSettings["commandList"][i].strip()
                 if (commandCheck.split(" ",1)[0]=="show" or commandCheck =="request support information"):
-                    ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(commandCheck) 
+                    ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command("cli "+re.sub('[|]', '"|"', commandCheck))
                     commandOutput = "root@%s> %s\n"%(args["host"],commandCheck)
                     commandOutput = commandOutput + (ssh_stdout.read()) + "\n\n\n"
                     #print ("{}".format(commandOutput))
@@ -148,6 +156,7 @@ class DirectFetcher:
         
         hosts_lines= []
         general_settings= []
+
         
         #### read the device list from input file
         try:
@@ -209,6 +218,8 @@ class DirectFetcher:
         #print ("Result %s"% ret[0])
         success = 0
         failed = 0
+
+
         
         try:
 
@@ -242,7 +253,7 @@ class DirectFetcher:
 if __name__ == '__main__':
 
     logging.config.fileConfig('conf/logging.conf')
-    df=DirectFetcher()
+    df=DirectFetcher(sys.argv[1])
     df.LoadInputFile()
     # To test single process job  for debugging purposes use the following: 
     #df.job("{'username': 'mkim', 'host': '172.30.77.181', 'password': 'mkim', 'port': '22'}")

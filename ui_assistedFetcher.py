@@ -45,13 +45,43 @@ class ui_assistedFetcher(ui_dialog):
         help = urwid.Text([u'In the assisted mode the tool will retrieve the device list from Junos Space and proceed to connect to them in parallel in order to retrieve the chassis information.'])
         
         generalSettings = self.menu_button(u'Settings', self.assistedFetcher_generalSettings_dialog)
-        commandSettings = self.menu_button(u'Commands', self.assistedFetcher_commandSettings_dialog)
-        verifyFileButton = self.menu_button(u'Verify Junos Space connectity', self.assistedFetcher_verify)
-        runButton = self.menu_button(u'Run', self.assistedFetcher_run)
+        fetchInstallBase = self.menu_button(u'Fetch Install Base information', self.assistedFetcher_IB)
+        fetchASdeliverable = self.menu_button(u'Fetch information for Advanced Service deliverables', self.assistedFetcher_AS)
+
         cancelButton = self.menu_button(u'Cancel', self.exit_window)
 
-        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help, urwid.Divider(),generalSettings, commandSettings, verifyFileButton, runButton,cancelButton]))
-          
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help, urwid.Divider(),generalSettings, fetchInstallBase, fetchASdeliverable, cancelButton]))
+
+    def assistedFetcher_IB(self,button):
+        caption = urwid.Text(('standoutLabel',u'Direct Mode > Install Base'))
+
+        verifyFileButton = self.menu_button(u'Verify Junos Space connectity', self.assistedFetcher_verify)
+        runButton = self.menu_button(u'Run', self.assistedFetcherIB_run)
+        cancelButton = self.menu_button(u'Cancel', self.exit_window)
+
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(), verifyFileButton, runButton,cancelButton]))
+
+    def assistedFetcher_AS(self,button):
+        caption = urwid.Text(('standoutLabel',u'Direct Mode > Advanced Service Deliverables'))
+
+        commandSettings = self.menu_button(u'Commands', self.assistedFetcher_commandSettings_dialog)
+        verifyFileButton = self.menu_button(u'Verify Junos Space connectity', self.assistedFetcher_verify)
+        runButton = self.menu_button(u'Run', self.assistedFetcherAS_run)
+        cancelButton = self.menu_button(u'Cancel', self.exit_window)
+
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(), commandSettings, verifyFileButton, runButton,cancelButton]))
+
+    # direct mode > run  | creates the DirectFetcher object and runs the appropiate console tool
+    def assistedFetcherIB_run(self,button):
+        with open("execute.task", 'w') as f:
+            f.write("AssistedFetcherIB")
+
+        self.exit_program(None)   #closing the graphical interface to run the DirectFetcher
+
+    def assistedFetcherAS_run(self,button):
+        with open("execute.task", 'w') as f:
+            f.write("AssistedFetcherAS")
+        self.exit_program(None)   #closing the graphical interface to run the DirectFetcher         
              
     
     # assisted mode > verify  | creates a DirectFetcher object and attempts to load the inputs
@@ -61,7 +91,7 @@ class ui_assistedFetcher(ui_dialog):
         button = self.menu_button(u'OK', self.exit_window)
        
         # creation of tool object
-        df=AssistedFetcher()
+        df=AssistedFetcher("IB")
         (result,message)=df.LoadInputFile()
         messageLabel.set_text(message+"\n")
         dialog=self.top.message_box(urwid.Pile([captionLabel, urwid.Divider(),messageLabel,urwid.Divider(),button]))

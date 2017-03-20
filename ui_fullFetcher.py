@@ -45,14 +45,45 @@ class ui_fullFetcher(ui_dialog):
         caption = urwid.Text(('standoutLabel',u'Junos Space | Full Mode')) 
         help = urwid.Text([u'In full mode the tool retrieves the device list from Junos Space and instructs Junos space to connect to all devices to retrieve the information necessary for the Advanced Services deliverable. For successful execution, please enter the necessary info in the Settings menu.'])
         generalSettings = self.menu_button(u'Settings', self.fullFetcher_generalSettings_dialog)
-        commandSettings = self.menu_button(u'Commands', self.fullFetcher_commandSettings_dialog)
-        verifyFileButton = self.menu_button(u'Verify Junos Space connectity', self.fullFetcher_verify)
-        runButton = self.menu_button(u'Run', self.fullFetcher_run)
+
+        fetchInstallBase = self.menu_button(u'Fetch Install Base information', self.fullFetcher_IB)
+        fetchASdeliverable = self.menu_button(u'Fetch information for Advanced Service deliverables', self.fullFetcher_AS)
         cancelButton = self.menu_button(u'Cancel', self.exit_window)
 
-        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help, urwid.Divider(),generalSettings, commandSettings, verifyFileButton, runButton,cancelButton]))
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help, urwid.Divider(),generalSettings, fetchInstallBase, fetchASdeliverable, cancelButton]))
          
 
+
+    def fullFetcher_IB(self,button):
+        caption = urwid.Text(('standoutLabel',u'Direct Mode > Install Base'))
+
+        verifyFileButton = self.menu_button(u'Verify Junos Space connectity', self.fullFetcher_verify)
+        runButton = self.menu_button(u'Run', self.fullFetcherIB_run)
+        cancelButton = self.menu_button(u'Cancel', self.exit_window)
+
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(), verifyFileButton, runButton,cancelButton]))
+
+    def fullFetcher_AS(self,button):
+        caption = urwid.Text(('standoutLabel',u'Direct Mode > Advanced Service Deliverables'))
+
+        commandSettings = self.menu_button(u'Commands', self.fullFetcher_commandSettings_dialog)
+        verifyFileButton = self.menu_button(u'Verify Junos Space connectity', self.fullFetcher_verify)
+        runButton = self.menu_button(u'Run', self.fullFetcherAS_run)
+        cancelButton = self.menu_button(u'Cancel', self.exit_window)
+
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(), commandSettings, verifyFileButton, runButton,cancelButton]))
+
+    # direct mode > run  | creates the DirectFetcher object and runs the appropiate console tool
+    def fullFetcherIB_run(self,button):
+        with open("execute.task", 'w') as f:
+            f.write("FullFetcherIB")
+
+        self.exit_program(None)   #closing the graphical interface to run the DirectFetcher
+
+    def fullFetcherAS_run(self,button):
+        with open("execute.task", 'w') as f:
+            f.write("FullFetcherAS")
+        self.exit_program(None)   #closing the graphical interface to run the DirectFetcher
 
     # full mode > general settings window
     def fullFetcher_generalSettings_dialog(self,button):
@@ -320,11 +351,7 @@ class ui_fullFetcher(ui_dialog):
             self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),tb_commands,urwid.Divider(),saveButton,cancelButton])) 
             load_settings()  
 
-    # assisted mode > run  | creates the DirectFetcher object and runs the appropiate console tool
-    def fullFetcher_run(self,button):
-        with open("execute.task", 'w') as f:
-            f.write("FullFetcher")
-        self.exit_program(None)   #closing the graphical interface to run the DirectFetcher
+
 
 
     # assisted mode > verify  | creates a DirectFetcher object and attempts to load the inputs
@@ -334,7 +361,7 @@ class ui_fullFetcher(ui_dialog):
         button = self.menu_button(u'OK', self.exit_window)
        
         # creation of tool object
-        df=FullFetcher()
+        df=FullFetcher("IB")
         (result,message)=df.LoadInputFile()
         messageLabel.set_text(message+"\n")
         dialog=self.top.message_box(urwid.Pile([captionLabel, urwid.Divider(),messageLabel,urwid.Divider(),button]))

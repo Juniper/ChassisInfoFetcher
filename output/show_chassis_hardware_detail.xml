@@ -1,0 +1,40 @@
+root@10.102.179.22> show chassis hardware detail
+Hardware inventory:
+Item             Version  Part number  Serial number     Description
+Chassis                                VMX782a           MX240
+Midplane        
+Routing Engine 0                       69ebd6ec-0ae      RE-VMX
+  ad0   20473 MB  QEMU HARDDISK        QM00001           Hard Disk
+CB 0                                                     VMX SCB
+CB 1                                                     VMX SCB
+FPC 0                                                    Virtual 20x1G + 4x10G FPC
+  CPU            Rev. 1.0 RIOT         123XYZ987        
+  MIC 0                                                  Virtual 20x 1GE(LAN) SFP
+    PIC 0                 BUILTIN      BUILTIN           Virtual 10x 1GE(LAN) SFP
+    PIC 1                 BUILTIN      BUILTIN           Virtual 10x 1GE(LAN) SFP
+  MIC 1                                                  Virtual 4x 10GE(LAN) XFP
+    PIC 2                 BUILTIN      BUILTIN           Virtual 2x 10GE(LAN) XFP
+    PIC 3                 BUILTIN      BUILTIN           Virtual 2x 10GE(LAN) XFP
+
+
+
+root@10.102.179.77> show chassis hardware detail
+Hardware inventory:
+Item             Version  Part number  Serial number     Description
+Chassis                                VMX4849           MX240
+Midplane        
+Routing Engine 0                       69ebd4ee-0ae      RE-VMX
+  ad0   20473 MB  QEMU HARDDISK        QM00001           Hard Disk
+CB 0                                                     VMX SCB
+CB 1                                                     VMX SCB
+FPC 0                                                    Virtual 20x1G + 4x10G FPC
+  CPU            Rev. 1.0 RIOT         123XYZ987        
+  MIC 0                                                  Virtual 20x 1GE(LAN) SFP
+    PIC 0                 BUILTIN      BUILTIN           Virtual 10x 1GE(LAN) SFP
+    PIC 1                 BUILTIN      BUILTIN           Virtual 10x 1GE(LAN) SFP
+  MIC 1                                                  Virtual 4x 10GE(LAN) XFP
+    PIC 2                 BUILTIN      BUILTIN           Virtual 2x 10GE(LAN) XFP
+    PIC 3                 BUILTIN      BUILTIN           Virtual 2x 10GE(LAN) XFP
+
+
+
