@@ -87,18 +87,22 @@ To run the tool GUI :
 
 Individual scenarions can also be run separate:
    
-   > python directFetcher.py
+   > python directFetcher.py "path"
    
-   > python assistedFetcher.py
+   > python assistedFetcher.py "path"
    
-   > python fullFetcher.py
+   > python fullFetcher.py "path"
    
-   > python SNSIFetcher.py
+   > python SNSIFetcher.py "path"
+   
+Where the "path" attribute should be either "IB" if the information about the install base of the customer is needed, or "AS" to fetch all the necessary information for the Advanced Service deliverables. 
+"IB" = Install Base
+"AS" = Advanced Service deliverables  
    
 ### 4.1
 The ChassisInfoFetcher (CIF) tool can be run without a GUI by executing the following commands directly. In order to successfully execute each mode, the login details required need to be included in the corresponding configuration files in the conf directory. Each fetcher has a specific login details that need to be provided.
 
-   > python directFetcher.py
+   > python directFetcher.py "path"
    
 In direct mode the tool retrieves the device list and login details stored in the ‘hosts.csv’ file and proceeds to connect to the devices in a parallel fashion. The hosts file can be found in the ChassisInfoFetcher2.0 directory. The format of each entry in the "hosts" file should be: 
 <Device IP address, Username, Password, SSH port>
@@ -114,7 +118,7 @@ The conf/directFetcher.conf file needs to be configured with the following templ
     ],
     "username": "Device login"
 }
-   > python assistedFetcher.py
+   > python assistedFetcher.py "path"
 
 Format for the configuration of conf/assistedFetcher.conf:
 
@@ -130,7 +134,7 @@ Format for the configuration of conf/assistedFetcher.conf:
     "url": "Junos Space GUI IP address"
 }
 
-   > python fullFetcher.py
+   > python fullFetcher.py "path"
 
 Format of the configuration of conf/fullFetcher.py:
 {
@@ -141,7 +145,7 @@ Format of the configuration of conf/fullFetcher.py:
 }
 
 
-   > python SNSIFetcher.py
+   > python SNSIFetcher.py "path"
 
 The format of the configuration in conf SNSIFetcher.py is identical to that of conf/fullFetcher.py.
 
