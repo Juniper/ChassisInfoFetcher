@@ -210,12 +210,7 @@ class DirectFetcher:
     def Run(self):
         p = Pool(self.THREADCOUNT)
         ret=p.map(self,self.jobList)
-        #print ("HEllo {0}".format((self.jobList).size()))
-        #ret = []
-        #ret.append(self.job(self.jobList[0]))
-        #ret.append(self.job(self.jobList[1]))
-        #print ("Result %s"% (self.jobList[0]['host']))
-        #print ("Result %s"% ret[0])
+
         success = 0
         failed = 0
 
@@ -246,7 +241,6 @@ class DirectFetcher:
             msg="No output was received from the devices."
             logging.error(msg)
             return (False,msg)
-        #msg="Retriving the information from devices : Process finished [failed hosts (%s) | success hosts (%s)] "%(failed,success)
         msg="Retriving the information from devices : Process finished"
         logging.info(msg)
         return (True,msg) 
