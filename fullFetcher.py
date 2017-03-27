@@ -209,7 +209,7 @@ class FullFetcher(DirectFetcher):
             output['show chassis hardware detail | display xml']=autoDetect
             return output
             
-        if(autoDetect.find("<description>MX")>-1 or autoDetect.find("<description>M")>-1 or autoDetect.find("<description>T")>-1 or autoDetect.find("<description>PTX")>-1 or autoDetect.find("<description>ACX")>-1):
+        if(autoDetect.find("<description>MX")>-1 or autoDetect.find("<description>VMX")>-1 or autoDetect.find("<description>M")>-1 or autoDetect.find("<description>T")>-1 or autoDetect.find("<description>PTX")>-1 or autoDetect.find("<description>ACX")>-1):
             try:
                 with open("commands/MX_4.txt", "r") as data_file:
                     commandSettings = json.load(data_file)
@@ -220,7 +220,7 @@ class FullFetcher(DirectFetcher):
                 logging.error(msg)
                 return (False,msg)
 
-        elif(autoDetect.find("<description>SRX")>-1):
+        elif(autoDetect.find("<description>SRX")>-1 or autoDetect.find("<description>VSRX")>-1):
             try:
                 with open("commands/SRX_4.txt", "r") as data_file:
                     commandSettings = json.load(data_file)

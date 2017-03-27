@@ -1,0 +1,97 @@
+root@10.19.120.226> show chassis hardware detail | display xml
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/15.1F6/junos">
+    <chassis-inventory xmlns="http://xml.juniper.net/junos/15.1F6/junos-chassis">
+        <chassis junos:style="inventory">
+            <name>Chassis</name>
+            <serial-number>VM57B4E347FE</serial-number>
+            <description>VMX</description>
+            <chassis-module>
+                <name>Midplane</name>
+            </chassis-module>
+            <chassis-module>
+                <name>Routing Engine 0</name>
+                <description>RE-VMX</description>
+                <chassis-re-disk-module>
+                    <name>ada0</name>
+                    <disk-size>25601</disk-size>
+                    <model>VMware Virtual IDE Har</model>
+                    <serial-number>000000000000000</serial-number>
+                    <description>Hard Disk</description>
+                </chassis-re-disk-module>
+            </chassis-module>
+            <chassis-module>
+                <name>CB 0</name>
+                <description>VMX SCB</description>
+            </chassis-module>
+            <chassis-module>
+                <name>CB 1</name>
+                <description>VMX SCB</description>
+            </chassis-module>
+            <chassis-module>
+                <name>FPC 0</name>
+                <description>Virtual FPC</description>
+                <chassis-sub-module>
+                    <name>CPU</name>
+                    <version>Rev. 1.0</version>
+                    <part-number>RIOT</part-number>
+                    <serial-number>123XYZ987</serial-number>
+                </chassis-sub-module>
+                <chassis-sub-module>
+                    <name>MIC 0</name>
+                    <description>Virtual</description>
+                    <chassis-sub-sub-module>
+                        <name>PIC 0</name>
+                        <part-number>BUILTIN</part-number>
+                        <serial-number>BUILTIN</serial-number>
+                        <description>Virtual</description>
+                    </chassis-sub-sub-module>
+                </chassis-sub-module>
+            </chassis-module>
+        </chassis>
+    </chassis-inventory>
+    <cli>
+        <banner></banner>
+    </cli>
+</rpc-reply>
+
+
+
+root@10.19.122.62> show chassis hardware detail | display xml
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/15.1X49/junos">
+    <chassis-inventory xmlns="http://xml.juniper.net/junos/15.1X49/junos-chassis">
+        <chassis junos:style="inventory">
+            <name>Chassis</name>
+            <serial-number>70A731C81856</serial-number>
+            <description>VSRX</description>
+            <chassis-module>
+                <name>CB 0</name>
+            </chassis-module>
+            <chassis-module>
+                <name>Routing Engine 0</name>
+                <part-number>BUILTIN</part-number>
+                <serial-number>BUILTIN</serial-number>
+                <description>VSRX-S</description>
+            </chassis-module>
+            <chassis-module>
+                <name>FPC 0</name>
+                <version>REV 07</version>
+                <part-number>611-049549</part-number>
+                <serial-number>RL3714040884</serial-number>
+                <description>FPC</description>
+                <chassis-sub-module>
+                    <name>PIC 0</name>
+                    <description>VSRX DPDK GE</description>
+                    <version></version>
+                    <part-number>BUILTIN</part-number>
+                    <serial-number>BUILTIN</serial-number>
+                </chassis-sub-module>
+            </chassis-module>
+        </chassis>
+    </chassis-inventory>
+    <cli>
+        <banner></banner>
+    </cli>
+</rpc-reply>
+
+
+

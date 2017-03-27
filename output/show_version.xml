@@ -1,0 +1,56 @@
+root@10.19.120.226> show version
+Hostname: vMX-125
+Model: vmx
+Junos: 15.1F6.9
+JUNOS OS Kernel 64-bit  [20160616.329709_builder_stable_10]
+JUNOS OS libs [20160616.329709_builder_stable_10]
+JUNOS OS runtime [20160616.329709_builder_stable_10]
+JUNOS OS time zone information [20160616.329709_builder_stable_10]
+JUNOS network stack and utilities [20160701.104257_builder_junos_151_f6]
+JUNOS modules [20160701.104257_builder_junos_151_f6]
+JUNOS OS libs compat32 [20160616.329709_builder_stable_10]
+JUNOS OS 32-bit compatibility [20160616.329709_builder_stable_10]
+JUNOS libs compat32 [20160701.104257_builder_junos_151_f6]
+JUNOS runtime [20160701.104257_builder_junos_151_f6]
+JUNOS Packet Forwarding Engine Simulation Package [20160701.104257_builder_junos_151_f6]
+JUNOS py base [20160701.104257_builder_junos_151_f6]
+JUNOS OS vmguest [20160616.329709_builder_stable_10]
+JUNOS OS crypto [20160616.329709_builder_stable_10]
+JUNOS platform support [20160701.104257_builder_junos_151_f6]
+JUNOS libs [20160701.104257_builder_junos_151_f6]
+JUNOS mtx Data Plane Crypto Support [20160701.104257_builder_junos_151_f6]
+JUNOS daemons [20160701.104257_builder_junos_151_f6]
+JUNOS Voice Services Container package [20160701.104257_builder_junos_151_f6]
+JUNOS Services SSL [20160701.104257_builder_junos_151_f6]
+JUNOS Services Stateful Firewall [20160701.104257_builder_junos_151_f6]
+JUNOS Services RPM [20160701.104257_builder_junos_151_f6]
+JUNOS Services PTSP Container package [20160701.104257_builder_junos_151_f6]
+JUNOS Services NAT [20160701.104257_builder_junos_151_f6]
+JUNOS Services Mobile Subscriber Service Container package [20160701.104257_builder_junos_151_f6]
+JUNOS Services MobileNext Software package [20160701.104257_builder_junos_151_f6]
+JUNOS Services LL-PDF Container package [20160701.104257_builder_junos_151_f6]
+JUNOS Services Jflow Container package [20160701.104257_builder_junos_151_f6]
+JUNOS Services IPSec [20160701.104257_builder_junos_151_f6]
+JUNOS IDP Services [20160701.104257_builder_junos_151_f6]
+JUNOS Services HTTP Content Management package [20160701.104257_builder_junos_151_f6]
+JUNOS Services Crypto [20160701.104257_builder_junos_151_f6]
+JUNOS Services Captive Portal and Content Delivery Container package [20160701.104257_builder_junos_151_f6]
+JUNOS Services COS [20160701.104257_builder_junos_151_f6]
+JUNOS Border Gateway Function package [20160701.104257_builder_junos_151_f6]
+JUNOS AppId Services [20160701.104257_builder_junos_151_f6]
+JUNOS Services Application Level Gateways [20160701.104257_builder_junos_151_f6]
+JUNOS Services AACL Container package [20160701.104257_builder_junos_151_f6]
+JUNOS Packet Forwarding Engine Support (M/T Common) [20160701.104257_builder_junos_151_f6]
+JUNOS Online Documentation [20160701.104257_builder_junos_151_f6]
+JUNOS FIPS mode utilities [20160701.104257_builder_junos_151_f6]
+
+
+
+root@10.19.122.62> show version
+Hostname: vSRX-080
+Model: vsrx
+Junos: 15.1X49-D70.3
+JUNOS Software Release [15.1X49-D70.3]
+
+
+

@@ -286,7 +286,7 @@ class SNSIFetcher(DirectFetcher):
                     logging.error(msg)
                     return commandOutput #will return empty if no file containing "show display" was found containing the show display
 
-                if(autoDetect.find("<description>MX")>-1 or autoDetect.find("<description>M")>-1 or autoDetect.find("<description>T")>-1 or autoDetect.find("<description>PTX")>-1 or autoDetect.find("<description>ACX")>-1):
+                if(autoDetect.find("<description>MX")>-1 or autoDetect.find("<description>VMX")>-1 or autoDetect.find("<description>M")>-1 or autoDetect.find("<description>T")>-1 or autoDetect.find("<description>PTX")>-1 or autoDetect.find("<description>ACX")>-1):
                     try:
                         with open("commands/MX_3.txt", "r") as data_file:
                             commandLines = json.load(data_file)
@@ -297,7 +297,7 @@ class SNSIFetcher(DirectFetcher):
                         logging.error(msg)
                         return (False,msg)
 
-                elif(autoDetect.find("<description>SRX")>-1):
+                elif(autoDetect.find("<description>SRX")>-1 or autoDetect.find("<description>VSRX")>-1):
                     try:
                         with open("commands/SRX_3.txt", "r") as data_file:
                             commandLines = json.load(data_file)
