@@ -129,6 +129,8 @@ class DirectFetcher:
         except Exception as err:
             logging.error("Error parsing command output ["+args["host"]+"]:", err)
             return ""
+
+        logging.info ("Done ["+args["host"]+"].") 
         
         return output
       

@@ -62,7 +62,7 @@ class FullFetcher(DirectFetcher):
                 general_settings = json.load(data_file)
         except:
             msg="Loading and Verifying Device List failed : Unable to read input or parse file 'assistedFetcher.conf' responsible for storing general settings."
-            logger.error(msg)
+            logging.error(msg)
             return (False,msg)
         
         self.THREADCOUNT=int(general_settings["parallelProcesses"])

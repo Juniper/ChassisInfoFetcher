@@ -62,11 +62,11 @@ class SNSIFetcher(DirectFetcher):
 
         #### Read the general settings information
         try:
-            with open('conf/fullFetcher.conf') as data_file:    
+            with open('conf/SNSIFetcher.conf') as data_file:    
                 general_settings = json.load(data_file)
         except:
             msg="Loading and Verifying Device List failed : Unable to read input or parse file 'assistedFetcher.conf' responsible for storing general settings."
-            logger.error(msg)
+            logging.error(msg)
             return (False,msg)
         
         self.THREADCOUNT=int(general_settings["parallelProcesses"])
@@ -257,10 +257,13 @@ class SNSIFetcher(DirectFetcher):
             return ""  
 
         for name in zfile.namelist(): 
-            #print("Heloo {0}".format(commandLines[i]))   
-            #print("Heloo1 {0}".format(name)) 
-            #print("Heloo2 {0}".format(name.find(commandLines[i].strip())))             # list files and detect search for the show display file                  
+                
             if name.find("_shd_xml") >-1:             # found the files
+
+                if self.path == "IB":
+                    output["router_%s"%args["hostname"]] = zfile.read(name)
+                    output['show chassis hardware detail | display xml']=zfile.read(name)
+                    return output
                 
                 autoDetect=zfile.read(name)+"\n"+"\n"                  # retrive the content
                 if autoDetect=="":
@@ -272,7 +275,7 @@ class SNSIFetcher(DirectFetcher):
                     try:
                         with open("commands/MX_3.txt", "r") as data_file:
                             commandLines = json.load(data_file)
-                            logging.info("Loaded list of commands " + "["+args["host"]+"]")
+                            logging.info("Loaded list of commands " + "["+args["hostname"]+"]")
 
                     except:
                         msg="Loading and Verifying Device List : Unable to read input file 'commands/MX_3.txt'."
@@ -283,7 +286,7 @@ class SNSIFetcher(DirectFetcher):
                     try:
                         with open("commands/SRX_3.txt", "r") as data_file:
                             commandLines = json.load(data_file)
-                            logging.info("Loaded list of commands " + "["+args["host"]+"]")
+                            logging.info("Loaded list of commands " + "["+args["hostname"]+"]")
 
                     except:
                         msg="Loading and Verifying Device List : Unable to read input file 'commands/SRX_3.txt'."
@@ -294,7 +297,7 @@ class SNSIFetcher(DirectFetcher):
                     try:
                         with open("commands/QFX_3.txt", "r") as data_file:
                             commandLines = json.load(data_file)
-                            logging.info("Loaded list of commands " + "["+args["host"]+"]")
+                            logging.info("Loaded list of commands " + "["+args["hostname"]+"]")
 
                     except:
                         msg="Loading and Verifying Device List : Unable to read input file 'commands/QFX_3.txt'."
@@ -332,7 +335,7 @@ class SNSIFetcher(DirectFetcher):
                         return commandOutput #will return empty if no file containing "show display" was found containing the show display
 
 
-                    header="root@"+args["hostname"]+">"
+                    header="root@"+args["hostname"]+"> " 
                     if commandLines["commandList"][i].strip()=="_cfg_xml":
                         commandOutput = self.cleanNamespace("""<rpc-reply>"""+commandOutput+"""</rpc-reply>""")
 
