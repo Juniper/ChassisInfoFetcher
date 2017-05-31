@@ -20,8 +20,9 @@ Supported scenarios and modes are:
 
 ## 1. Installation using Docker
 
-##### Downloading the Dockerfile build instructions
->wget https://git.juniper.net/mgospodinov/ChassisInfoFetcher/raw/master/docker/Dockerfile
+##### Dockerfile build instructions
+The DockerFile can be found at: ChassisInfoFetcher/docker/Dockerfile.
+Copy the Dockerfile into the directory where the ChassisInfoFetcher folder is located. 
 
 ##### Building the Docker image
 >docker build -t juniper/chassisinfofetcher .
