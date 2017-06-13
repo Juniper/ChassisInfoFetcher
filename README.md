@@ -18,7 +18,7 @@ Supported scenarios and modes are:
                                    all devices to retrieve the information necessary for the Advanced Service deliverables.
 
 
-## 1. Installation and running the tool using Docker
+## 1. Installation using Docker
 
 Note: For AS deliverables you need to populate the ChassisInfoFetcher/hosts.csv file with device information prior to executing the commands.
 
