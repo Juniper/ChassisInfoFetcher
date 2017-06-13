@@ -18,20 +18,23 @@ Supported scenarios and modes are:
                                    all devices to retrieve the information necessary for the Advanced Service deliverables.
 
 
-## 1. Installation using Docker
+## 1. Installation and running the tool using Docker
 
-##### Dockerfile build instructions
-The DockerFile can be found at: ChassisInfoFetcher/docker/Dockerfile.
-Copy the Dockerfile into the directory where the ChassisInfoFetcher folder is located. 
+Note: For AS deliverables you need to populate the ChassisInfoFetcher/hosts.csv file with device information prior to executing the commands.
 
 ##### Building the Docker image
->docker build -t juniper/chassisinfofetcher .
+>docker build -t cif /sample/dir/with/file/ChassisInfoFetcher
 
 ##### Running the application inside a container
->docker run -i -t juniper/chassisinfofetcher  /bin/ash -c "cd ChassisInfoFetcher;/usr/bin/python2.7 app.py"
+>docker run -it -v /sample/dir/with/file/ChassisInfoFetcher cif
 
-##### Start a container in shell for manual execution
->docker run -i -t juniper/chassisinfofetcher  /bin/ash 
+##### After the ChassisInfoFetcher has finished execution
+>docker ps -a 
+Copy the Container ID corresponding to the IMAGE name "cif"
+
+> cp Container-ID:/ChassisInfoFetcher/output/ /random/dir/of/your/choice
+
+The output folder contains the necessary information. 
 
 ## 2. Installation without Docker
 
