@@ -25,7 +25,7 @@ Supported scenarios and modes are:
 Note: When using Direct mode, you need to populate the CIF/ChassisInfoFetcher/hosts.csv file with device information prior to executing the following commands (see 4.1 below)!
 
 ##### Building the Docker image
->docker build -t cif <full-path>/ChassisInfoFetcher
+>docker build -t cif full-path/ChassisInfoFetcher
 
 ##### Running the application inside a container
 >docker run -it cif
@@ -34,7 +34,7 @@ Note: When using Direct mode, you need to populate the CIF/ChassisInfoFetcher/ho
 >docker ps -a 
 Copy the Container ID corresponding to the IMAGE name "cif"
 
->docker cp Container-ID:/scripts/output </dir/of/your/choice>
+>docker cp Container-ID:/scripts/output /dir/of/your/choice
 
 The output folder contains the necessary information. 
 
