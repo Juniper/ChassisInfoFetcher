@@ -20,19 +20,21 @@ Supported scenarios and modes are:
 
 ## 1. Installation using Docker
 
-Note: For AS deliverables you need to populate the ChassisInfoFetcher/hosts.csv file with device information prior to executing the commands.
+#### Windows 10 users are recommended to use a wired connection with Docker, as it is possible that turning Docker on might disable your WiFi connection. 
+
+Note: When using Direct mode, you need to populate the CIF/ChassisInfoFetcher/hosts.csv file with device information prior to executing the following commands (see 4.1 below)!
 
 ##### Building the Docker image
->docker build -t cif /sample/dir/with/file/ChassisInfoFetcher
+>docker build -t cif <full-path>/ChassisInfoFetcher
 
 ##### Running the application inside a container
->docker run -it -v /sample/dir/with/file/ChassisInfoFetcher cif
+>docker run -it cif
 
 ##### After the ChassisInfoFetcher has finished execution
 >docker ps -a 
 Copy the Container ID corresponding to the IMAGE name "cif"
 
-> cp Container-ID:/ChassisInfoFetcher/output/ /random/dir/of/your/choice
+>docker cp Container-ID:/scripts/output </dir/of/your/choice>
 
 The output folder contains the necessary information. 
 
@@ -56,13 +58,13 @@ The output folder contains the necessary information.
 
 #### MAC OS X El Capitan
 
->Xcode
+>install Xcode from app store 
 
 >easy_install pip
 
 #### Windows
 
->Not supported
+> Windows users need to use docker!
 
 
 ### 2.2 Install the ChassisInfoFetcher tool

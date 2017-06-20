@@ -3,7 +3,6 @@
         "show version", 
         "show configuration | display inheritance | display set", 
         "show chassis hardware detail", 
-        "show chassis hardware clei-models", 
-        "request support information"
+        "show chassis hardware clei-models"
     ]
 }
