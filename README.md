@@ -44,10 +44,13 @@ In the command prompt run:
 
 #### If you are using Putty: In the Session tab, specify the IP address and port; In the Data tab specify the username; In the SSH/Auth tab specify the private key for authentication.
 
+In the new prompt run the following commands:
+
 >cd /home/ubuntu/ChassisInfoFetcher
 
 >python app.py
 
+After the tool has finished execution: The ChassisInfoFetcher/CIF/output folder on your Windows device will contain the output from all devices. 
 
 ## 1. Installation using Docker
 
