@@ -40,9 +40,9 @@ In the command prompt run:
 
 >vagrant ssh
 
-#### Use the provided login details in order to ssh into the VM. In order to use putty, you would need to transform the private key using puttygen (see http://www.cnx-software.com/2012/07/20/how-use-putty-with-an-ssh-private-key-generated-by-openssh).  
+#### Use the provided login details in order to ssh into the VM. In order to use Putty, you would need to transform the private key using puttygen (see http://www.cnx-software.com/2012/07/20/how-use-putty-with-an-ssh-private-key-generated-by-openssh).  
 
-#### In the Session tab, specify the IP address and port; In the Data tab specify the username; In the SSH/Auth tab specify the private key for authentication.
+#### If you are using Putty: In the Session tab, specify the IP address and port; In the Data tab specify the username; In the SSH/Auth tab specify the private key for authentication.
 
 >cd /home/ubuntu/ChassisInfoFetcher
 
