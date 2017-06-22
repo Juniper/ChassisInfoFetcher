@@ -23,14 +23,14 @@ Supported scenarios and modes are:
 #### Hyper-V needs to be disabled! Go to Command Prompt -> Programs and Features -> Turn Windows features on or off -> Uncheck Hyper-V
 
 #### Install VirtualBox:
->Go to virtualbox.org/wiki/Downloads and select Windows hosts
+>Go to www.virtualbox.org/wiki/Downloads and select Windows hosts
 
 #### Install Vagrant:
->Go to vagrantup.com/downloads.html
+>Go to www.vagrantup.com/downloads.html
 
 #### Specify path:
 
->The default path specified for the ChassisInfoFetcher is the root directory on your device. If you have placed the folder somewhere else, please edit the 5th line of the Vagrantfile from "C:\" to the actual directory used.
+>The default path specified for the ChassisInfoFetcher is the "C:\" directory on your device. If you have placed the folder somewhere else, please edit the 5th line of the Vagrantfile from "C:\" to the actual directory used.
 
 In the command prompt run:
 >cd C:\ChassisInfoFetcher
