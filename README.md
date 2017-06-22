@@ -34,6 +34,7 @@ Supported scenarios and modes are:
 
 In the command prompt run:
 >cd C:\ChassisInfoFetcher
+
 >vagrant up
 
 >vagrant provision
