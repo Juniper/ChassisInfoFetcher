@@ -18,6 +18,35 @@ Supported scenarios and modes are:
                                    all devices to retrieve the information necessary for the Advanced Service deliverables.
 
 
+## For Windows Users - use Vagrant
+
+#### Hyper-V needs to be disabled! Go to Command Prompt -> Programs and Features -> Turn Windows features on or off -> Uncheck Hyper-V
+
+#### Install VirtualBox:
+>Go to virtualbox.org/wiki/Downloads and select Windows hosts
+
+#### Install Vagrant:
+>Go to vagrantup.com/downloads.html
+
+#### Specify path:
+
+>The default path specified for the ChassisInfoFetcher is the root directory on your device. If you have placed the folder somewhere else, please edit the 5th line of the Vagrantfile from "C:\" to the actual directory used.
+
+In the command prompt run:
+>cd C:\ChassisInfoFetcher
+>vagrant up
+>vagrant provision
+>vagrant ssh
+
+#### Use the provided login details in order to ssh into the VM. In order to use putty, you would need to transform the private key using puttygen (see http://www.cnx-software.com/2012/07/20/how-use-putty-with-an-ssh-private-key-generated-by-openssh).  
+
+#### In the Session tab, specify the IP address and port; In the Data tab specify the username; In the SSH/Auth tab specify the private key for authentication.
+
+>cd /home/ubuntu/ChassisInfoFetcher
+
+>python app.py
+
+
 ## 1. Installation using Docker
 
 #### Windows 10 users are recommended to use a wired connection with Docker, as it is possible that turning Docker on might disable your WiFi connection. 
@@ -64,7 +93,7 @@ The output folder contains the necessary information.
 
 #### Windows
 
-> Windows users need to use docker!
+> Windows users need to use vagrant!
 
 
 ### 2.2 Install the ChassisInfoFetcher tool
