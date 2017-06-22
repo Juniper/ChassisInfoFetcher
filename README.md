@@ -35,7 +35,9 @@ Supported scenarios and modes are:
 In the command prompt run:
 >cd C:\ChassisInfoFetcher
 >vagrant up
+
 >vagrant provision
+
 >vagrant ssh
 
 #### Use the provided login details in order to ssh into the VM. In order to use putty, you would need to transform the private key using puttygen (see http://www.cnx-software.com/2012/07/20/how-use-putty-with-an-ssh-private-key-generated-by-openssh).  
