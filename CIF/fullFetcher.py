@@ -1,24 +1,24 @@
 #!/usr/bin/env python
 # <*******************
-# 
+#
 #   Copyright (c) 2017 Juniper Networks . All rights reserved.
 #   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 #
 #   1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 #
-#   2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the 
+#   2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the
 #   documentation and/or other materials provided with the distribution.
 #
-#   3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this 
+#   3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this
 #   software without specific prior written permission.
 #
-#   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, 
-#   THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
-#   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
-#   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
-#   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+#   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+#   THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+#   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+#   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 #   EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-# 
+#
 # *******************>
 
 from __future__ import print_function
@@ -59,25 +59,25 @@ import logging
 import logging.config
 
 class FullFetcher(DirectFetcher):
-     
+
     # Override the load and validate to work from Junos Space instead of intput file
     # return (False,ErrorMessage) if inputs are invalid or (True,SuccessMessage) if they are valid
     def LoadInputFile(self):
-        
+
         devices= []
         general_settings= []
 
         #### Read the general settings information
         try:
-            with open('conf/fullFetcher.conf') as data_file:    
+            with open('conf/fullFetcher.conf') as data_file:
                 general_settings = json.load(data_file)
         except:
             msg="Loading and Verifying Device List failed : Unable to read input or parse file 'assistedFetcher.conf' responsible for storing general settings."
             logging.error(msg)
             return (False,msg)
-        
+
         self.THREADCOUNT=int(general_settings["parallelProcesses"])
-        
+
         # Create a Space REST end point
         space = rest.Space(url="https://"+general_settings["url"], user=general_settings["username_js"], passwd=general_settings["password_js"])
         logging.info("Connecting to Junos Space to retrieve the devices list.")
@@ -101,7 +101,7 @@ class FullFetcher(DirectFetcher):
             entry["name"]=str(device.name)
 
             self.jobList.append(entry)
-        
+
         #print(self.jobList)
         msg="Loading and Verifying Device List was successful, loaded (%s) hosts!"%str(len(self.jobList))
         logging.info(msg)
@@ -148,7 +148,7 @@ class FullFetcher(DirectFetcher):
                     else:
                         line = " ".join(commandLine) + ' "' + root.text.strip() + '"'
                 else:
-                    line = " ".join(commandLine) 
+                    line = " ".join(commandLine)
                 self.parsedValues.append(line.strip())
                 #commandLine.pop()
             else:
@@ -180,10 +180,10 @@ class FullFetcher(DirectFetcher):
         commandCheck = ""
         flag = 0
 
-        
+
         logging.info("Connecting to: "+args["ipAddr"])
 
-      
+
         try:
             space = rest.Space("https://"+args["url"], args["username"], args["password"])
 
@@ -201,7 +201,7 @@ class FullFetcher(DirectFetcher):
             output["router_%s"%args["ipAddr"]] = autoDetect
             output['show chassis hardware detail | display xml']=autoDetect
             return output
-            
+
         if(autoDetect.find("<description>MX")>-1 or autoDetect.find("<description>VMX")>-1 or autoDetect.find("<description>M")>-1 or autoDetect.find("<description>T")>-1 or autoDetect.find("<description>PTX")>-1 or autoDetect.find("<description>ACX")>-1):
             try:
                 with open("commands/MX_4.txt", "r") as data_file:
@@ -236,14 +236,14 @@ class FullFetcher(DirectFetcher):
                 return (False,msg)
         else:
             msg = "The device was not recognized!"
-            logging.error(msg)   
+            logging.error(msg)
             return (False, msg)
 
 
 
         for i in xrange(len(commandSettings["commandList"])):
             #print ("Command {0}".format(commandSettings["commandList"][i].strip()))
-            commandCheck = commandSettings["commandList"][i].strip()  #commandCheck contains the current command being evaluated 
+            commandCheck = commandSettings["commandList"][i].strip()  #commandCheck contains the current command being evaluated
 
             if ((commandCheck.split(" ",1)[0]=="show" or commandCheck =="request support information") and commandCheck.split("|")[-1].strip() != "display xml"):
 
@@ -263,37 +263,28 @@ class FullFetcher(DirectFetcher):
                 #if (commandCheck.find("configuration")==-1):
                 #    finalText = self.cleanNamespace(finalText)
 
-                
+
 
 
                 commandOutput = "root@%s> %s\n"%(args["ipAddr"],commandCheck) + finalText + "\n\n\n"
                 output["router_%s"%args["ipAddr"]] += commandOutput         #Preparation for the two types of output: file_host1 contains the output of all the commands ran on host1;
                 output[commandCheck] = commandOutput                    #file_show_chassis_hardware contains the output of the "show chassis harware" command from all hosts
             else:
-                logging.error("The following command is not allowed : %s "%(commandCheck))   
-                return output                 
-                
- 
+                logging.error("The following command is not allowed : %s "%(commandCheck))
+                return output
+
+
 
         #output ="root@%s> show chassis hardware detail | display xml | no-more\n"%(args["name"])
-        #output += 
+        #output +=
 
-            
-        logging.info ("Done ["+args["ipAddr"]+"].") 
+
+        logging.info ("Done ["+args["ipAddr"]+"].")
         return output
 
 if __name__ == '__main__':
     logging.config.fileConfig('conf/logging.conf')
     f=FullFetcher(sys.argv[1])
     f.LoadInputFile()
-    #f.job("{'username': 'mkim', 'host': '172.30.77.181', 'password': 'mkim', 'port': '22'}")
-    #f.job(f.jobList[0])
+
     f.Run()
-    #df.Run()
-
-
-
-
-
-
-
