@@ -99,8 +99,6 @@ class AssistedFetcher(DirectFetcher):
         logging.info(msg)
         return (True, msg)
 
-
-
 if __name__ == '__main__':
     logging.config.fileConfig('conf/logging.conf')
     ASSISTED = AssistedFetcher(sys.argv[1])
