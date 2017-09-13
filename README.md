@@ -222,10 +222,3 @@ The output of all commands in the SNSI and Full modes is in xml format with the 
 ## 6. Use of Junos Space
 
 Only Direct Mode does not require for Junos Space to be connected to the devices. All other modes use features from Junos Space, so for successful execution of the sctipt, make sure that your Junos Space is correctly connected to the respective devices.
-
-
-
-
-    
-    
-    
