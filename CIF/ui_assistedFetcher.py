@@ -1,25 +1,25 @@
 
 #!/usr/bin/env python
 # <*******************
-# 
+#
 #   Copyright (c) 2017 Juniper Networks . All rights reserved.
 #   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 #
 #   1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 #
-#   2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the 
+#   2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the
 #   documentation and/or other materials provided with the distribution.
 #
-#   3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this 
+#   3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this
 #   software without specific prior written permission.
 #
-#   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, 
-#   THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
-#   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
-#   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
-#   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+#   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+#   THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+#   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+#   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 #   EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-# 
+#
 # *******************>
 
 import urwid
@@ -34,9 +34,9 @@ import utils
 class ui_assistedFetcher(ui_dialog):
     # assisted mode main dialog
     def ShowDialog(self,button):
-        caption = urwid.Text(('standoutLabel',u'Junos Space | Assisted Mode')) 
+        caption = urwid.Text(('standoutLabel',u'Junos Space | Assisted Mode'))
         help = urwid.Text([u'In the assisted mode the tool will retrieve the device list from Junos Space and proceed to connect to them in parallel in order to retrieve the chassis information.'])
-        
+
         generalSettings = self.menu_button(u'Settings', self.assistedFetcher_generalSettings_dialog)
         fetchInstallBase = self.menu_button(u'Fetch Install Base information', self.assistedFetcher_IB)
         fetchASdeliverable = self.menu_button(u'Fetch information for Advanced Service deliverables', self.assistedFetcher_AS)
@@ -74,15 +74,15 @@ class ui_assistedFetcher(ui_dialog):
     def assistedFetcherAS_run(self,button):
         with open("execute.task", 'w') as f:
             f.write("AssistedFetcherAS")
-        self.exit_program(None)   #closing the graphical interface to run the DirectFetcher         
-             
-    
+        self.exit_program(None)   #closing the graphical interface to run the DirectFetcher
+
+
     # assisted mode > verify  | creates a DirectFetcher object and attempts to load the inputs
     def assistedFetcher_verify(self,button):
         captionLabel = urwid.Text(('standoutLabel',"Assisted Mode > Verifying Junos Space connectity"))
         messageLabel = urwid.Text([""])
         button = self.menu_button(u'OK', self.exit_window)
-       
+
         # creation of tool object
         df=AssistedFetcher("IB")
         (result,message)=df.LoadInputFile()
@@ -91,12 +91,12 @@ class ui_assistedFetcher(ui_dialog):
 
     # assisted mode > general settings window
     def assistedFetcher_generalSettings_dialog(self,button):
-        caption = urwid.Text(('standoutLabel',u'Assisted Mode > Settings')) 
+        caption = urwid.Text(('standoutLabel',u'Assisted Mode > Settings'))
         help = urwid.Text([u'Please fill in the default username / password for SSH connectiy to the devices and Junos Space API url / username / password. If the number of specified processes are more than the devices that the tool collects information from, then the tool can create parallel sessions for all devices and complete execution faster (this uses up more resources on the machine running the tool).'])
-        
+
         tb_username=urwid.Edit(('textbox', u"Junos Space Username :\n"))
         tb_password=urwid.Edit(('textbox', u"Junos Space Password :\n"),mask="*")
-        tb_url=urwid.Edit(('textbox', u"Junos Space URL :\n"))
+        tb_url=urwid.Edit(('textbox', u"Junos Space IP address :\n"))
         tb_parallelProcesses=urwid.Edit(('textbox', u"Number of parallel processes to be used : \n"))
         tb_username_ssh=urwid.Edit(('textbox', u"Device SSH Username :\n"))
         tb_password_ssh=urwid.Edit(('textbox', u"Device SSH Password :\n"),mask="*")
@@ -106,7 +106,7 @@ class ui_assistedFetcher(ui_dialog):
         def load_settings():
             try:
                 settings=None
-                with open('conf/assistedFetcher.conf') as data_file:    
+                with open('conf/assistedFetcher.conf') as data_file:
                    settings = json.load(data_file)
                 tb_username.set_edit_text(settings["js_username"])
                 tb_password.set_edit_text(settings["js_password"])
@@ -114,7 +114,7 @@ class ui_assistedFetcher(ui_dialog):
                 tb_password_ssh.set_edit_text(settings["device_ssh_password"])
                 tb_url.set_edit_text(settings["url"])
                 tb_parallelProcesses.set_edit_text(settings["parallelProcesses"])
-               
+
                 ### loading the ports list from the json array format needs flattening
                 str_port=""
                 for port in settings["port"]:
@@ -128,7 +128,7 @@ class ui_assistedFetcher(ui_dialog):
 
 
         def saveButton_onclick(button):
-            ### validation of the fields        
+            ### validation of the fields
             username=tb_username.get_edit_text()
             password=tb_password.get_edit_text()
             username_ssh=tb_username_ssh.get_edit_text()
@@ -137,7 +137,7 @@ class ui_assistedFetcher(ui_dialog):
             port=tb_port.get_edit_text()
 
             parallelProcesses=tb_parallelProcesses.get_edit_text()
-            
+
             if len(str(username)) < 3:
                 self.messageBox("Input Error", "Junos Space Username needs to have at least 3 charcters!")
                 return
@@ -159,21 +159,21 @@ class ui_assistedFetcher(ui_dialog):
             if len(str(port)) == 0:
                 self.messageBox("Input Error", "Port list cannot be left empty!")
                 return
-        
+
             if not utils.validateParalellProcessNumber(parallelProcesses):
                 self.messageBox("Input Error", "The given number of parallel processes is not valid!\nExpected values are between 0 - 25. ")
                 return
-            
+
             if not utils.validateUrl(url):
                 self.messageBox("Input Error", "The Junos Space URL needs to be a valid http/https URL.")
                 return
-            
+
             ports = port.split(",")
             for p in ports:
                 if not utils.validatePort(p):
                     self.messageBox("Input Error", "The given port list is not valid!\nExpected syntax is port_1, port_2, ... where 0 < port_n < 65534 ")
                     return
-        
+
             #### saving the settings to disk
             try:
                 data={}
@@ -190,7 +190,7 @@ class ui_assistedFetcher(ui_dialog):
                 self.messageBox("Settings", "Settings have been saved succesfull!")
             except:
                 self.messageBox("Settings > Error", "There were errors while attempting to save the settings to disk.\nPlease check permissions rights and/or locks for file: directFetcher.conf")
-                    
+
         saveButton = self.menu_button(u'Save',  saveButton_onclick)
 
 
@@ -198,13 +198,13 @@ class ui_assistedFetcher(ui_dialog):
         load_settings()
 
     def assistedFetcher_commandSettings_dialog(self,button):
-        caption = urwid.Text(('standoutLabel',u'Assisted Mode > Commands')) 
+        caption = urwid.Text(('standoutLabel',u'Assisted Mode > Commands'))
         help = urwid.Text([u'In this section you can manually enter the commands you would like to execute on your devices based on their device group. A default set of commands are provided, but they can be edited either in this menu or in the "commands" folder of the tool. Note: The devices are grouped together based on the type of commands that need to be executed on them.'])
-        
+
         MX = self.menu_button(u'MX/vMX/M/T/ACX/PTX device group', self.assistedFetcher_MX_dialog)
         SRX = self.menu_button(u'SRX/vSRX device group', self.assistedFetcher_SRX_dialog)
         QFX = self.menu_button(u'QFX/EX device group', self.assistedFetcher_QFX_dialog)
-      
+
         cancelButton = self.menu_button(u'Cancel', self.exit_window)
 
         self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),MX,SRX,QFX,cancelButton]))
@@ -212,20 +212,20 @@ class ui_assistedFetcher(ui_dialog):
 
     def assistedFetcher_MX_dialog(self,button):
 
-        caption = urwid.Text(('standoutLabel',u'Assisted Mode > Commands > MX/vMX/M/T/ACX/PTX device group')) 
+        caption = urwid.Text(('standoutLabel',u'Assisted Mode > Commands > MX/vMX/M/T/ACX/PTX device group'))
         help = urwid.Text([u'In this menu you can edit the commands that are going to be automatically executed on the devices from this device group. Only "show" commands and the "request support information" command are allowed to be entered. The tool will not execute any other type of command.'])
         tb_commands=urwid.Edit(('textbox', u"Commands :\n"))
         def load_settings():
             try:
                 settings=None
                 string = ""
-                with open('commands/MX_12.txt') as data_file:    
+                with open('commands/MX_12.txt') as data_file:
                    settings = json.load(data_file)
                 for i in xrange(len(settings["commandList"])-1):
                     string += settings["commandList"][i] + ","
                 string += settings["commandList"][-1]
                 tb_commands.set_edit_text(string)
-                           
+
 
             except:
                 self.messageBox("Error", "An error occured while attempting to load existing commands!")
@@ -233,10 +233,10 @@ class ui_assistedFetcher(ui_dialog):
 
 
         def saveButton_onclick(button):
-            ### validation of the fields        
+            ### validation of the fields
             commands=tb_commands.get_edit_text()
             commandLines = commands.split(",")
-            
+
             for i in xrange(len(commandLines)):
                 commandLines[i]=commandLines[i].strip()
                 if len(str(commandLines[i])) < 4:
@@ -245,8 +245,8 @@ class ui_assistedFetcher(ui_dialog):
                 if (commandLines[i].split(" ", 1)[0] == 'request') and (commandLines[i] != 'request support information'):
                     self.messageBox("Input Error", "The following command is not allowed: %s"%(commandLines[i]))
                     return
-            
-        
+
+
             #### saving the settings to disk
             try:
                 data={}
@@ -259,31 +259,31 @@ class ui_assistedFetcher(ui_dialog):
                 self.messageBox("Commands", "Commands have been saved succesfull!")
             except:
                 self.messageBox("Commands > Error", "There were errors while attempting to save the commands to disk.\nPlease check permissions rights and/or locks for file: commands/MX_12.txt")
-                    
+
         saveButton = self.menu_button(u'Save', saveButton_onclick)
         cancelButton = self.menu_button(u'Cancel', self.exit_window)
 
 
         self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),tb_commands, urwid.Divider(),saveButton,cancelButton]))
         cancelButton = self.menu_button(u'Cancel', self.exit_window)
-        load_settings()    
+        load_settings()
 
     def assistedFetcher_SRX_dialog(self,button):
 
-        caption = urwid.Text(('standoutLabel',u'Assisted Mode > Commands > SRX/vSRX device group')) 
+        caption = urwid.Text(('standoutLabel',u'Assisted Mode > Commands > SRX/vSRX device group'))
         help = urwid.Text([u'In this menu you can edit the commands that are going to be automatically executed on the devices from this device group. Only "show" commands and the "request support information" command are allowed to be entered. The tool will not execute any other type of command.'])
         tb_commands=urwid.Edit(('textbox', u"Commands :\n"))
         def load_settings():
             try:
                 settings=None
                 string = ""
-                with open('commands/SRX_12.txt') as data_file:    
+                with open('commands/SRX_12.txt') as data_file:
                    settings = json.load(data_file)
                 for i in xrange(len(settings["commandList"])-1):
                     string += settings["commandList"][i] + ","
                 string += settings["commandList"][-1]
                 tb_commands.set_edit_text(string)
-                           
+
 
             except:
                 self.messageBox("Error", "An error occured while attempting to load existing commands!")
@@ -291,10 +291,10 @@ class ui_assistedFetcher(ui_dialog):
 
 
         def saveButton_onclick(button):
-            ### validation of the fields        
+            ### validation of the fields
             commands=tb_commands.get_edit_text()
             commandLines = commands.split(",")
-            
+
             for i in xrange(len(commandLines)):
                 commandLines[i]=commandLines[i].strip()
                 if len(str(commandLines[i])) < 4:
@@ -303,8 +303,8 @@ class ui_assistedFetcher(ui_dialog):
                 if (commandLines[i].split(" ", 1)[0] == 'request') and (commandLines[i] != 'request support information'):
                     self.messageBox("Input Error", "The following command is not allowed: %s"%(commandLines[i]))
                     return
-            
-        
+
+
             #### saving the settings to disk
             try:
                 data={}
@@ -317,31 +317,31 @@ class ui_assistedFetcher(ui_dialog):
                 self.messageBox("Commands", "Commands have been saved succesfull!")
             except:
                 self.messageBox("Commands > Error", "There were errors while attempting to save the commands to disk.\nPlease check permissions rights and/or locks for file: commands/SRX_12.txt")
-                    
+
         saveButton = self.menu_button(u'Save', saveButton_onclick)
         cancelButton = self.menu_button(u'Cancel', self.exit_window)
 
 
         self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),tb_commands, urwid.Divider(),saveButton,cancelButton]))
         cancelButton = self.menu_button(u'Cancel', self.exit_window)
-        load_settings()   
+        load_settings()
 
     def assistedFetcher_QFX_dialog(self,button):
 
-        caption = urwid.Text(('standoutLabel',u'Assisted Mode > Commands > QFX/EX device group')) 
+        caption = urwid.Text(('standoutLabel',u'Assisted Mode > Commands > QFX/EX device group'))
         help = urwid.Text([u'In this menu you can edit the commands that are going to be automatically executed on the devices from this device group. Only "show" commands and the "request support information" command are allowed to be entered. The tool will not execute any other type of command.'])
         tb_commands=urwid.Edit(('textbox', u"Commands :\n"))
         def load_settings():
             try:
                 settings=None
                 string = ""
-                with open('commands/QFX_12.txt') as data_file:    
+                with open('commands/QFX_12.txt') as data_file:
                    settings = json.load(data_file)
                 for i in xrange(len(settings["commandList"])-1):
                     string += settings["commandList"][i] + ","
                 string += settings["commandList"][-1]
                 tb_commands.set_edit_text(string)
-                           
+
 
             except:
                 self.messageBox("Error", "An error occured while attempting to load existing commands!")
@@ -349,10 +349,10 @@ class ui_assistedFetcher(ui_dialog):
 
 
         def saveButton_onclick(button):
-            ### validation of the fields        
+            ### validation of the fields
             commands=tb_commands.get_edit_text()
             commandLines = commands.split(",")
-            
+
             for i in xrange(len(commandLines)):
                 commandLines[i]=commandLines[i].strip()
                 if len(str(commandLines[i])) < 4:
@@ -361,8 +361,8 @@ class ui_assistedFetcher(ui_dialog):
                 if (commandLines[i].split(" ", 1)[0] == 'request') and (commandLines[i] != 'request support information'):
                     self.messageBox("Input Error", "The following command is not allowed: %s"%(commandLines[i]))
                     return
-            
-        
+
+
             #### saving the settings to disk
             try:
                 data={}
@@ -375,14 +375,14 @@ class ui_assistedFetcher(ui_dialog):
                 self.messageBox("Commands", "Commands have been saved succesfull!")
             except:
                 self.messageBox("Commands > Error", "There were errors while attempting to save the commands to disk.\nPlease check permissions rights and/or locks for file: commands/QFX_12.txt")
-                    
+
         saveButton = self.menu_button(u'Save', saveButton_onclick)
         cancelButton = self.menu_button(u'Cancel', self.exit_window)
 
 
         self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),tb_commands, urwid.Divider(),saveButton,cancelButton]))
         cancelButton = self.menu_button(u'Cancel', self.exit_window)
-        load_settings()    
+        load_settings()
 
 
 
@@ -391,4 +391,3 @@ class ui_assistedFetcher(ui_dialog):
         with open("execute.task", 'w') as f:
             f.write("AssistedFetcher")
         self.exit_program(None)   #closing the graphical interface to run the DirectFetcher
-
