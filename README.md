@@ -116,7 +116,7 @@ The output folder contains the necessary information.
 > sudo pip install ./py-space-platform
 
   To install the aplication
- > git clone https://git.juniper.net/mgospodinov/ChassisInfoFetcher.git 
+ > git clone https://github.com/Juniper/ChassisInfoFetcher
     
 
 ## 3. How to run the tool via GUI?
