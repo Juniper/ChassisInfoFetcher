@@ -65,8 +65,30 @@ class FullFetcher(DirectFetcher):
         space = rest.Space(url="https://"+general_settings["url"], user=general_settings["username_js"], passwd=general_settings["password_js"])
         logging.info("Connecting to Junos Space to retrieve the devices list.")
         try:
-            devices = space.device_management.devices.\
-                  get(filter_={'deviceFamily': 'junos', 'connectionStatus': 'up'})
+            domains = space.domain_management.domains.\
+                  get()
+            domain_name = general_settings["domain"]
+            domain_id = 0
+            ip_address = general_settings["ip"]
+            for child_domain in domains[0].children.domain:
+
+                if domain_name == str(child_domain.name):
+                    domain_id = child_domain.id
+            if domain_id != 0:
+                if ip_address != "":
+                    devices = space.device_management.devices.\
+                        get(filter_={'deviceFamily': 'junos', 'connectionStatus': 'up', 'domain-id':str(domain_id), 'ipAddr': ip_address})
+                else:
+                    devices = space.device_management.devices.\
+                        get(filter_={'deviceFamily': 'junos', 'connectionStatus': 'up', 'domain-id':str(domain_id)})
+            else:
+                if ip_address != "":
+                    devices = space.device_management.devices.\
+                      get(filter_={'deviceFamily': 'junos', 'connectionStatus': 'up', 'ipAddr':ip_address})
+                else:
+                    devices = space.device_management.devices.\
+                      get(filter_={'deviceFamily': 'junos', 'connectionStatus': 'up'})
+
         except RestException as ex:
             msg = "An errror occured during the communication with the Junos Space API.\n\tHTTP error code : %s;\n\tJunos Space Message : %s " % (ex.response, ex.response.text)
             logging.error(msg)
@@ -209,7 +231,7 @@ class FullFetcher(DirectFetcher):
         else:
             msg = "The device was not recognized!"
             logging.error(msg)
-            return (False, msg)
+            return {'result': False}
 
         for i in xrange(len(commandSettings["commandList"])):
             commandCheck = commandSettings["commandList"][i].strip()  #commandCheck contains the current command being evaluated

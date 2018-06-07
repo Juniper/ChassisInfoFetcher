@@ -216,23 +216,26 @@ class DirectFetcher(object):
 
 
         try:
+                for i in range(0,len(ret)):
+                    if "result" not in ret[i].keys():
+                        for key, value in ret[i].items():
+                            mod = re.sub('\|', '', key)
+                            output_name = re.sub(' ', '_', mod)
 
-            for key, value in ret[0].items():
-                mod = re.sub('\|', '', key)
-                output_name = re.sub(' ', '_', mod)
+                            file_write = open("output/%s.xml" % output_name, "w")
+                            file_write.write(value)
+                            for i in range(1, len(ret)):
+                                if "result" not in ret[i].keys():
+                                    for key_other, value_other in ret[i].items():
+                                        if key == key_other:
+                                            file_write.write(value_other)
+                                        if key_other.split("_", 1)[0] == "router":
+                                            host = open("output/%s.xml" % key_other, "w")
+                                            host.write(value_other)
+                                            host.close()
 
-                file_write = open("output/%s.xml" % output_name, "w")
-                file_write.write(value)
-                for i in range(1, len(ret)):
-                    for key_other, value_other in ret[i].items():
-                        if key == key_other:
-                            file_write.write(value_other)
-                        if key_other.split("_", 1)[0] == "router":
-                            host = open("output/%s.xml" % key_other, "w")
-                            host.write(value_other)
-                            host.close()
-
-                file_write.close()
+                            file_write.close()
+                        break
         except IOError:
             msg = "No output was received from the devices."
             logging.error(msg)
