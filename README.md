@@ -113,7 +113,7 @@ The output folder contains the necessary information.
   To install Space Ez :    
 > git clone https://github.com/Juniper/py-space-platform.git
 
-> sudo pip install ./py-space-platform
+> pip install ./py-space-platform
 
   To install the aplication
  > git clone https://github.com/Juniper/ChassisInfoFetcher
