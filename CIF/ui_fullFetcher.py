@@ -87,6 +87,8 @@ class ui_fullFetcher(ui_dialog):
         tb_password=urwid.Edit(('textbox', u"Junos Space Password :\n"),mask="*")
         tb_url=urwid.Edit(('textbox', u"Junos Space IP address :\n"))
         tb_parallelProcesses=urwid.Edit(('textbox', u"Number of parallel processes to be used : \n"))
+        tb_domain=urwid.Edit(('textbox', u"Junos Space Domain : \n"))
+        tb_ip=urwid.Edit(('textbox', u"Device IP address(for debug purposes) : \n"))
         cancelButton = self.menu_button(u'Cancel', self.exit_window)
 
         def load_settings():
@@ -96,7 +98,9 @@ class ui_fullFetcher(ui_dialog):
                    settings = json.load(data_file)
                 tb_username.set_edit_text(settings["username_js"])
                 tb_password.set_edit_text(settings["password_js"])
+                tb_domain.set_edit_text(settings["domain"])
                 tb_url.set_edit_text(settings["url"])
+                tb_ip.set_edit_text(settings["ip"])
                 tb_parallelProcesses.set_edit_text(settings["parallelProcesses"])
 
 
@@ -111,8 +115,9 @@ class ui_fullFetcher(ui_dialog):
             username=tb_username.get_edit_text()
             password=tb_password.get_edit_text()
             url=tb_url.get_edit_text()
-
+            domain = tb_domain.get_edit_text()
             parallelProcesses=tb_parallelProcesses.get_edit_text()
+            ip = tb_ip.get_edit_text()
 
             if len(str(username)) < 3:
                 self.messageBox("Input Error", "Junos Space Username needs to have at least 3 charcters!")
@@ -143,6 +148,8 @@ class ui_fullFetcher(ui_dialog):
                 data["password_js"]=password
                 data["url"]=url
                 data["parallelProcesses"]=parallelProcesses
+                data["domain"] = domain
+                data["ip"] = ip
                 with open("conf/fullFetcher.conf", 'w') as f:
                     f.write(json.dumps(data, indent=4, sort_keys=True))
 
@@ -153,7 +160,7 @@ class ui_fullFetcher(ui_dialog):
         saveButton = self.menu_button(u'Save', saveButton_onclick)
 
 
-        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),tb_url,tb_username,tb_password, tb_parallelProcesses, urwid.Divider(),saveButton,cancelButton]))
+        self.top.open_box(urwid.Pile([caption,urwid.Divider(),help,urwid.Divider(),tb_url,tb_username,tb_password, tb_parallelProcesses, tb_domain, tb_ip, urwid.Divider(),saveButton,cancelButton]))
         load_settings()
 
     def fullFetcher_commandSettings_dialog(self,button):
