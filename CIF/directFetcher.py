@@ -31,6 +31,9 @@ import logging
 import logging.config
 
 import paramiko
+import socket
+
+from jnpr.junos import Device
 
 
 
@@ -64,6 +67,8 @@ class DirectFetcher(object):
         command_output = ""
         command_check = ""
         auto_detect = ""
+        hostname = ""
+
 
         logging.info("Connecting to: " + args["host"])
 
@@ -73,18 +78,28 @@ class DirectFetcher(object):
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             ssh.connect(args["host"], port=22, username=args["username"], password=args["password"])
 
-            #How to get just the out variable
-            _, out, _ = ssh.exec_command('cli show chassis hardware detail "|" display xml')
-            auto_detect = out.read()
+            dev = Device(host = args["host"], port=22, user=args["username"], passwd=args["password"])
+            dev.open()
+            hostname = dev.facts["hostname"]
+            #In case the device you connected to enters shell when you login, check if any output is provided by the command.
+            _, out, _ = ssh.exec_command('show chassis hardware detail "|" display xml')
+            auto_detect = out.read().strip()
+            if auto_detect.decode("latin-1", errors="ignore") == '':
+                _, out, _ = ssh.exec_command('cli show chassis hardware detail "|" display xml')
+                auto_detect = out.read().strip()
+            auto_detect = auto_detect.decode("latin-1", errors="ignore")
+
 
         #Note
-        except (BadHostKeyException, AuthenticationException, SSHException, socket.error) as err:
-            logging.error("Error parsing command output ["+args["host"]+"]:", err)
-            return ""
+        except (paramiko.BadHostKeyException, paramiko.AuthenticationException, paramiko.SSHException, socket.error) as err:
+            logging.error("Error connecting to host and getting output ["+args["host"]+"]:")
+            logging.error(err)
+            return {"result": False}
 
         if self.path == "IB":
-            output["router_%s" % args["host"]] = auto_detect
-            output['show chassis hardware detail | display xml'] = auto_detect
+            commandOutput = "root@%s> %s\n" % (hostname, 'show chassis hardware detail | display xml') + auto_detect
+            output["router_%s" % args["host"]] = commandOutput
+            output['show chassis hardware detail | display xml'] = commandOutput
             return output
 
         if auto_detect.find("<description>MX") > -1 or auto_detect.find("<description>VMX") > -1 or auto_detect.find("<description>M") > -1 or auto_detect.find("<description>T") > -1 or auto_detect.find("<description>PTX") > -1 or auto_detect.find("<description>ACX") > -1:
@@ -96,7 +111,7 @@ class DirectFetcher(object):
             except IOError as err:
                 msg = "Loading and Verifying Device List : Unable to read input file 'commands/MX_12.txt'."
                 logging.error(msg)
-                return (False, msg)
+                return {"result": False}
 
         elif auto_detect.find("<description>SRX") > -1 or auto_detect.find("<description>VSRX") > -1:
             try:
@@ -107,7 +122,7 @@ class DirectFetcher(object):
             except IOError as err:
                 msg = "Loading and Verifying Device List : Unable to read input file 'commands/SRX_12.txt'."
                 logging.error(msg)
-                return (False, msg)
+                return {"result": False}
 
         elif auto_detect.find("<description>QFX") > -1 or auto_detect.find("<description>EX") > -1:
             try:
@@ -118,20 +133,24 @@ class DirectFetcher(object):
             except IOError as err:
                 msg = "Loading and Verifying Device List : Unable to read input file 'commands/QFX_12.txt'."
                 logging.error(msg)
-                return (False, msg)
+                return {"result": False}
         else:
-            msg = "The device was not recognized!"
+            msg = "The device:%s was not recognized!"%(args["host"])
             logging.error(msg)
-            return (False, msg)
+            return {"result": False}
 
         try:
             for i in range(len(command_settings["commandList"])):
 
                 command_check = command_settings["commandList"][i].strip()
                 if command_check.split(" ", 1)[0] == "show" or command_check == "request support information":
-                    _, ssh_stdout, _ = ssh.exec_command("cli " + re.sub('[|]', '"|"', command_check))
-                    command_output = "root@%s> %s\n" % (args["host"], command_check)
-                    command_output = command_output + (ssh_stdout.read()) + "\n\n\n"
+                    _, ssh_stdout, _ = ssh.exec_command("" + re.sub('[|]', '"|"', command_check))
+                    output_info = ssh_stdout.read().strip().decode("latin-1", errors="ignore")
+                    if output_info == '':
+                        _, ssh_stdout, _ = ssh.exec_command("cli " + re.sub('[|]', '"|"', command_check))
+                        output_info = ssh_stdout.read().strip().decode("latin-1", errors="ignore")
+                    command_output = "%s@%s> %s\n" % (args["username"], hostname, command_check)
+                    command_output = command_output + output_info + "\n\n\n"
 
                     output["router_%s" % args["host"]] += command_output
                     output[command_check] = command_output
@@ -185,19 +204,19 @@ class DirectFetcher(object):
             # In this case the items list contains only the ip address of the device, so get the rest of the information from the settings menu in the GUI.
             if len(items) == 1:
                 if not isinstance(general_settings["port"], list):
-                    general_settings["port"] = [general_settings["port"]]
+                    general_settings["port"] = [general_settings["port"].strip()]
                 for port in general_settings["port"]:
-                    host_entry["host"] = items[0]
-                    host_entry["username"] = general_settings["username"]
-                    host_entry["password"] = general_settings["password"]
-                    host_entry["port"] = port
+                    host_entry["host"] = items[0].strip()
+                    host_entry["username"] = general_settings["username"].strip()
+                    host_entry["password"] = general_settings["password"].strip()
+                    host_entry["port"] = port.strip()
                     self.jobList.append((host_entry))
             # In this case the items list contains all the information including the ip address of the device and the login information
             if len(items) == 4:
-                host_entry["host"] = items[0]
-                host_entry["username"] = items[1]
-                host_entry["password"] = items[2]
-                host_entry["port"] = items[3]
+                host_entry["host"] = items[0].strip()
+                host_entry["username"] = items[1].strip()
+                host_entry["password"] = items[2].strip()
+                host_entry["port"] = items[3].strip()
                 self.jobList.append((host_entry))
 
         msg = "Loading and Verifying Device List : Successful, loaded (%s) hosts!" % str(len(self.jobList))
@@ -213,8 +232,8 @@ class DirectFetcher(object):
         '''
         job_pool = Pool(self.THREADCOUNT)
         ret = job_pool.map(self, self.jobList)
-
-
+        devices = len(ret)
+        error_devices = 0
         try:
                 for i in range(0,len(ret)):
                     if "result" not in ret[i].keys():
@@ -222,25 +241,29 @@ class DirectFetcher(object):
                             mod = re.sub('\|', '', key)
                             output_name = re.sub(' ', '_', mod)
 
-                            file_write = open("output/%s.xml" % output_name, "w")
-                            file_write.write(value)
+                            file_write = open("output/%s.xml" % output_name, "wb")
+                            file_write.write(value.encode("latin-1", errors="ignore"))
                             for i in range(1, len(ret)):
                                 if "result" not in ret[i].keys():
                                     for key_other, value_other in ret[i].items():
                                         if key == key_other:
-                                            file_write.write(value_other)
+                                            file_write.write(value_other.encode("latin-1", errors="ignore"))
                                         if key_other.split("_", 1)[0] == "router":
-                                            host = open("output/%s.xml" % key_other, "w")
-                                            host.write(value_other)
+                                            host = open("output/%s.xml" % key_other, "wb")
+                                            host.write(value_other.encode("latin-1", errors="ignore"))
                                             host.close()
 
                             file_write.close()
-                        break
+                    else:
+                        error_devices +=1
+
         except IOError:
             msg = "No output was received from the devices."
             logging.error(msg)
             return (False, msg)
+        success_devices = devices - error_devices
         msg = "Retriving the information from devices : Process finished"
+        msg += "\nSuccess count: %s. Error count: %s"%(success_devices, error_devices)
         logging.info(msg)
         return (True, msg)
 if __name__ == '__main__':
