@@ -27,6 +27,7 @@ import re
 import json
 import logging
 import logging.config
+import os
 
 from StringIO import StringIO
 from lxml import etree
@@ -40,13 +41,14 @@ TIMEOUT_REST_API = 3
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+import warnings
 
 class FullFetcher(DirectFetcher):
 
     # Override the load and validate to work from Junos Space instead of intput file
     # return (False,ErrorMessage) if inputs are invalid or (True,SuccessMessage) if they are valid
     def LoadInputFile(self):
-
+        warnings.filterwarnings("ignore")
         devices = []
         general_settings = []
 
@@ -67,11 +69,16 @@ class FullFetcher(DirectFetcher):
         try:
             domains = space.domain_management.domains.\
                   get()
+            children = etree.SubElement(domains[0].children, "domain")
+
             domain_name = general_settings["domain"]
+            if domain_name=="":
+                domain_name = "Global"
             domain_id = 0
             ip_address = general_settings["ip"]
-            for child_domain in domains[0].children.domain:
 
+            for child_domain in domains[0].children.domain:
+                domain = etree.SubElement(child_domain, "name")
                 if domain_name == str(child_domain.name):
                     domain_id = child_domain.id
             if domain_id != 0:
