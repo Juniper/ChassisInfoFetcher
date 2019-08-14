@@ -67,8 +67,7 @@ class FullFetcher(DirectFetcher):
         space = rest.Space(url="https://"+general_settings["url"], user=general_settings["username_js"], passwd=general_settings["password_js"])
         logging.info("Connecting to Junos Space to retrieve the devices list.")
         try:
-            domains = space.domain_management.domains.\
-                  get()
+            domains = space.domain_management.domains.get()
             children = etree.SubElement(domains[0].children, "domain")
 
             domain_name = general_settings["domain"]
@@ -196,12 +195,21 @@ class FullFetcher(DirectFetcher):
             logging.error("An errror occured during the communication with the Junos Space API.\n\tHTTP error code : %s;\n\tJunos Space Message : %s "%(ex.response, ex.response.text))
             return ""
 
-        autoDetect = etree.tostring(autoDetect, pretty_print=True)
-
         if self.path == "IB":
-            output["router_%s"%args["ipAddr"]] = autoDetect
-            output['show chassis hardware detail | display xml'] = autoDetect
+            output_xml_ib = autoDetect.xpath('netConfReplies/netConfReply/replyMsgData')
+            if len(output_xml_ib) != 1:
+                logging.error("The reply from the server does not contain a valid 'show chassis hardware' reply. Full reply was logged in DEBUG level.")
+                logging.debug(etree.tostring(output_xml_ib, pretty_print=True))
+                return ""
+
+            output_text_ib = etree.tostring(output_xml_ib[0], pretty_print=True)
+            finalTextIB = self.unwrap(output_text_ib)
+            commandOutputIB = "root@%s> %s\n" % (args["ipAddr"], "show chassis hardware") + finalTextIB + "\n\n\n"
+            output["router_%s"%args["ipAddr"]] = commandOutputIB
+            output['show chassis hardware detail | display xml'] = commandOutputIB
             return output
+        
+        autoDetect = etree.tostring(autoDetect, pretty_print=True)
 
         if autoDetect.find("<description>MX") > -1 or autoDetect.find("<description>VMX") > -1 or autoDetect.find("<description>M") > -1 or autoDetect.find("<description>T") > -1 or autoDetect.find("<description>PTX") > -1 or autoDetect.find("<description>ACX") > -1:
             try:
