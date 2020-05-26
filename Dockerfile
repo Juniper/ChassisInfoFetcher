@@ -1,15 +1,13 @@
-FROM juniper/pyez
+FROM alpine:3.9
 
-RUN pip install --upgrade pip
+RUN apk add --no-cache build-base python2-dev py-lxml libxslt-dev libxml2-dev curl \
+    ca-certificates openssl-dev git py2-pip libffi-dev
 
-RUN apk update && apk add git \
-    && pip install urwid \
-    && pip install requests \
-    && pip install git+https://github.com/Juniper/py-space-platform.git@v1.0.0
+RUN pip install urwid requests junos-eznc \
+    git+https://github.com/Juniper/py-space-platform.git@v1.0.0
 
+WORKDIR /CIF
 COPY CIF .
 
-
-CMD “/bin/bash”
-CMD “CD CIF”
-CMD "python" "./app.py"
+ENTRYPOINT ["python"]
+CMD ["app.py"]
