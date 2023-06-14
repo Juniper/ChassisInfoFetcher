@@ -69,7 +69,7 @@ Note: When using Direct mode, you need to populate the CIF/ChassisInfoFetcher/ho
 >docker ps -a 
 Copy the Container ID corresponding to the IMAGE name "cif"
 
->docker cp Container-ID:/scripts/output /dir/of/your/choice
+>docker cp Container-ID:/CIF/output /dir/of/your/choice
 
 The output folder contains the necessary information. 
 
